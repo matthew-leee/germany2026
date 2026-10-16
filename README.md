@@ -19,9 +19,9 @@ Once GitHub Pages is enabled on the `main` branch (root `/`), this planner is ac
    - Mandatory day trips & markets: **Neuschwanstein Castle** (Sun 15 Nov via Bayern-Ticket), **Dachau Memorial Site** (Mon 16 Nov via MVV Zone M-1), and **Weihnachtsdorf im Kaiserhof der Residenz** (Tue 17 Nov).
    - Specialist trails for Bavarian delicacies, wooden-barrel beer halls (*Augustiner Bräustuben & Augustiner Bürgerheim*), sourdough bakeries (*Julius Brantner, Café Frischhut, Dompierre*), Franconian/German/Spanish/Italian wine (*Weinhaus Neuner, Pfälzer Residenz Weinstube, Bar Mural, Feinkost Olé, GARIBALDI*), antiques (*Kunst-Oase Ottostraße*), and vintage/Leica cameras (*Leica Store Maffeistraße, Foto Dinkel, Calumet/Sauter*).
 
-## Map Tile Configuration (Zero Hardcoded Secrets)
-- **GitHub Pages (`https://`):** Defaults automatically to **Esri World Street Map** and **OpenTopoMap** (which require zero API keys on any domain).
-- **Local `file://` mode:** Uses **CARTO Voyager** when git-ignored `local-config.js` is present, or falls back automatically to Esri World Street Map.
+## Map Tile Configuration (`CARTO_API_KEY` Secret)
+- **GitHub Pages (`.github/workflows/deploy-pages.yml`):** Automatically injects `secrets.CARTO_API_KEY` from the `github-pages` environment into `local-config.js` at deploy time so **CARTO Voyager** loads with your key (without committing the key to Git). In GitHub **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
+- **Local `file://` mode:** Uses git-ignored `local-config.js` locally, or falls back to **Esri World Street Map** if absent.
 
 ## Build & Verification
 ```bash

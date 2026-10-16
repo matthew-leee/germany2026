@@ -1,8 +1,8 @@
 # Changelog
 
 ## [1.0.1] - 2026-10-16
-### Fixed
-- Defaulted public GitHub Pages (`https://matthew-leee.github.io/germany2026/`) to keyless **Esri World Street Map** so CARTO's "API KEY REQUIRED" watermark never appears when `local-config.js` is absent.
+### Added
+- Added `.github/workflows/deploy-pages.yml` to inject the `CARTO_API_KEY` environment secret into `local-config.js` during GitHub Pages deployment, with automatic fallback to keyless **Esri World Street Map** if `local-config.js` is not loaded yet.
 
 ## [1.0.0] - 2026-10-15
 ### Added

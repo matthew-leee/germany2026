@@ -1745,7 +1745,8 @@
 
   if (typeof L !== 'undefined' && document.getElementById('munich-map')) {
     var map = L.map('munich-map').setView([48.145, 11.575], 13);
-    var cartoKey = (window.LOCAL_MAP_CONFIG && window.LOCAL_MAP_CONFIG.cartoKey) ? ('?key=' + encodeURIComponent(window.LOCAL_MAP_CONFIG.cartoKey)) : '';
+    var rawCartoKey = (window.LOCAL_MAP_CONFIG && window.LOCAL_MAP_CONFIG.cartoKey) || window.CARTO_API_KEY || '';
+    var cartoKey = rawCartoKey ? ('?key=' + encodeURIComponent(rawCartoKey)) : '';
     var esriStreet = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: '&copy; Esri & OpenStreetMap contributors',
       maxZoom: 19
@@ -1758,19 +1759,16 @@
       attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       maxZoom: 19
     });
-    // Carto requires ?key= on all domains now; only default to Carto when cartoKey is present, otherwise default to keyless Esri World Street Map!
     if (cartoKey) {
       cartoVoyager.addTo(map);
     } else {
       esriStreet.addTo(map);
     }
     var baseLayers = {
-      "Esri World Street Map (No Key Needed)": esriStreet,
+      "CARTO Voyager": cartoVoyager,
+      "Esri World Street Map": esriStreet,
       "OpenTopoMap (Terrain)": openTopo
     };
-    if (cartoKey) {
-      baseLayers["CARTO Voyager"] = cartoVoyager;
-    }
     L.control.layers(baseLayers).addTo(map);
 
     var markerGroup = L.layerGroup().addTo(map);
