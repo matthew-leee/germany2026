@@ -20,8 +20,8 @@ Once GitHub Pages is enabled on the `main` branch (root `/`), this planner is ac
    - Specialist trails for Bavarian delicacies, wooden-barrel beer halls (*Augustiner Bräustuben & Augustiner Bürgerheim*), sourdough bakeries (*Julius Brantner, Café Frischhut, Dompierre*), Franconian/German/Spanish/Italian wine (*Weinhaus Neuner, Pfälzer Residenz Weinstube, Bar Mural, Feinkost Olé, GARIBALDI*), antiques (*Kunst-Oase Ottostraße*), and vintage/Leica cameras (*Leica Store Maffeistraße, Foto Dinkel, Calumet/Sauter*).
 
 ## Map Tile Configuration (Zero Hardcoded Secrets)
-- **GitHub Pages (`https://`):** Uses CARTO Voyager, Esri World Street Map, and OpenTopoMap with zero API keys required.
-- **Local `file://` mode:** Optionally reads a git-ignored `local-config.js` file if present, or falls back automatically to Esri World Street Map.
+- **GitHub Pages (`https://`):** Defaults automatically to **Esri World Street Map** and **OpenTopoMap** (which require zero API keys on any domain).
+- **Local `file://` mode:** Uses **CARTO Voyager** when git-ignored `local-config.js` is present, or falls back automatically to Esri World Street Map.
 
 ## Build & Verification
 ```bash

@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.1] - 2026-10-16
+### Fixed
+- Defaulted public GitHub Pages (`https://matthew-leee.github.io/germany2026/`) to keyless **Esri World Street Map** so CARTO's "API KEY REQUIRED" watermark never appears when `local-config.js` is absent.
+
 ## [1.0.0] - 2026-10-15
 ### Added
 - Full 3-leg Germany & Alsace interactive planner (5–19 Nov 2026): **Leg 1 Berlin** (5–8 Nov), **Leg 2 Freiburg, Black Forest, Baden-Baden & Colmar/Turckheim** (9–13 Nov), and **Leg 3 Munich & Bavaria** (13–19 Nov).

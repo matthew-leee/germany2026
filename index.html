@@ -1746,11 +1746,6 @@
   if (typeof L !== 'undefined' && document.getElementById('munich-map')) {
     var map = L.map('munich-map').setView([48.145, 11.575], 13);
     var cartoKey = (window.LOCAL_MAP_CONFIG && window.LOCAL_MAP_CONFIG.cartoKey) ? ('?key=' + encodeURIComponent(window.LOCAL_MAP_CONFIG.cartoKey)) : '';
-    var isFileProtocol = (window.location && window.location.protocol === 'file:');
-    var cartoVoyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png' + cartoKey, {
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-      maxZoom: 19
-    });
     var esriStreet = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: '&copy; Esri & OpenStreetMap contributors',
       maxZoom: 19
@@ -1759,17 +1754,24 @@
       attribution: '&copy; OpenTopoMap & OpenStreetMap contributors',
       maxZoom: 17
     });
-    // Use CARTO Voyager when local-config.js provides a key, or Esri Street Map on keyless file:// and https:// GitHub Pages
-    if (cartoKey || !isFileProtocol) {
+    var cartoVoyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png' + cartoKey, {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      maxZoom: 19
+    });
+    // Carto requires ?key= on all domains now; only default to Carto when cartoKey is present, otherwise default to keyless Esri World Street Map!
+    if (cartoKey) {
       cartoVoyager.addTo(map);
     } else {
       esriStreet.addTo(map);
     }
-    L.control.layers({
-      "CARTO Voyager": cartoVoyager,
-      "Esri World Street Map": esriStreet,
+    var baseLayers = {
+      "Esri World Street Map (No Key Needed)": esriStreet,
       "OpenTopoMap (Terrain)": openTopo
-    }).addTo(map);
+    };
+    if (cartoKey) {
+      baseLayers["CARTO Voyager"] = cartoVoyager;
+    }
+    L.control.layers(baseLayers).addTo(map);
 
     var markerGroup = L.layerGroup().addTo(map);
     var routeLine = null;
