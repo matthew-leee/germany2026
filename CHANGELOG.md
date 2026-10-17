@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2026-10-17
+### Changed
+- Full mobile responsiveness pass verified with gstack headless Chromium ($B) at 320/360/375/390/414/768/1280 px: zero horizontal page overflow at every width (was 2px leak at 320px from a nowrap Google Maps button).
+- Grids now scale below their card min-widths (`minmax(min(340px, 100%), 1fr)`), wide fare/audit tables sit in horizontally scrollable `.table-scroll` wrappers, tab & filter bars become swipe-scrollable below 620px, map popups shrink to `min(248px, 74vw)`, and the timeline collapses to single-column.
+- Bundled missing Leaflet layer-control icons (`assets/vendor/images/`) that caused a blank map button and 404s; console is now error-free.
+- Added 25 QA screenshots (mobile 320/390, tablet 768, desktop 1280) under `test/mobile-screenshots/`.
+
 ## [1.0.1] - 2026-10-16
 ### Added
 - Added `.github/workflows/deploy-pages.yml` to inject the `CARTO_API_KEY` environment secret into `local-config.js` during GitHub Pages deployment, with automatic fallback to keyless **Esri World Street Map** if `local-config.js` is not loaded yet.

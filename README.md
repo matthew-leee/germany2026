@@ -23,6 +23,9 @@ Once GitHub Pages is enabled on the `main` branch (root `/`), this planner is ac
 - **GitHub Pages (`.github/workflows/deploy-pages.yml`):** Automatically injects `secrets.CARTO_API_KEY` from the `github-pages` environment into `local-config.js` at deploy time so **CARTO Voyager** loads with your key (without committing the key to Git). In GitHub **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
 - **Local `file://` mode:** Uses git-ignored `local-config.js` locally, or falls back to **Esri World Street Map** if absent.
 
+## Mobile Responsiveness (QA-Verified)
+Responsive from 320px phones to desktop: swipe-scrollable tab/filter bars, single-column cards & timeline on phones, 2-column on tablet, horizontally scrollable fare tables, and responsive map popups. Verified screenshots live in `test/mobile-screenshots/` (320/390 mobile, 768 tablet, 1280 desktop) captured with gstack's headless Chromium (`$B responsive` / `$B viewport` / `$B screenshot`), with zero horizontal overflow and zero console errors at all tested widths.
+
 ## Build & Verification
 ```bash
 npm run build   # Compiles modular src/ components into index.html (<0.1s)

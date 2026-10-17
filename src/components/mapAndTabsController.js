@@ -260,8 +260,8 @@
         var icon = L.divIcon({ html: iconHtml, className: '', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
 
         var gmapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' ' + p.addr);
-        var popupHtml = '<div style="width:240px;font-family:sans-serif;">' +
-          '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:6px;">' +
+        var popupHtml = '<div style="width:min(248px, 74vw);font-family:sans-serif;">' +
+          '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;max-width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:6px;">' +
           '<strong style="font-size:14px;color:#003d59;">' + stepNum + '. ' + p.name + '</strong><br>' +
           '<span style="font-size:11px;color:#b42318;font-weight:600;">Hours: ' + p.hours + '</span><br>' +
           '<span style="font-size:11px;color:#5a6577;">' + p.addr + '</span>' +

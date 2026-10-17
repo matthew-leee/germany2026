@@ -1187,3 +1187,22 @@ def test_helper_nov_date_variants() -> None:
     assert on_weekday("fri", 13).matches(fold("Fri 13 Nov 2026"))
     assert on_weekday("sun", 15).matches(fold("Sunday, 15 Nov"))
     assert not on_weekday("mon", 13).matches(fold("Fri 13 Nov 2026"))
+
+
+# ---------------------------------------------------------------------------
+# Mobile responsiveness regression checks (verified via test/mobile-screenshots/)
+# ---------------------------------------------------------------------------
+
+
+def test_responsive_layout_rules_present() -> None:
+    """REQ-09 responsive: grids scale below card min-widths, wide tables scroll,
+    and tab/filter bars become swipe-scrollable on phones."""
+    assert INDEX_HTML.is_file(), f"index.html not found at {INDEX_HTML}"
+    src = INDEX_HTML.read_text(encoding="utf-8")
+    assert "minmax(min(340px, 100%), 1fr)" in src, "grid-2 must not overflow narrow phones"
+    assert "minmax(min(290px, 100%), 1fr)" in src, "grid-3 must not overflow narrow phones"
+    assert "minmax(min(260px, 100%), 1fr)" in src, "logistics-bar must not overflow narrow phones"
+    assert src.count('<div class="table-scroll">') >= 4, (
+        "wide fare/audit tables must be wrapped in .table-scroll containers"
+    )
+    assert re.search(r"max-width:\s*620px", src), "mobile breakpoint for swipe-scrollable tab bars missing"

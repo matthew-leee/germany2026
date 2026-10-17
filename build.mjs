@@ -30,7 +30,7 @@ const secMuseums = readTsStringExport("src/regions/munich/MunichMuseumsHoodsSect
 const secTransport = readTsStringExport("src/regions/munich/MunichTransportSection.ts", "MunichTransportSection");
 const secHk = readTsStringExport("src/regions/munich/MunichHkHiccupsSection.ts", "MunichHkHiccupsSection");
 
-const html = `<!DOCTYPE html>
+const html0 = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -82,6 +82,12 @@ ${controllerJs}
 </body>
 </html>
 `;
+
+// Mobile responsiveness: wrap wide tables in horizontally scrollable containers
+const html = html0.replace(
+  /(<table class="fare-table">[\s\S]*?<\/table>)/g,
+  '<div class="table-scroll">$1</div>'
+);
 
 fs.writeFileSync(path.join(root, "index.html"), html, "utf8");
 console.log("Built index.html from modular src/ components (" + Buffer.byteLength(html, "utf8") + " bytes)");
