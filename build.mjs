@@ -6,9 +6,12 @@ const root = process.cwd();
 
 function readTsStringExport(relPath, exportName) {
   const raw = fs.readFileSync(path.join(root, relPath), "utf8");
-  const re = new RegExp("export const " + exportName + "\\s*=\\s*(\"[\\s\\S]*?\");");
+  const re = new RegExp("export const " + exportName + "\\s*=\\s*(\"[\\s\\S]*?\"|`[\\s\\S]*?`);");
   const m = raw.match(re);
   if (!m) throw new Error("Missing export " + exportName + " in " + relPath);
+  if (m[1].startsWith("`")) {
+    return m[1].slice(1, -1);
+  }
   return JSON.parse(m[1]);
 }
 
@@ -21,6 +24,7 @@ const mapShell = readTsStringExport("src/regions/munich/MunichHeader.ts", "Munic
 const tabsNav = readTsStringExport("src/regions/munich/MunichHeader.ts", "MunichTabsNavHtml");
 
 const secItinerary = readTsStringExport("src/regions/munich/MunichItinerarySection.ts", "MunichItinerarySection");
+const secBookingsPacking = readTsStringExport("src/regions/munich/MunichBookingsAndPackingSection.ts", "MunichBookingsAndPackingSection");
 const secBerlin = readTsStringExport("src/regions/berlin/BerlinSection.ts", "BerlinSectionHtml");
 const secBlackForest = readTsStringExport("src/regions/blackforest/BlackForestSection.ts", "BlackForestSectionHtml");
 const secGmaps = readTsStringExport("src/regions/munich/MunichGmapsAuditSection.ts", "MunichGmapsAuditSection");
@@ -29,6 +33,9 @@ const secTrails = readTsStringExport("src/regions/munich/MunichTrailsSection.ts"
 const secMuseums = readTsStringExport("src/regions/munich/MunichMuseumsHoodsSection.ts", "MunichMuseumsHoodsSection");
 const secTransport = readTsStringExport("src/regions/munich/MunichTransportSection.ts", "MunichTransportSection");
 const secHk = readTsStringExport("src/regions/munich/MunichHkHiccupsSection.ts", "MunichHkHiccupsSection");
+
+const hasLocalConfig = fs.existsSync(path.join(root, "local-config.js"));
+const localConfigTag = hasLocalConfig ? '<script src="local-config.js"></script>\n' : '';
 
 const html0 = `<!DOCTYPE html>
 <html lang="en">
@@ -50,6 +57,8 @@ ${hero}
   ${mapShell}
 
   ${tabsNav}
+
+  ${secBookingsPacking}
 
   ${secBerlin}
 
@@ -74,8 +83,7 @@ ${hero}
   </footer>
 </div>
 
-<script src="local-config.js"></script>
-<script src="assets/vendor/leaflet.js"></script>
+${localConfigTag}<script src="assets/vendor/leaflet.js"></script>
 <script>
 ${controllerJs}
 </script>

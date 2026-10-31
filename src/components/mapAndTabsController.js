@@ -96,7 +96,8 @@
     {"id": 114, "name": "★ #14 Fleischerei Domke (NON-NEGOTIABLE MUST-GO!)", "lat": 52.510477, "lng": 13.452073, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Mon–Fri 06:30–18:00, Sat 06:30–14:00 (Closed Sun)", "addr": "Warschauer Str. 64, 10243 Berlin-Friedrichshain", "img": "assets/images/schweinshaxe.jpg", "note": "[Fri 6 Nov · 16:45 MUST-GO!] Because Domke closes at 14:00 on Sat (when you're at Berlin Zoo), visiting Friday afternoon (open until 18:00!) lets you feast on their legendary hot butcher counter: Eisbein, Schnitzel, Bouletten & Currywurst!"},
     {"id": 113, "name": "★ #13 Avci Bistro", "lat": 52.510585, "lng": 13.452151, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Daily until late", "addr": "Kopernikusstraße 30, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_brlo.jpg", "note": "[Fri 6 Nov · 18:00] Literally right around the corner (20 meters!) from Fleischerei Domke for Turkish-Berlin grilled plates & tea."},
     {"id": 119, "name": "★ #19 RAW-Gelände & Michelberger Bar (for #50 MXPSM Schnaps)", "lat": 52.507686, "lng": 13.451869, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7", "addr": "Revaler Str. 99 / Warschauer Str. 39, 10245 Berlin", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 19:00] 4 mins walk south of Domke/Avci! Explore the gritty 1867 railway repair compound & sip MXPSM herbal spirits at Michelberger Hotel bar across the street."},
-    {"id": 121, "name": "★ #21 East Side Gallery (1.3km Painted Berlin Wall)", "lat": 52.505022, "lng": 13.439695, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7 (Illuminated in evening)", "addr": "Mühlenstraße, 10243 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 20:00] Walk the longest surviving section of the Berlin Wall along the Spree from Warschauer Straße to Ostbahnhof."},
+    {"id": 121, "name": "★ #21 East Side Gallery (1.3km Painted Berlin Wall)", "lat": 52.505022, "lng": 13.439695, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7 (Illuminated in evening)", "addr": "Mühlenstraße, 10243 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 17:55] Walk the longest surviving section of the Berlin Wall along the Spree before hopping on the S-Bahn to Yorckschlösschen."},
+    {"id": 174, "name": "★ Yorckschlösschen (CONFIRMED 18:30 Dinner Reservation!)", "lat": 52.4931, "lng": 13.3812, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#067647", "hours": "CONFIRMED TABLE: Fri 6 Nov 2026 at 18:30 (2 People)", "addr": "Yorckstraße 15, 10965 Berlin-Kreuzberg (S/U Yorckstraße)", "img": "assets/images/berlin_brlo.jpg", "note": "[Fri 6 Nov · 18:30 CONFIRMED DINNER] Legendary 1902 Berlin jazz & soul tavern in Kreuzberg! Reservation confirmed for 2 people at 18:30."},
     {"id": 163, "name": "★ #63 Berlin Zoological Garden (MANDATORY MUST-DO!)", "lat": 52.50783, "lng": 13.339416, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Winter Hours: Daily 09:00–16:30 (Animal houses close 16:00; Aquarium til 18:00)", "addr": "Hardenbergplatz 8, 10787 Berlin (Direct U2 from Karlito!)", "img": "assets/images/berlin_zoo.jpg", "note": "[Sat 7 Nov · 09:00–13:30 MUST-DO] Direct 18-min U2 ride from Karlito! 4.5 hours for Giant Pandas, glass-domed Hippo House & giraffes."},
     {"id": 103, "name": "★ #03 Foto-Meyer Digital Imaging", "lat": 52.496226, "lng": 13.341651, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-camera", "color": "#067647", "hours": "Mon–Fri 10:00–18:30, Sat 10:00–15:00 (Closed Sun)", "addr": "Welserstraße 1, 10777 Berlin (U Viktoria-Luise-Platz)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Sat 7 Nov · 13:45–14:45] Just 2 U-Bahn stops south of Berlin Zoo—hit this right after the Zoo before its 15:00 Saturday close!"},
     {"id": 160, "name": "★ #60 The Berlin Art Market by the Zeughaus", "lat": 52.518129, "lng": 13.397811, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Sat & Sun Only 11:00–17:00", "addr": "Am Zeughaus 1-2, 10117 Berlin (Museum Island)", "img": "assets/images/berlin_hackesche.jpg", "note": "[Sat 7 Nov · 15:30–17:00] Open-air art, print, vintage book & craft market beside the Zeughaus on Museum Island."},
@@ -136,7 +137,8 @@
     {"id": 234, "name": "✖ #34 Holzschlägermatte (OMITTED — Cable Car Closed in Nov)", "lat": 47.91512, "lng": 7.880996, "region": "region-blackforest", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted", "addr": "Schauinslandstraße 359, 79100 Freiburg", "img": "assets/images/neuschwanstein.jpg", "note": "OMITTED: Mountain pass stop on Schauinsland."},
     {"id": 235, "name": "✖ #35 Schauinslandbahn Cable Car (CLOSED IN NOV FOR MAINTENANCE!)", "lat": 47.936043, "lng": 7.865329, "region": "region-blackforest", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "CLOSED Every November for Herbstrevision", "addr": "Bohrerstraße 11, 79289 Horben", "img": "assets/images/neuschwanstein.jpg", "note": "OMITTED: Cable car shuts down every November for mandatory annual cable inspection. Replaced by Lake Titisee!"},
     {"id": 236, "name": "✖ #36 Die Bergstation Schauinsland (CLOSED IN NOV!)", "lat": 47.90966, "lng": 7.891262, "region": "region-blackforest", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "CLOSED during Nov Cable Car Maintenance", "addr": "Schauinslandstraße 390, 79117 Freiburg", "img": "assets/images/neuschwanstein.jpg", "note": "OMITTED: Top station of the Schauinsland cable car."},
-    {"id": 1, "name": "Timehouse Munich (Hotel Base)", "lat": 48.1765, "lng": 11.5923, "days": ["day-13", "day-14", "day-15", "day-16", "day-17", "day-18", "day-19"], "cat": "cat-hotel", "color": "#005f87", "hours": "Reception 06:30–22:30 (24/7 Keybox)", "addr": "Leopoldstraße 204a, 80804 München (U6 Nordfriedhof)", "img": "assets/images/timehouse_room.jpg", "note": "[Fri 13 – Thu 19 Nov Base] Serviced apartment in Schwabing with full designer kitchen; 6 mins walk to Lufthansa Express Bus."},
+    {"id": 1, "name": "Timehouse Munich (Hotel Option 2 · Booking #6724144172)", "lat": 48.1765, "lng": 11.5923, "days": ["day-13", "day-14", "day-15", "day-16", "day-17", "day-18", "day-19"], "cat": "cat-hotel", "color": "#005f87", "hours": "Reception 06:30–22:30 (WhatsApp Late Check-In / 24/7 Keybox)", "addr": "Leopoldstraße 204a, 80804 München (U6 Nordfriedhof)", "img": "assets/images/timehouse_room.jpg", "note": "[Fri 13 – Thu 19 Nov Base · Ref 6724144172] Serviced apartment in Schwabing with full designer kitchen, laundry room & 6 mins walk to Lufthansa Express Bus."},
+    {"id": 34, "name": "Bob W Munich City Centre (Hotel Option 1 · Booking #5210364141)", "lat": 48.1369, "lng": 11.5562, "days": ["day-13", "day-19"], "cat": "cat-hotel", "color": "#067647", "hours": "Check-in from 15:00 via Online Form / 24/7 Door Code", "addr": "Schwanthalerstraße 61, 80336 München (4 mins walk from Hbf)", "img": "assets/images/timehouse_room.jpg", "note": "[Fri 13 – Thu 19 Nov Overlap Option 1 · Ref 5210364141] 4 mins walk south of München Hbf with 24/7 digital door code check-in."},
     {"id": 2, "name": "München Hauptbahnhof (Hbf)", "lat": 48.1402, "lng": 11.5586, "days": ["day-13", "day-15", "day-16"], "cat": "cat-transit", "color": "#475467", "hours": "24/7 Rail Hub", "addr": "Bayerstraße 10A, 80335 München", "img": "assets/images/tgv_train.jpg", "note": "[Fri 13 Nov 21:46 TGV Arrival & Sun 15 Nov 07:52 Füssen Train] Tracks 27–36 for BRB RB 68 to Füssen."},
     {"id": 3, "name": "Julius Brantner Brothandwerk (Sat-Only Croissants!)", "lat": 48.1518, "lng": 11.5761, "days": ["day-14"], "cat": "cat-bakery", "color": "#b8860b", "hours": "Tue–Sat 08:30–18:30 (Closed Sun/Mon)", "addr": "Adalbertstraße 25, Maxvorstadt (U6 Universität)", "img": "assets/images/sourdough_bakery.jpg", "note": "[Sat 14 Nov · 09:15] Famous 54-layer Butter Croissant & Sourdough Baguette are Fri/Sat specials!"},
     {"id": 27, "name": "★ #51 Feinkost Olé - Spanische Weine & Spezialitäten", "lat": 48.1551, "lng": 11.5751, "days": ["day-14"], "saved": true, "cat": "cat-wine", "color": "#7c3aed", "hours": "Tue–Fri 11:00–19:00, Sat 10:00–16:00", "addr": "Georgenstraße 43, 80799 München (Maxvorstadt)", "img": "assets/images/garibaldi_wein.jpg", "note": "[Sat 14 Nov · 09:50] 4 mins walk north of Julius Brantner! Spanish wine, sherry, jamón Ibérico & Manchego."},
@@ -151,7 +153,7 @@
     {"id": 29, "name": "★ #18 Karlsplatz (Stachus)", "lat": 48.139246, "lng": 11.566021, "days": ["day-14"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7", "addr": "Karlsplatz, 80335 München", "img": "assets/images/marienplatz.jpg", "note": "[Sat 14 Nov · 16:50] Grand square & medieval Karlstor gate directly between Kunst-Oase Ottostraße and Calumet/Sauter."},
     {"id": 10, "name": "Calumet Photographic / Foto-Video Sauter", "lat": 48.1355, "lng": 11.5642, "days": ["day-14"], "cat": "cat-camera", "color": "#067647", "hours": "Mon–Sat 10:00–19:00 (Closed Sun)", "addr": "Sonnenstraße 26, 80331 München", "img": "assets/images/calumet_sauter.webp", "note": "[Sat 14 Nov · 17:10] Merged Calumet + Sauter superstore for analog film & used camera bodies."},
     {"id": 11, "name": "Haxnbauer (Reopened at Im Tal 38!)", "lat": 48.1357, "lng": 11.5806, "days": ["day-14"], "cat": "cat-food", "color": "#d97706", "hours": "Daily 11:30–23:00", "addr": "Tal 38, 80331 München (New Address!)", "img": "assets/images/schweinshaxe.jpg", "note": "[Sat 14 Nov · 19:00 Dinner] Reopened by Kuffler at Im Tal 38! Famous 24-hr brined Schweinshaxe & Kalbshaxe."},
-    {"id": 12, "name": "★ #62 Schloss Neuschwanstein & Hohenschwangau", "lat": 47.5576, "lng": 10.7498, "days": ["day-15"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Winter Hours: 10:00–16:00 daily", "addr": "Neuschwansteinstraße 20, 87645 Schwangau", "img": "assets/images/neuschwanstein.jpg", "note": "[Sun 15 Nov · 10:30–15:30] Full-Day Alpine Excursion via Bayern-Ticket (€44 for 2) + RVA Bus 73/78 from Füssen."},
+    {"id": 12, "name": "★ #62 Schloss Neuschwanstein (CONFIRMED 14:15 Tour #475!)", "lat": 47.5576, "lng": 10.7498, "days": ["day-15"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Winter Hours: 10:00–16:00 · CONFIRMED Tour #475 at 14:15 (Courtyard 14:00!)", "addr": "Neuschwansteinstraße 20, 87645 Schwangau (Ticket Center Hohenschwangau)", "img": "assets/images/neuschwanstein.jpg", "note": "[Sun 15 Nov · 14:15 Tour #475 · Invoice 39901.1056944] Must be in the courtyard 15 mins prior (14:00)! Covered by Bayern-Ticket (€44 for 2)."},
     {"id": 13, "name": "KZ-Gedenkstätte Dachau (Memorial Site)", "lat": 48.2701, "lng": 11.4683, "days": ["day-16"], "cat": "cat-sight", "color": "#005f87", "hours": "Open Daily 09:00–17:00 (Including Mondays!)", "addr": "Alte Römerstraße 75, 85221 Dachau", "img": "assets/images/dachau.jpg", "note": "[Mon 16 Nov · 10:30–14:15] 11:00 English Guided Tour. Covered by MVV Zone M-1 Group Day Ticket (€21.20)."},
     {"id": 14, "name": "Foto Dinkel (Weekday Pro Camera Shop)", "lat": 48.1369, "lng": 11.5608, "days": ["day-16"], "cat": "cat-camera", "color": "#067647", "hours": "Mon–Fri 09:00–17:30 (CLOSED SAT/SUN!)", "addr": "Landwehrstraße 6, 80336 München", "img": "assets/images/foto_dinkel.jpg", "note": "[Mon 16 Nov · 15:00] Right off Hbf after returning from Dachau on S2. Pro used gear & analog film."},
     {"id": 15, "name": "★ #54 Augustiner Bräustuben (Holzfass Beer Hall)", "lat": 48.1389, "lng": 11.5442, "days": ["day-16"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Daily 10:00–24:00", "addr": "Landsberger Straße 19, 80339 München (Hackerbrücke)", "img": "assets/images/augustiner.jpg", "note": "[Mon 16 Nov · 17:00] Locals' favorite brewery taproom pouring Edelstoff & Helles from wooden barrels (Holzfass)."},
@@ -177,7 +179,7 @@
   var DAY_GMAPS = {
     "all": "https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Julius+Brantner+Brothandwerk,+Adalbertstra%C3%9Fe+25,+M%C3%BCnchen/Schneider+Br%C3%A4uhaus,+Tal+7,+M%C3%BCnchen/Marienplatz,+M%C3%BCnchen/Viktualienmarkt,+M%C3%BCnchen/Caf%C3%A9+Frischhut,+Pr%C3%A4lat-Zistl-Stra%C3%9Fe+8,+M%C3%BCnchen/Leica+Store+M%C3%BCnchen,+Maffeistra%C3%9Fe+4/Kunst-Oase,+Ottostra%C3%9Fe+6,+M%C3%BCnchen/Calumet+Photographic+M%C3%BCnchen,+Sonnenstra%C3%9Fe+26/Haxnbauer,+Tal+38,+M%C3%BCnchen",
     "day-05": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zeit+f%C3%BCr+Brot,+Alte+Sch%C3%B6nhauser+Str.+4,+Berlin/Topographie+des+Terrors,+Berlin/Brandenburger+Tor,+Berlin/Reichstag,+Berlin/Mampe+Berlin,+Am+Tempelhofer+Berg+6,+Berlin/BRLO+Brwhouse,+Sch%C3%B6neberger+Str.+16,+Berlin",
-    "day-06": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Safelight+Berlin,+Schivelbeiner+Str.+9,+Berlin/FOTOIMPEX,+Alte+Sch%C3%B6nhauser+Str.+32B,+Berlin/Hackesche+H%C3%B6fe,+Berlin/Haus+Schwarzenberg,+Rosenthaler+Str.+39,+Berlin/Silo+Coffee,+Gabriel-Max-Stra%C3%9Fe+4,+Berlin/Boxhagener+Platz,+Berlin/Fleischerei+Domke,+Warschauer+Str.+64,+Berlin/Avci+Bistro,+Kopernikusstra%C3%9Fe+30,+Berlin/RAW-Gel%C3%A4nde,+Berlin/East+Side+Gallery,+Berlin",
+    "day-06": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Safelight+Berlin,+Schivelbeiner+Str.+9,+Berlin/FOTOIMPEX,+Alte+Sch%C3%B6nhauser+Str.+32B,+Berlin/Hackesche+H%C3%B6fe,+Berlin/Haus+Schwarzenberg,+Rosenthaler+Str.+39,+Berlin/Silo+Coffee,+Gabriel-Max-Stra%C3%9Fe+4,+Berlin/Boxhagener+Platz,+Berlin/Fleischerei+Domke,+Warschauer+Str.+64,+Berlin/Avci+Bistro,+Kopernikusstra%C3%9Fe+30,+Berlin/RAW-Gel%C3%A4nde,+Berlin/East+Side+Gallery,+Berlin/Yorckschl%C3%B6sschen,+Yorckstra%C3%9Fe+15,+10965+Berlin",
     "day-07": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zoologischer+Garten+Berlin/Foto-Meyer,+Welserstra%C3%9Fe+1,+Berlin/Am+Zeughaus+1-2,+Berlin/St%C3%A4ndige+Vertretung,+Schiffbauerdamm+8,+Berlin",
     "day-08": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Gedenkst%C3%A4tte+Berliner+Mauer,+Bernauer+Str./Mauerpark+Flohmarkt,+Berlin/Dr.+Kochan+Liquor+Culture,+Immanuelkirchstra%C3%9Fe+4,+Berlin/Am+Zeughaus+1-2,+Berlin/Berlin+Hbf",
     "day-09": "https://www.google.com/maps/dir/Freiburg+Hbf/Mathildenstra%C3%9Fe+14,+79106+Freiburg/G%C3%BCnter+Coffee+Store,+Freiburg/Markthalle,+Freiburg/Confiserie+Gmeiner,+Freiburg/caf%C3%A9+hinterzimmer,+Freiburg/Freiburgs+Finest,+Freiburg/Alte+Wache,+Freiburg/Hausbrauerei+Feierling,+Freiburg",
@@ -318,3 +320,160 @@
 
     renderMap('all');
   }
+
+  // 5. Quick-Jump Pills & Map Collapse Toggle
+  function activateTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
+    });
+    document.querySelectorAll('.section-panel').forEach(function(p) {
+      p.classList.toggle('active', p.id === tabId);
+    });
+    var target = document.getElementById(tabId);
+    if (target && typeof target.scrollIntoView === 'function') {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  document.querySelectorAll('[data-jump-tab]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tabId = btn.getAttribute('data-jump-tab');
+      activateTab(tabId);
+      if (tabId === 'sec-berlin' && window.setMapFilter) window.setMapFilter('region-berlin');
+      if (tabId === 'sec-blackforest' && window.setMapFilter) window.setMapFilter('region-blackforest');
+      if (tabId === 'sec-itinerary' && window.setMapFilter) window.setMapFilter('all');
+    });
+  });
+
+  var toggleMapBtn = document.getElementById('toggle-map-btn');
+  var mapBox = document.getElementById('interactive-map-box');
+  if (toggleMapBtn && mapBox) {
+    toggleMapBtn.addEventListener('click', function() {
+      var isHidden = mapBox.style.display === 'none';
+      mapBox.style.display = isHidden ? '' : 'none';
+      toggleMapBtn.textContent = isHidden ? '🗺️ Hide/Show Map' : '🗺️ Show Interactive Map';
+    });
+  }
+
+  // 6. Bookings Category Filter & 1-Click Copy Confirmation Codes
+  document.querySelectorAll('[data-booking-filter]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('[data-booking-filter]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.getAttribute('data-booking-filter');
+      document.querySelectorAll('[data-booking-card]').forEach(function(card) {
+        card.style.display = (cat === 'all' || card.getAttribute('data-booking-card') === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  document.querySelectorAll('.copy-code-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var code = btn.getAttribute('data-copy') || '';
+      var orig = btn.innerHTML;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).catch(function() {});
+      }
+      btn.classList.add('copied');
+      btn.textContent = '✓ Copied: ' + code;
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        btn.innerHTML = orig;
+      }, 1800);
+    });
+  });
+
+  // 7. Interactive Packing Checklist with LocalStorage Persistence
+  var PACK_STORAGE_KEY = 'germany2026_packing_v1';
+  var savedPackState = {};
+  try {
+    var rawPack = localStorage.getItem(PACK_STORAGE_KEY);
+    if (rawPack) savedPackState = JSON.parse(rawPack) || {};
+  } catch (e) {}
+
+  var hideCheckedItems = false;
+  var packCheckboxes = document.querySelectorAll('input[type="checkbox"][data-pack-id]');
+
+  function saveAndRenderPacking() {
+    var total = packCheckboxes.length;
+    var checkedCount = 0;
+    packCheckboxes.forEach(function(cb) {
+      var id = cb.getAttribute('data-pack-id');
+      var isChecked = !!cb.checked;
+      savedPackState[id] = isChecked;
+      if (isChecked) checkedCount++;
+      var itemLi = cb.closest('.pack-item');
+      if (itemLi) {
+        itemLi.classList.toggle('checked', isChecked);
+        itemLi.style.display = (hideCheckedItems && isChecked) ? 'none' : '';
+      }
+    });
+    try {
+      localStorage.setItem(PACK_STORAGE_KEY, JSON.stringify(savedPackState));
+    } catch (e) {}
+
+    var pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+    var countEl = document.getElementById('pack-count-text');
+    var pctEl = document.getElementById('pack-pct-text');
+    var quickPctEl = document.getElementById('quick-pack-pct');
+    var fillEl = document.getElementById('pack-progress-fill');
+    var barEl = document.getElementById('pack-progressbar');
+    if (countEl) countEl.textContent = checkedCount + ' / ' + total;
+    if (pctEl) pctEl.textContent = pct + '%';
+    if (quickPctEl) quickPctEl.textContent = pct + '%';
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (barEl) barEl.setAttribute('aria-valuenow', String(pct));
+  }
+
+  packCheckboxes.forEach(function(cb) {
+    var id = cb.getAttribute('data-pack-id');
+    if (savedPackState[id]) cb.checked = true;
+    cb.addEventListener('change', saveAndRenderPacking);
+    var itemLi = cb.closest('.pack-item');
+    if (itemLi) {
+      itemLi.addEventListener('click', function(ev) {
+        if (ev.target !== cb) {
+          cb.checked = !cb.checked;
+          saveAndRenderPacking();
+        }
+      });
+    }
+  });
+
+  var toggleUncheckedBtn = document.getElementById('pack-toggle-unchecked');
+  if (toggleUncheckedBtn) {
+    toggleUncheckedBtn.addEventListener('click', function() {
+      hideCheckedItems = !hideCheckedItems;
+      toggleUncheckedBtn.textContent = hideCheckedItems ? '👁️ Show All Items' : '👁️ Hide Checked Items';
+      saveAndRenderPacking();
+    });
+  }
+
+  var checkAllBtn = document.getElementById('pack-check-all');
+  if (checkAllBtn) {
+    checkAllBtn.addEventListener('click', function() {
+      packCheckboxes.forEach(function(cb) { cb.checked = true; });
+      saveAndRenderPacking();
+    });
+  }
+
+  var resetAllBtn = document.getElementById('pack-reset-all');
+  if (resetAllBtn) {
+    resetAllBtn.addEventListener('click', function() {
+      packCheckboxes.forEach(function(cb) { cb.checked = false; });
+      saveAndRenderPacking();
+    });
+  }
+
+  document.querySelectorAll('[data-pack-filter]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('[data-pack-filter]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.getAttribute('data-pack-filter');
+      document.querySelectorAll('[data-pack-cat]').forEach(function(card) {
+        card.style.display = (cat === 'all' || card.getAttribute('data-pack-cat') === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  saveAndRenderPacking();

@@ -295,6 +295,238 @@
       font-size: 0.9rem;
       min-width: 230px;
     }
+    /* Quick Command Bar & Bookings Wallet & Interactive Packing Checklist */
+    .quick-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.65rem 1rem;
+      margin: 1rem 0;
+      box-shadow: var(--shadow);
+    }
+    .quick-bar-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+    }
+    .quick-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid var(--border);
+      background: #faf8f4;
+      color: var(--ink);
+      padding: 0.38rem 0.78rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .quick-pill:hover {
+      border-color: var(--accent);
+      background: #eef4f8;
+      color: var(--accent-dark);
+    }
+    .quick-pill.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .quick-pill.primary:hover {
+      background: var(--accent-dark);
+    }
+    .quick-pill.gold-pill {
+      background: var(--gold-bg);
+      color: #7c5800;
+      border-color: #e6c875;
+    }
+    .quick-pill.success-pill {
+      background: var(--success-bg);
+      color: var(--success);
+      border-color: #a6f4c5;
+    }
+    .copy-code-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #eef4f8;
+      color: var(--accent-dark);
+      border: 1px solid #bcd4e6;
+      border-radius: 6px;
+      padding: 0.18rem 0.52rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .copy-code-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .copy-code-btn.copied {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+    .pack-dashboard {
+      background: linear-gradient(135deg, #0d2538 0%, #004e75 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .pack-progress-wrap {
+      flex: 1;
+      min-width: min(280px, 100%);
+    }
+    .pack-progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0.5rem 0;
+    }
+    .pack-progress-fill {
+      height: 100%;
+      background: #32d583;
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+    .pack-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+    }
+    .pack-btn {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.32);
+      padding: 0.42rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .pack-btn:hover { background: rgba(255,255,255,0.26); }
+    .pack-cat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .pack-cat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--bg);
+      padding-bottom: 0.55rem;
+      margin-bottom: 0.25rem;
+    }
+    .pack-cat-header h3 { font-size: 1.04rem; color: var(--accent-dark); }
+    .pack-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      list-style: none;
+    }
+    .pack-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.5rem 0.6rem;
+      border-radius: 8px;
+      background: #faf8f4;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.12s ease;
+      user-select: none;
+    }
+    .pack-item:hover {
+      border-color: var(--border);
+      background: #f3efe6;
+    }
+    .pack-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 0.18rem;
+      accent-color: var(--success);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .pack-item.checked {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: var(--muted);
+    }
+    .pack-item.checked .pack-label-title {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+    .pack-label {
+      flex: 1;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .pack-label-title {
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .pack-label-sub {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 1.1rem;
+      margin-bottom: 1.4rem;
+    }
+    .booking-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.05rem 1.2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .booking-card.flight { border-left-color: #005f87; }
+    .booking-card.hotel { border-left-color: #067647; }
+    .booking-card.train { border-left-color: #7c3aed; }
+    .booking-card.activity { border-left-color: #b8860b; }
+    .booking-card.conflict { border-left-color: #b42318; background: #fffbfa; }
+    @media print {
+      nav.main-tabs, .quick-bar, #interactive-map-box, .pack-controls { display: none !important; }
+      .section-panel { display: block !important; page-break-after: always; }
+    }
     footer {
       margin-top: 3rem;
       text-align: center;
@@ -327,14 +559,14 @@
       footer { margin-top: 2rem; }
     }
     @media (max-width: 620px) {
-      .tab-buttons, .day-subtabs, .filter-bar {
+      .tab-buttons, .day-subtabs, .filter-bar, .quick-bar-group {
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
         padding-bottom: 3px;
       }
-      .tab-btn, .sub-btn, .filter-bar strong { flex-shrink: 0; white-space: nowrap; }
+      .tab-btn, .sub-btn, .filter-bar strong, .quick-pill { flex-shrink: 0; white-space: nowrap; }
       .gmaps-btn { max-width: 100%; white-space: normal; text-align: center; font-size: 0.8rem; padding: 0.45rem 0.8rem; }
       .tab-btn { padding: 0.45rem 0.8rem; font-size: 0.82rem; }
       .sub-btn { padding: 0.38rem 0.72rem; font-size: 0.78rem; }
@@ -348,39 +580,61 @@
 <body>
 <header class="hero">
   <div class="container">
-    <span class="hero-badge">Bavaria Autumn-Winter Bespoke Dossier · 2 Adults (Tak Hin Lee &amp; Yun Yu Tang)</span>
-    <h1>Munich &amp; Alpine Bavaria Trip Planner (13–19 Nov 2026)</h1>
+    <span class="hero-badge">Germany &amp; Alsace Autumn-Winter Master Dossier · 2 Adults (Tak Hin Lee &amp; Yun Yu Tang)</span>
+    <h1>Germany &amp; Alsace Trip Planner (4–20 Nov 2026) · Berlin → Black Forest &amp; Colmar → Munich</h1>
     <p class="subtitle">
-      Tailored for two Hong Kong first-timers to Germany: verified TGV rail logistics from Colmar, Timehouse Schwabing apartment base, Neuschwanstein Castle, Dachau Memorial, Residenz Kaiserhof Christmas Village, Bavarian delicacies, wooden-barrel beer halls, artisan bakeries, Franconian wine, antiques &amp; Leica/vintage cameras.
+      Tailored for two Hong Kong first-timers to Germany: all 12 confirmed flight/hotel/rail/tour bookings integrated, interactive luggage &amp; laundry checklist, verified TGV &amp; Nightjet logistics, Neuschwanstein Castle (Tour #475), Dachau Memorial, Residenz Kaiserhof Christmas Village, Bavarian delicacies, wooden-barrel beer halls, artisan bakeries, Franconian wine, antiques &amp; Leica/vintage cameras.
     </p>
     <div class="logistics-bar">
       <div class="log-card">
-        <h3>Inbound Rail · Friday, 13 November 2026</h3>
+        <h3>Outbound Flights &amp; Leg 1–2 Bases · 4–13 Nov 2026</h3>
+        <p><strong>Wed 4 Nov 19:35 HKG → AUH (Etihad EY 871) → Thu 5 Nov 06:20 BER (Condor DE 2553)</strong> · Ref: <code>7AK639</code>.<br>
+        <strong>Berlin (5–8 Nov):</strong> Karlito Apartmenthaus (Ref: <code>5126078467</code>) + Fri 6 Nov 18:30 <strong>Yorckschlösschen</strong>.<br>
+        <strong>Sleeper (8 Nov):</strong> ÖBB Nightjet NJ 408 to Freiburg (Ref: <code>0698 9390 6002 7647</code>).<br>
+        <strong>Freiburg (9–12 Nov):</strong> Schlossbergblick Airbnb (<code>HMKTPHQE4H</code>) · <strong>Colmar (12–13 Nov):</strong> Logis Hôtel Saint-Martin (<code>6935982825</code>) + Fri 13 Nov 10:00 AM <strong>Domaine François Baur</strong> wine tasting.</p>
+      </div>
+      <div class="log-card">
+        <h3>Inbound Rail to Munich · Friday, 13 November 2026</h3>
         <p><strong>16:45 Colmar → 17:12 Strasbourg</strong> · TGV INOUI 2362 (1st Class, Coach 13, Seats 308 &amp; 307).<br>
         <strong>34 min transfer</strong> at Strasbourg.<br>
-        <strong>17:46 Strasbourg → 21:46 München Hbf</strong> · TGV INOUI 9577 (1st Class, Coach 13 Lower Deck, Seats 304 &amp; 305). Booking: NZM3KL.</p>
+        <strong>17:46 Strasbourg → 21:46 München Hbf</strong> · TGV INOUI 9577 (1st Class, Coach 13 Lower Deck, Seats 304 &amp; 305). Booking: <code>NZM3KL</code>.</p>
       </div>
       <div class="log-card">
-        <h3>Base Hotel · Timehouse Munich (Schwabing)</h3>
-        <p><strong>Leopoldstraße 204a, 80804 Munich</strong> · U6 Nordfriedhof &amp; U6 Alte Heide.<br>
-        Equipped with a full designer kitchen, furnished loggia &amp; REWE supermarket nearby. Reception open 06:30–22:30.</p>
+        <h3>Munich Hotels (Dual Booking Alert!) · 13–19 Nov</h3>
+        <p><strong>Option 1 — Timehouse Munich (Schwabing):</strong> <strong>Leopoldstraße 204a, 80804 Munich</strong> (Ref: <code>6724144172</code>) · U6 Nordfriedhof &amp; U6 Alte Heide, full designer kitchen, laundry room &amp; REWE nearby. Reception 06:30–22:30 (WhatsApp on arrival for late check-in / 24/7 Keybox).<br>
+        <strong>Option 2 — Bob W Munich City Centre:</strong> <strong>Schwanthalerstr. 61</strong> (Ref: <code>5210364141</code>, 4 mins walk from München Hbf, 24/7 online door code check-in from 15:00).</p>
       </div>
       <div class="log-card">
-        <h3>Outbound Flight · Thursday, 19 November 2026</h3>
-        <p><strong>10:00 AM Flight departing Munich Airport (MUC)</strong>.<br>
-        Direct <strong>Lufthansa Express Bus</strong> from Schwabing / Nordfriedhof to MUC Terminal 2 in <strong>25 minutes</strong> (06:33 or 06:53 departure).</p>
+        <h3>Return Flights · Thu 19 – Fri 20 November 2026</h3>
+        <p><strong>Thursday, 19 November 2026:</strong> <strong>10:30 AM Etihad EY 126 (MUC → 19:30 AUH)</strong> + <strong>21:15 Etihad EY 870 (AUH → 08:30+1 HKG on Fri 20 Nov)</strong> · Ref: <code>7AK639</code> (10:00 AM boarding window at MUC).<br>
+        Direct <strong>Lufthansa Express Bus</strong> from Schwabing / Nordfriedhof (or Hbf) to MUC in <strong>25 minutes</strong> (06:33 or 06:53 departure).</p>
       </div>
     </div>
   </div>
 </header>
 
 <div class="container">
+  <div class="quick-bar" aria-label="Quick Navigation and Tools">
+    <div class="quick-bar-group">
+      <strong style="font-size:0.82rem; color:var(--accent-dark); margin-right:0.2rem;">Quick Jump:</strong>
+      <button class="quick-pill primary" data-jump-tab="sec-bookings">📋 All 12 Bookings &amp; Codes</button>
+      <button class="quick-pill gold-pill" data-jump-tab="sec-packing">🧳 Interactive Packing &amp; Laundry (<span id="quick-pack-pct">0%</span>)</button>
+      <button class="quick-pill" data-jump-tab="sec-berlin">🐻 Leg 1: Berlin (5–8 Nov)</button>
+      <button class="quick-pill" data-jump-tab="sec-blackforest">🌲 Leg 2: Freiburg &amp; Colmar (9–13 Nov)</button>
+      <button class="quick-pill" data-jump-tab="sec-itinerary">🥨 Leg 3: Munich (13–19 Nov)</button>
+    </div>
+    <div class="quick-bar-group">
+      <button class="quick-pill success-pill" id="toggle-map-btn" type="button">🗺️ Hide/Show Map</button>
+    </div>
+  </div>
+
   <div class="alert-banner">
-    <strong>CRITICAL ARRIVAL &amp; TRANSIT ALERTS:</strong><br>
-    1) <strong>Timehouse Reception Closes at 22:30:</strong> Your TGV 9577 arrives at München Hbf at <strong>21:46</strong> on Friday 13 Nov 2026. Email <code>wecare@timehouse.de</code> or call <code>+49 89 230 200 00</code> in advance to request your <strong>24/7 Keybox Code</strong> in case of train delay.<br>
-    2) <strong>Mandatory SNCF Luggage Tags:</strong> Label all suitcases with name/phone before boarding at Colmar (boarding closes 2 mins before 16:45).<br>
-    3) <strong>Outdated Bus_78.pdf Warning:</strong> The <code>Bus_78.pdf</code> file in your trip folder is from <strong>2012</strong> and is <strong>outdated</strong>. Today RVA Bus 73/78 at Füssen Bahnhof connects dynamically with arriving regional trains.<br>
-    4) <strong>U3/U6 November 2026 Construction Alert:</strong> Due to U3/U6 renovation works at Poccistraße/Goetheplatz (southern branch), north-to-center rides from U6 Nordfriedhof / Alte Heide to Odeonsplatz &amp; Marienplatz run normally, but transfer at Sendlinger Tor/Marienplatz if heading south.
+    <strong>CRITICAL ARRIVAL, HOTEL OVERLAP &amp; TRANSIT ALERTS:</strong><br>
+    1) <strong>Two Overlapping Munich Hotel Bookings (13–19 Nov) + 22:30 Late Check-In:</strong> You currently hold <strong>Timehouse Serviced Apartments</strong> (<code>Leopoldstraße 204a, 80804 Munich</code>, Ref: <code>6724144172</code>; reception closes at <strong>22:30</strong> vs your <strong>21:46</strong> TGV 9577 arrival—message their <strong>WhatsApp on arrival</strong> or email <code>wecare@timehouse.de</code> / call <code>+49 89 230 200 00</code> for your <strong>24/7 Keybox Code</strong> in case of train delay) <strong>AND</strong> <strong>Bob W Munich City Centre</strong> (<code>Schwanthalerstr. 61</code>, Ref: <code>5210364141</code>, 4 mins walk from Hbf with 24/7 digital door code). Remember to cancel whichever backup option you don't use before its free-cancellation deadline!<br>
+    2) <strong>Confirmed Neuschwanstein Castle Tour #475 (Sun 15 Nov at 14:15):</strong> Invoice <code>39901.1056944</code> (Ticket Center Hohenschwangau). You <strong>must be in the castle courtyard at least 15 minutes prior (by 14:00)</strong>! Pick up tickets at Hohenschwangau Ticket Center and start walking/shuttling up by 12:45.<br>
+    3) <strong>Mandatory SNCF Luggage Tags:</strong> Label all suitcases with name/phone before boarding at Colmar (boarding closes 2 mins before 16:45).<br>
+    4) <strong>Outdated Bus_78.pdf Warning:</strong> The <code>Bus_78.pdf</code> file in your trip folder is from <strong>2012</strong> and is <strong>outdated</strong>. Today RVA Bus 73/78 at Füssen Bahnhof connects dynamically with arriving regional trains.<br>
+    5) <strong>U3/U6 November 2026 Construction Alert:</strong> Due to U3/U6 renovation works at Poccistraße/Goetheplatz (southern branch), north-to-center rides from U6 Nordfriedhof / Alte Heide to Odeonsplatz &amp; Marienplatz run normally, but transfer at Sendlinger Tor/Marienplatz if heading south.
   </div>
 
   <div class="audit-banner">
@@ -396,7 +650,7 @@
     <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.75rem; margin-bottom:0.85rem;">
       <div>
         <h2 style="font-size:1.25rem;">Interactive Multi-Pin Germany &amp; Alsace Route Map (Berlin · Black Forest · Colmar · Munich)</h2>
-        <p style="font-size:0.86rem; color:var(--muted);">Switch between Munich, Berlin (20 Saved Pins), and Black Forest / Colmar (28 Saved Pins), or filter by Day &amp; Category.</p>
+        <p style="font-size:0.86rem; color:var(--muted);">Switch between Munich, Berlin (21 Active Pins incl. Yorckschlösschen), and Black Forest / Colmar (20 Active Pins), or filter by Day &amp; Category.</p>
       </div>
       <a id="gmaps-day-route-link" class="gmaps-btn" href="https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Julius+Brantner+Brothandwerk,+Adalbertstra%C3%9Fe+25,+M%C3%BCnchen/Schneider+Br%C3%A4uhaus,+Tal+7,+M%C3%BCnchen/Marienplatz,+M%C3%BCnchen/Viktualienmarkt,+M%C3%BCnchen/Caf%C3%A9+Frischhut,+Pr%C3%A4lat-Zistl-Stra%C3%9Fe+8,+M%C3%BCnchen/Leica+Store+M%C3%BCnchen,+Maffeistra%C3%9Fe+4/Kunst-Oase,+Ottostra%C3%9Fe+6,+M%C3%BCnchen/Calumet+Photographic+M%C3%BCnchen,+Sonnenstra%C3%9Fe+26/Haxnbauer,+Tal+38,+M%C3%BCnchen" target="_blank" rel="noopener">
         Open Selected Day Route in Google Maps ↗
@@ -405,9 +659,9 @@
 
     <div class="filter-bar" id="map-filter-bar" style="margin-bottom:0.45rem;">
       <strong style="font-size:0.8rem; color:#003d59; margin-right:4px;">Leg 1 Berlin:</strong>
-      <button class="sub-btn" data-map-filter="region-berlin" style="border-color:#005f87; color:#003d59;">Berlin (24 Active Stops)</button>
-      <button class="sub-btn" data-map-filter="day-05">Thu 5 Nov (WWII + Mampe + BRLO · 6)</button>
-      <button class="sub-btn" data-map-filter="day-06">Fri 6 Nov (Cameras + Domke + East Side · 11)</button>
+      <button class="sub-btn" data-map-filter="region-berlin" style="border-color:#005f87; color:#003d59;">Berlin (25 Active Stops)</button>
+      <button class="sub-btn" data-map-filter="day-05">Thu 5 Nov (06:20 BER + WWII + Mampe + BRLO · 6)</button>
+      <button class="sub-btn" data-map-filter="day-06">Fri 6 Nov (Cameras + Domke + 18:30 Yorckschlösschen · 12)</button>
       <button class="sub-btn" data-map-filter="day-07">Sat 7 Nov (Zoo + Foto-Meyer + StäV · 5)</button>
       <button class="sub-btn" data-map-filter="day-08">Sun 8 Nov (Wall + Mauerpark + Nightjet · 5)</button>
     </div>
@@ -422,15 +676,15 @@
     </div>
     <div class="filter-bar">
       <strong style="font-size:0.8rem; color:#9a3412; margin-right:4px;">Leg 3 Munich:</strong>
-      <button class="sub-btn active" data-map-filter="all">Munich (All 28 Stops)</button>
+      <button class="sub-btn active" data-map-filter="all">Munich (All 29 Stops)</button>
       <button class="sub-btn" data-map-filter="saved-list" style="border-color:#d97706; color:#9a3412;">★ Munich Saved List</button>
       <button class="sub-btn" data-map-filter="day-13">Fri 13 PM (Munich Arrival)</button>
       <button class="sub-btn" data-map-filter="day-14">Sat 14 (Old Town + Shops)</button>
-      <button class="sub-btn" data-map-filter="day-15">Sun 15 (Neuschwanstein)</button>
+      <button class="sub-btn" data-map-filter="day-15">Sun 15 (Neuschwanstein Tour #475)</button>
       <button class="sub-btn" data-map-filter="day-16">Mon 16 (Dachau + Dinkel + Augustiner)</button>
       <button class="sub-btn" data-map-filter="day-17">Tue 17 (Residenz + Market + Wine)</button>
       <button class="sub-btn" data-map-filter="day-18">Wed 18 (Museum + Local Hoods)</button>
-      <button class="sub-btn" data-map-filter="day-19">Thu 19 (MUC Flight)</button>
+      <button class="sub-btn" data-map-filter="day-19">Thu 19 (10:30 EY 126 MUC Flight)</button>
       <button class="sub-btn" data-map-filter="cat-food">Food &amp; Beer</button>
       <button class="sub-btn" data-map-filter="cat-bakery">Bakeries</button>
       <button class="sub-btn" data-map-filter="cat-wine">Wine</button>
@@ -446,7 +700,9 @@
 
   <nav class="main-tabs" aria-label="Planner sections">
     <div class="tab-buttons">
-      <button class="tab-btn" data-tab="sec-berlin" style="border-color:#005f87; color:#003d59;">★ Leg 1: Berlin (5–8 Nov · 22 Pins)</button>
+      <button class="tab-btn" data-tab="sec-bookings" style="border-color:#005f87; color:#003d59;">📋 Master Bookings &amp; Codes (12)</button>
+      <button class="tab-btn" data-tab="sec-packing" style="border-color:#b8860b; color:#7c5800;">🧳 Packing Checklist &amp; Laundry Guide</button>
+      <button class="tab-btn" data-tab="sec-berlin" style="border-color:#005f87; color:#003d59;">★ Leg 1: Berlin (5–8 Nov · 23 Pins)</button>
       <button class="tab-btn" data-tab="sec-blackforest" style="border-color:#067647; color:#064e3b;">★ Leg 2: Black Forest &amp; Colmar (9–13 Nov · 28 Pins)</button>
       <button class="tab-btn active" data-tab="sec-itinerary">Leg 3: Munich Itinerary (13–19 Nov)</button>
       <button class="tab-btn" data-tab="sec-gmaps-list">★ Munich Saved List Audit (15 Spots)</button>
@@ -458,12 +714,486 @@
     </div>
   </nav>
 
+    <!-- SECTION: MASTER BOOKINGS & CONFIRMATION WALLET (4–20 NOV 2026) -->
+  <section id="sec-bookings" class="section-panel">
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.75rem; margin-bottom:0.85rem;">
+      <div>
+        <h2 style="margin-bottom:0.25rem;">📋 Master Bookings &amp; Confirmation Wallet (Wed 4 Nov – Fri 20 Nov 2026)</h2>
+        <p style="color:var(--muted); font-size:0.92rem;">All 12 confirmed flights, apartments, hotels, sleeper/high-speed trains, restaurant reservations &amp; timed tickets in chronological order. Click any confirmation code to copy it to your clipboard.</p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <button class="sub-btn active" data-booking-filter="all">All Bookings (12)</button>
+        <button class="sub-btn" data-booking-filter="flight">✈️ Flights (2)</button>
+        <button class="sub-btn" data-booking-filter="hotel">🏨 Hotels &amp; Airbnbs (5)</button>
+        <button class="sub-btn" data-booking-filter="train">🚆 Trains (2)</button>
+        <button class="sub-btn" data-booking-filter="activity">🍷 Dining &amp; Tours (3)</button>
+      </div>
+    </div>
+
+    <div class="alert-banner" style="margin-bottom:1.25rem;">
+      <strong>⚠️ ACTION REQUIRED — OVERLAPPING MUNICH HOTEL BOOKINGS (13–19 NOV 2026):</strong><br>
+      You currently hold <strong>two active hotel reservations</strong> for the exact same 6 nights in Munich (Fri 13 Nov – Thu 19 Nov 2026):<br>
+      • <strong>Option 1 — Bob W Munich City Centre</strong> (<code>Schwanthalerstr. 61, 80336 München</code> · Booking #<code>5210364141</code>): 4 mins walk south of München Hbf; frictionless 24/7 online check-in form &amp; digital door code (zero stress if TGV 9577 is delayed past 22:30).<br>
+      • <strong>Option 2 — Timehouse Serviced Apartments</strong> (<code>Leopoldstraße 204a, 80804 München-Schwabing</code> · Booking #<code>6724144172</code>): Spacious Schwabing apartment with full designer kitchen, in-building laundry room, and 6-min walk to the 25-min Lufthansa Express Bus to MUC. Reception closes at <strong>22:30</strong>; you requested late check-in and they instructed you to <strong>message their WhatsApp on arrival</strong>.<br>
+      👉 <em>Check your Booking.com free-cancellation deadline and cancel whichever backup option you decide not to use!</em>
+    </div>
+
+    <div class="booking-grid">
+      <div class="booking-card flight" data-booking-card="flight">
+        <div class="badge-row">
+          <span class="badge">Wed 4 – Thu 5 Nov 2026</span>
+          <span class="badge success">2 Passengers Confirmed</span>
+        </div>
+        <h4>1. Outbound Flights: Hong Kong (HKG) → Abu Dhabi (AUH) → Berlin (BER)</h4>
+        <p>
+          • <strong>Leg 1 (Wed 4 Nov):</strong> <strong>Etihad Airways EY 871</strong> · Departs HKG <strong>19:35</strong> → Arrives AUH <strong>00:25</strong> (Thu 5 Nov).<br>
+          • <strong>Transit at AUH:</strong> 1 hr 55 mins connection.<br>
+          • <strong>Leg 2 (Thu 5 Nov):</strong> <strong>Condor DE 2553</strong> · Departs AUH <strong>02:20</strong> → Arrives Berlin Brandenburg (BER) <strong>06:20 AM</strong>.
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">PNR / Booking Ref:</span>
+          <button type="button" class="copy-code-btn" data-copy="7AK639" title="Click to copy Booking Reference">📋 7AK639</button>
+        </div>
+      </div>
+
+      <div class="booking-card hotel" data-booking-card="hotel">
+        <div class="badge-row">
+          <span class="badge success">Thu 5 – Sun 8 Nov 2026 (3 Nights)</span>
+          <span class="badge">Berlin-Mitte Base</span>
+        </div>
+        <h4>2. Berlin Accommodation: Karlito Apartmenthaus</h4>
+        <p>
+          • <strong>Address:</strong> <code>Linienstraße 60, 10119 Berlin-Mitte</code> (U2 <em>Rosa-Luxemburg-Platz</em>).<br>
+          • <strong>Unit:</strong> Family Apartment with Balcony.<br>
+          • <strong>Check-in:</strong> Thu 5 Nov (<strong>14:00 – 23:00</strong>; early bag drop at 07:45 AM after 06:20 BER arrival).<br>
+          • <strong>Check-out:</strong> Sun 8 Nov (<strong>08:00 – 10:00</strong>).
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Booking Number:</span>
+          <button type="button" class="copy-code-btn" data-copy="5126078467" title="Click to copy Booking Number">📋 5126078467</button>
+        </div>
+      </div>
+
+      <div class="booking-card activity" data-booking-card="activity">
+        <div class="badge-row">
+          <span class="badge gold">Fri 6 Nov 2026 · 18:30</span>
+          <span class="badge success">Table Confirmed (2 Pax)</span>
+        </div>
+        <h4>3. Berlin Dinner Reservation: Yorckschlösschen</h4>
+        <p>
+          • <strong>Address:</strong> <code>Yorckstraße 15, 10965 Berlin-Kreuzberg</code> (S1/S2/S25/S26/U7 <em>Yorckstraße</em>).<br>
+          • <strong>Details:</strong> Confirmed dinner table for <strong>2 people at 18:30</strong> on Friday, 6 November 2026.<br>
+          • <strong>Route Fit:</strong> Head straight here on the S-Bahn (~20 mins) after your 16:30 afternoon hot-counter tasting at <strong>#14 Fleischerei Domke</strong>!
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Reservation Time:</span>
+          <button type="button" class="copy-code-btn" data-copy="Yorckschlösschen, Yorckstraße 15, 10965 Berlin (Fri 6 Nov 18:30, 2 Pax)">📋 Fri 6 Nov · 18:30 (2 Pax)</button>
+        </div>
+      </div>
+
+      <div class="booking-card train" data-booking-card="train">
+        <div class="badge-row">
+          <span class="badge">Sun 8 Nov → Mon 9 Nov 2026</span>
+          <span class="badge success">Overnight Sleeper (2 Pax)</span>
+        </div>
+        <h4>4. Overnight Sleeper Train: ÖBB Nightjet NJ 408 (Berlin → Freiburg)</h4>
+        <p>
+          • <strong>Route:</strong> <strong>Berlin Hbf (Tiefgeschoß / Track 3, dep. 20:52)</strong> → <strong>Freiburg(Breisgau) Hbf (arr. 06:17 AM Mon 9 Nov)</strong>.<br>
+          • <strong>Accommodation:</strong> Coach 309, Berths 52 &amp; 56 (Double Deluxe Sleeper Cabin with private shower/WC &amp; breakfast).<br>
+          • <strong>Packing Note:</strong> Carry printed A4 PDF ticket + keep overnight washbag/pajamas in your top backpack!
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">ÖBB Booking Code:</span>
+          <button type="button" class="copy-code-btn" data-copy="0698 9390 6002 7647" title="Click to copy ÖBB Code">📋 0698 9390 6002 7647</button>
+        </div>
+      </div>
+
+      <div class="booking-card hotel" data-booking-card="hotel">
+        <div class="badge-row">
+          <span class="badge success">Mon 9 – Thu 12 Nov 2026 (3 Nights)</span>
+          <span class="badge">Freiburg Base</span>
+        </div>
+        <h4>5. Freiburg Airbnb: Schlossbergblick 1-Zimmer Dachgeschoss Apartment</h4>
+        <p>
+          • <strong>Hosts:</strong> Mario &amp; Nadine · Entire home for 2 adults.<br>
+          • <strong>Location:</strong> <code>Mathildenstraße 14, 79106 Freiburg im Breisgau (Stühlinger)</code> — 6 mins walk from Freiburg Hbf!<br>
+          • <strong>Check-in:</strong> Mon 9 Nov (After <strong>15:00</strong>; early luggage drop confirmed at <strong>06:35 AM</strong> right off the Nightjet!).<br>
+          • <strong>Check-out:</strong> Thu 12 Nov (By <strong>12:00 PM</strong>).
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Airbnb Confirmation Code:</span>
+          <button type="button" class="copy-code-btn" data-copy="HMKTPHQE4H" title="Click to copy Airbnb Code">📋 HMKTPHQE4H</button>
+        </div>
+      </div>
+
+      <div class="booking-card hotel" data-booking-card="hotel">
+        <div class="badge-row">
+          <span class="badge gold">Thu 12 – Fri 13 Nov 2026 (1 Night)</span>
+          <span class="badge">Colmar Old Town Base</span>
+        </div>
+        <h4>6. Colmar Hotel: Logis Hôtel Saint-Martin</h4>
+        <p>
+          • <strong>Address:</strong> <code>38, Grand'Rue, 68000 Colmar, France</code> (Heart of Old Town &amp; Petite Venise).<br>
+          • <strong>Room:</strong> Superior Double or Twin Room.<br>
+          • <strong>Check-in:</strong> Thu 12 Nov (<strong>15:00 – 00:00</strong>).<br>
+          • <strong>Check-out:</strong> Fri 13 Nov (<strong>01:00 – 11:00</strong>; leave bags at reception during your 10:00 AM Turckheim wine tour).
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Booking Number:</span>
+          <button type="button" class="copy-code-btn" data-copy="6935982825" title="Click to copy Booking Number">📋 6935982825</button>
+        </div>
+      </div>
+
+      <div class="booking-card activity" data-booking-card="activity">
+        <div class="badge-row">
+          <span class="badge gold">Fri 13 Nov 2026 · 10:00 AM</span>
+          <span class="badge success">Shifted from Nov 12 → Nov 13</span>
+        </div>
+        <h4>7. Alsace Wine Tour: Biodynamic Tasting at Domaine François Baur</h4>
+        <p>
+          • <strong>Address:</strong> <code>3 Grand'Rue, 68230 Turckheim, France</code> (100m inside medieval <em>Porte de Munster</em>).<br>
+          • <strong>Details:</strong> Rebooked/shifted from Nov 12 to <strong>Friday, 13 Nov 2026 at 10:00 AM</strong> for 2 adults (€24.00 via Winalist).<br>
+          • <strong>Timing:</strong> 10:00–11:30 AM tasting → optional 11:40 Cave de Turckheim → lunch in Colmar → 16:45 TGV.
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Winalist Ref:</span>
+          <button type="button" class="copy-code-btn" data-copy="815D4A45A0E85F6C" title="Click to copy Winalist Reference">📋 815D4A45A0E85F6C</button>
+        </div>
+      </div>
+
+      <div class="booking-card train" data-booking-card="train">
+        <div class="badge-row">
+          <span class="badge">Fri 13 Nov 2026 · 16:45–21:46</span>
+          <span class="badge success">1st Class · 2 Pax</span>
+        </div>
+        <h4>8. High-Speed Rail: SNCF Connect TGV INOUI (Colmar → Strasbourg → Munich)</h4>
+        <p>
+          • <strong>Leg 1 (16:45 – 17:12):</strong> <strong>TGV INOUI 2362</strong> Colmar → Strasbourg (1st Class, Coach 13, Seats 308 &amp; 307).<br>
+          • <strong>Transfer:</strong> 34 mins at Strasbourg Gare Centrale.<br>
+          • <strong>Leg 2 (17:46 – 21:46):</strong> <strong>TGV INOUI 9577</strong> Strasbourg → München Hbf (1st Class, Coach 13 Lower Deck, Seats 304 &amp; 305).<br>
+          • <strong>Mandatory Rule:</strong> Attach physical SNCF name/phone luggage tags to every bag!
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">SNCF Folder Reference:</span>
+          <button type="button" class="copy-code-btn" data-copy="NZM3KL" title="Click to copy SNCF Reference">📋 NZM3KL</button>
+        </div>
+      </div>
+
+      <div class="booking-card conflict" data-booking-card="hotel">
+        <div class="badge-row">
+          <span class="badge danger">Overlap Option 1 · 13–19 Nov</span>
+          <span class="badge">Near München Hbf</span>
+        </div>
+        <h4>9A. Munich Hotel Option 1: Bob W Munich City Centre</h4>
+        <p>
+          • <strong>Address:</strong> <code>Schwanthalerstr. 61, 80336 München</code> (4 mins walk south of München Hbf).<br>
+          • <strong>Check-in:</strong> From <strong>15:00</strong> via online check-in form &amp; 24/7 digital door code.<br>
+          • <strong>Pros/Cons:</strong> Zero 22:30 reception cutoff stress after your 21:46 TGV arrival, right at Hbf; more compact studio than Timehouse Schwabing.
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Booking Number:</span>
+          <button type="button" class="copy-code-btn" data-copy="5210364141" title="Click to copy Bob W Booking Number">📋 5210364141</button>
+        </div>
+      </div>
+
+      <div class="booking-card conflict" data-booking-card="hotel">
+        <div class="badge-row">
+          <span class="badge danger">Overlap Option 2 · 13–19 Nov</span>
+          <span class="badge success">Late Check-in Requested</span>
+        </div>
+        <h4>9B. Munich Hotel Option 2: Timehouse Serviced Apartments (Schwabing)</h4>
+        <p>
+          • <strong>Address:</strong> <code>Leopoldstraße 204a, 80804 München</code> (U6 <em>Nordfriedhof</em> / <em>Alte Heide</em>).<br>
+          • <strong>Check-in:</strong> <strong>15:00 – 22:30</strong>. <strong>Late Check-In Protocol:</strong> You requested late check-in and Timehouse asked you to <strong>message their WhatsApp on arrival</strong> (plus 24/7 Keybox backup).<br>
+          • <strong>Pros:</strong> Full designer kitchen, basement laundry room, and 6 mins walk to the 25-min Lufthansa Express Bus to MUC!
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Booking Number:</span>
+          <button type="button" class="copy-code-btn" data-copy="6724144172" title="Click to copy Timehouse Booking Number">📋 6724144172</button>
+        </div>
+      </div>
+
+      <div class="booking-card activity" data-booking-card="activity">
+        <div class="badge-row">
+          <span class="badge success">Sun 15 Nov 2026 · 14:15 Tour</span>
+          <span class="badge danger">Courtyard 15 Mins Prior (14:00!)</span>
+        </div>
+        <h4>10. Neuschwanstein Castle Tour #475 (Ticket Center Hohenschwangau)</h4>
+        <p>
+          • <strong>Tour Time &amp; Number:</strong> <strong>14:15 · Tour Number 475</strong> (Sunday, 15 November 2026).<br>
+          • <strong>Mandatory Rule:</strong> You <strong>must be in the castle courtyard 15 minutes prior (by 14:00 sharp)</strong>.<br>
+          • <strong>Pacing:</strong> Arrive Hohenschwangau ~10:15 via Bayern-Ticket (€44 for 2), stroll Alpsee &amp; lunch, then begin walking up (~40 mins) or taking the shuttle bus/carriage by <strong>12:45–13:00</strong>.
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">Invoice / Tour #475:</span>
+          <button type="button" class="copy-code-btn" data-copy="39901.1056944" title="Click to copy Invoice Number">📋 39901.1056944 (Tour #475)</button>
+        </div>
+      </div>
+
+      <div class="booking-card flight" data-booking-card="flight">
+        <div class="badge-row">
+          <span class="badge danger">Thu 19 – Fri 20 Nov 2026</span>
+          <span class="badge success">2 Passengers Confirmed</span>
+        </div>
+        <h4>11. Return Flights: Munich (MUC) → Abu Dhabi (AUH) → Hong Kong (HKG)</h4>
+        <p>
+          • <strong>Leg 1 (Thu 19 Nov):</strong> <strong>Etihad Airways EY 126</strong> · Departs Munich (MUC) at <strong>10:30 AM</strong> (10:00 AM boarding) → Arrives Abu Dhabi (AUH) at <strong>19:30</strong>.<br>
+          • <strong>Transit at AUH:</strong> 1 hr 45 mins connection.<br>
+          • <strong>Leg 2 (Thu 19 – Fri 20 Nov):</strong> <strong>Etihad Airways EY 870</strong> · Departs AUH at <strong>21:15</strong> → Arrives HKG at <strong>08:30 AM on Friday, 20 Nov 2026</strong>.
+        </p>
+        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.8rem; color:var(--muted);">PNR / Booking Ref:</span>
+          <button type="button" class="copy-code-btn" data-copy="7AK639" title="Click to copy Booking Reference">📋 7AK639</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: INTERACTIVE PACKING CHECKLIST & 3-STOP LAUNDROMAT STRATEGY -->
+  <section id="sec-packing" class="section-panel">
+    <h2 style="margin-bottom:0.4rem;">🧳 Interactive Germany &amp; Alsace Packing Checklist + 3-Wash Laundromat Strategy</h2>
+    <p style="margin-bottom:1rem; color:var(--muted);">
+      Designed for <strong>16 days away from Hong Kong (4–20 Nov 2026, 0°C–8°C outdoors vs 22°C heated trains/beer halls)</strong> using a <strong>5-to-6-day thermal capsule wardrobe</strong> washed 2–3 times along the route. Your checkmarks save automatically in your browser (<code>localStorage</code>) on your phone or laptop!
+    </p>
+
+    <div class="pack-dashboard">
+      <div class="pack-progress-wrap">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem;">
+          <strong style="font-size:1.05rem;">Packing Progress: <span id="pack-count-text">0 / 0</span> Items Packed (<span id="pack-pct-text">0%</span>)</strong>
+          <span style="font-size:0.8rem; color:#d8e6f2;">Auto-saved to this device</span>
+        </div>
+        <div class="pack-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pack-progressbar">
+          <div class="pack-progress-fill" id="pack-progress-fill"></div>
+        </div>
+        <p style="font-size:0.82rem; color:#d8e6f2;">Tip: Filter by category below, or use "Hide Checked Items" on packing night to see only what's left.</p>
+      </div>
+      <div class="pack-controls">
+        <button type="button" class="pack-btn" id="pack-toggle-unchecked">👁️ Hide Checked Items</button>
+        <button type="button" class="pack-btn" id="pack-check-all">✅ Check All</button>
+        <button type="button" class="pack-btn" id="pack-reset-all">🔄 Reset All</button>
+        <button type="button" class="pack-btn" onclick="window.print()">🖨️ Print Checklist</button>
+      </div>
+    </div>
+
+    <div class="filter-bar" style="margin-bottom:1.15rem;">
+      <button class="sub-btn active" data-pack-filter="all">All 7 Categories</button>
+      <button class="sub-btn" data-pack-filter="docs">1. Docs, Tickets &amp; Cash</button>
+      <button class="sub-btn" data-pack-filter="clothing">2. 5-Day Thermal Capsule &amp; Laundry</button>
+      <button class="sub-btn" data-pack-filter="footwear">3. Footwear, Bathhouse &amp; Weather</button>
+      <button class="sub-btn" data-pack-filter="rail">4. Nightjet Sleeper &amp; TGV Bag Prep</button>
+      <button class="sub-btn" data-pack-filter="camera">5. Analog Cameras, Film &amp; Power</button>
+      <button class="sub-btn" data-pack-filter="shopping">6. Wine, Spirits &amp; VAT Refund</button>
+      <button class="sub-btn" data-pack-filter="toiletry">7. Winter Skincare &amp; First-Aid</button>
+    </div>
+
+    <div class="grid-2" id="packing-grid" style="margin-bottom:1.6rem;">
+      <!-- Category 1: Docs, Tickets & Cash -->
+      <div class="pack-cat-card" data-pack-cat="docs">
+        <div class="pack-cat-header">
+          <h3>🛂 1. Passports, Printed Tickets, Pens &amp; Cash</h3>
+          <span class="badge">Critical Carry-On</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-1"><div class="pack-label"><span class="pack-label-title">HK SAR / BNO Passports (valid &gt;6 months) + 2 physical copies</span><span class="pack-label-sub">Required for hotel check-ins, cross-border TGV checks (Colmar/Strasbourg → Munich), Bayern-Ticket ID checks, and VAT tax-free forms.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-2"><div class="pack-label"><span class="pack-label-title">Printed A4 PDF of ÖBB Nightjet NJ 408 Ticket (Code: 0698 9390 6002 7647)</span><span class="pack-label-sub">Sun 8 Nov (20:52 Berlin Hbf Tiefgeschoß → 06:17 Freiburg Hbf). Sleeper attendants collect/verify paper tickets at boarding for breakfast &amp; wake-up service.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-3"><div class="pack-label"><span class="pack-label-title">Printed SNCF TGV e-Tickets (Ref: NZM3KL) + Neuschwanstein Tour #475 Invoice (39901.1056944)</span><span class="pack-label-sub">Fri 13 Nov TGV 2362/9577 (Coach 13) + Sun 15 Nov 14:15 Neuschwanstein voucher (collect physical tickets at Hohenschwangau Ticket Center).</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-4"><div class="pack-label"><span class="pack-label-title">2 Non-Erasable Blue/Black Ballpoint Pens (Kugelschreiber) in Daypack</span><span class="pack-label-sub">MANDATORY for writing both passenger names (Tak Hin Lee &amp; Yun Yu Tang) in ink on your paper Bayern-Ticket on Sun 15 Nov to avoid a €60 fine!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-5"><div class="pack-label"><span class="pack-label-title">€250–€350 Cash in Small Notes (€5, €10, €20) + Coin Pouch for €0.50 / €1 / €2 Coins</span><span class="pack-label-sub">Essential for Fleischerei Domke, Café Frischhut, Mauerpark Flohmarkt, Residenz Christmas Village Pfand (€5 mug deposit), Sanifair toilets (€1), and coin laundromats.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-6"><div class="pack-label"><span class="pack-label-title">Physical Visa / Mastercard with 4-Digit PIN + Apple Pay + Travel Insurance PDF</span><span class="pack-label-sub">German ticket machines (DB/MVV) often require a physical chip-and-PIN card rather than contactless phone tap.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="doc-7"><div class="pack-label"><span class="pack-label-title">Pre-Installed Apps: DB Navigator, MVGO (Munich), BVG Fahrinfo (Berlin), SNCF Connect &amp; WhatsApp</span><span class="pack-label-sub">WhatsApp is needed on Fri 13 Nov evening to message Timehouse Munich (Booking #6724144172) upon arrival at 21:46.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Category 2: 5-Day Thermal Capsule & Laundry Kit -->
+      <div class="pack-cat-card" data-pack-cat="clothing">
+        <div class="pack-cat-header">
+          <h3>🧥 2. 5-to-6-Day Thermal Capsule &amp; Laundry Kit</h3>
+          <span class="badge gold">Wash 2–3× Strategy</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-1"><div class="pack-label"><span class="pack-label-title">4–5× Merino Wool or Uniqlo Heattech Base-Layer Tops + 2× Thermal Leggings/Tights (Per Person)</span><span class="pack-label-sub">Mid-November is 0°C–8°C with windchill at Dachau Appellplatz, Neuschwanstein gorge &amp; Berlin Wall Memorial, while beer halls/trains are heated to 22°C. Peelable layers are key!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-2"><div class="pack-label"><span class="pack-label-title">2–3× Mid-Layers (Fleece Zip-Up / Merino Sweater / Cardigan) + 3× Long-Sleeve Shirts</span><span class="pack-label-sub">Easy to take off inside warm wooden-barrel Wirtshäuser (Augustiner, Yorckschlösschen, Feierling) without overheating in a single heavy sweater.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-3"><div class="pack-label"><span class="pack-label-title">1× Windproof &amp; Waterproof Outer Shell Jacket + 1× Packable Down/Puffer Jacket</span><span class="pack-label-sub">Layering a packable down jacket under a waterproof Gore-Tex/rain shell beats carrying one bulky winter parka through 4 train transfers.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-4"><div class="pack-label"><span class="pack-label-title">3× Pairs of Trousers/Jeans (Include 1× Wind/Water-Resistant Lined Pants for Alps &amp; Titisee)</span><span class="pack-label-sub">Jeans stay cold when damp; wear thermal leggings underneath on Sun 15 Nov (Neuschwanstein) and Wed 11 Nov (Lake Titisee).</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-5"><div class="pack-label"><span class="pack-label-title">6× Pairs of Warm Merino Wool Crew Socks + 6× Quick-Dry Underwear (Per Person)</span><span class="pack-label-sub">6 days of socks/underwear comfortably bridges Berlin (Days 1–4) to your first Freiburg laundromat wash on Mon 9 / Tue 10 Nov!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-6"><div class="pack-label"><span class="pack-label-title">Touchscreen-Friendly Warm Gloves (Thin Liner Gloves!) + Knit Beanie + Scarf/Neck Gaiter</span><span class="pack-label-sub">Thin merino/touchscreen liner gloves let you operate Leica/analog camera dials and shutter buttons in 2°C cold without freezing your fingers.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="clo-7"><div class="pack-label"><span class="pack-label-title">Laundry Kit: 8–10 Paper Laundry Detergent Sheets + Foldable Nylon Laundry Bag + 1 Delicates Mesh Bag</span><span class="pack-label-sub">Paper detergent sheets weigh zero grams, never leak in flights, and work in Timehouse's laundry room, Freiburg laundromats, or quick sink washes.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Category 3: Footwear, Bathhouse & Weather -->
+      <div class="pack-cat-card" data-pack-cat="footwear">
+        <div class="pack-cat-header">
+          <h3>🥾 3. Footwear, Baden-Baden Bathhouse &amp; Rain Gear</h3>
+          <span class="badge">Cobblestones &amp; Spa</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="foot-1"><div class="pack-label"><span class="pack-label-title">2 Pairs of Broken-In Waterproof Walking Shoes/Boots (Wear Bulkier Pair on Plane!)</span><span class="pack-label-sub">You will walk 12,000–18,000 steps/day on wet cobblestones and uphill to Neuschwanstein Castle (40-min incline). Alternating 2 pairs prevents blisters and lets damp shoes dry.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="foot-2"><div class="pack-label"><span class="pack-label-title">1 Pair of Ultralight Waterproof Flip-Flops / EVA Slides (For Hotel Rooms, Nightjet &amp; Spa)</span><span class="pack-label-sub">German hotels/apartments (Karlito, Freiburg Airbnb, Saint-Martin, Timehouse) rarely provide disposable slippers; also essential for the Nightjet sleeper floor and spa poolside.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="foot-3"><div class="pack-label"><span class="pack-label-title">1× Swimsuit / Swim Trunks + Small Microfiber Quick-Dry Towel</span><span class="pack-label-sub">Note: Baden-Baden's <strong>#06 Friedrichsbad</strong> (Tue 10 Nov) is a traditional textile-free Roman-Irish bath that provides all bath sheets/towels &amp; soap free of charge, but bring swimwear if you also visit <em>Caracalla Therme</em> or Titisee's <em>Badeparadies Schwarzwald</em>!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="foot-4"><div class="pack-label"><span class="pack-label-title">2× Sturdy Windproof Compact Umbrellas</span><span class="pack-label-sub">November drizzle and gusty squalls are common in Berlin and the Black Forest.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Category 4: Nightjet Sleeper & TGV Luggage Prep -->
+      <div class="pack-cat-card" data-pack-cat="rail">
+        <div class="pack-cat-header">
+          <h3>🚆 4. Nightjet Sleeper Pouch &amp; SNCF TGV Luggage Rules</h3>
+          <span class="badge">4 Rail Transfers</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="rail-1"><div class="pack-label"><span class="pack-label-title">Dedicated "Nightjet Overnight Pouch" Packed on Top of Backpack (For Sun 8 Nov Sleeper)</span><span class="pack-label-sub">In your Double Deluxe cabin (Coach 309, Berths 52/56), large suitcases slide under the bottom bunk/recess. Keep 1 change of clothes, pajamas, toothbrush, deodorant &amp; USB-C cable in a small pouch so you never open big suitcases in the narrow corridor!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="rail-2"><div class="pack-label"><span class="pack-label-title">4× Physical SNCF-Compliant Luggage Tags Attached to Every Suitcase &amp; Daypack</span><span class="pack-label-sub">French law on TGV INOUI 2362 &amp; 9577 (Fri 13 Nov Colmar → Strasbourg → Munich) strictly requires visible physical tags with First/Last Name &amp; Phone (+852) on ALL bags.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="rail-3"><div class="pack-label"><span class="pack-label-title">Compact 15L–20L Daypack (Must NOT Be a Bulky Hiking Rucksack for Neuschwanstein!)</span><span class="pack-label-sub">Neuschwanstein Castle strictly prohibits backpacks/rucksacks larger than 40×40×20 cm inside Tour #475. Bring a sleek packable daypack or crossbody camera bag.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="rail-4"><div class="pack-label"><span class="pack-label-title">Apple AirTags / Smart Trackers Inside Checked Suitcases + Retractable Cable Luggage Lock</span><span class="pack-label-sub">Peace of mind for the HKG–AUH–BER (Etihad/Condor) and MUC–AUH–HKG baggage transfers plus securing suitcases on TGV lower-deck luggage racks.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Category 5: Analog Cameras, Film & Power -->
+      <div class="pack-cat-card" data-pack-cat="camera">
+        <div class="pack-cat-header">
+          <h3>📷 5. Analog Cameras, Film CT-Scanner Prep &amp; EU Power</h3>
+          <span class="badge success">Film Safe</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="cam-1"><div class="pack-label"><span class="pack-label-title">Clear Resealable Ziploc Bags Labeled "35mm/120 Film — Do Not X-Ray / Hand Check Please (Bitte Handkontrolle)"</span><span class="pack-label-sub">HKG, AUH, BER &amp; MUC airports increasingly use <strong>CT carry-on scanners</strong> that permanently fog unexposed AND exposed analog film in a single pass! Never put film in checked luggage; hand-carry in a clear bag and politely request a hand-check (or buy fresh film at #04 FOTOIMPEX &amp; #05 Safelight on Fri 6 Nov).</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="cam-2"><div class="pack-label"><span class="pack-label-title">3–4× Extra Camera Batteries + LR44 / CR1/3N / CR2 Meter Cells (Keep in Inner Coat Pocket!)</span><span class="pack-label-sub">Sub-5°C November weather drains lithium and silver-oxide camera batteries 40%–50% faster. Keep spare batteries warm against your body.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="cam-3"><div class="pack-label"><span class="pack-label-title">Lens Microfiber Cloths + Rocket Air Blower + 1× Ziploc Bag for Cold-to-Warm Condensation</span><span class="pack-label-sub">Stepping from 2°C outdoor air into a humid 22°C Bavarian beer hall or Friedrichsbad lobby instantly fogs cold Leica/vintage brass lenses—seal the camera in your bag for 15 mins to warm up gradually.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="cam-4"><div class="pack-label"><span class="pack-label-title">2–3× EU Type C / Type F (Schuko Round 2-Pin) Plug Adapters + 1× Multi-Port GaN USB-C Charger</span><span class="pack-label-sub">Hong Kong uses UK 3-pin Type G plugs; Germany &amp; France (Colmar) use recessed round 2-pin Type C/F sockets (same 230V/50Hz voltage as HK—no transformer needed).</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="cam-5"><div class="pack-label"><span class="pack-label-title">1–2× 10,000–20,000 mAh Power Banks (&lt;100Wh, Carry-On Only!)</span><span class="pack-label-sub">With 16:30 sunset, cold weather, live Google Maps navigation, and digital rail tickets, phone batteries drain fast on 12-hour sightseeing days.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Category 6: Wine, Spirits & VAT Tax-Refund Prep -->
+      <div class="pack-cat-card" data-pack-cat="shopping">
+        <div class="pack-cat-header">
+          <h3>🍷 6. Wine/Spirits Bottle Protection &amp; HK Duty-Free Rules</h3>
+          <span class="badge gold">Mampe · Zibärtle · Wine</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="shop-1"><div class="pack-label"><span class="pack-label-title">4–6× Inflatable Wine Bottle Protector Sleeves ("Wine Skins") + Heavy Ziploc Bags</span><span class="pack-label-sub">You are visiting <strong>#48 Mampe Berlin</strong> (Halb &amp; Halb schnaps), <strong>#49 Dr. Kochan</strong>, <strong>#09 Freiburgs Finest</strong> (Zibärtle plum spirit), <strong>#42 Domaine François Baur</strong> (Alsace Riesling), and <strong>Feinkost Olé / GARIBALDI</strong>! All bottles &gt;100ml MUST be checked in your suitcase for the MUC→AUH→HKG flights.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="shop-2"><div class="pack-label"><span class="pack-label-title">Know Hong Kong Customs Duty-Free Liquor vs. Wine Rules (2 Adults)</span><span class="pack-label-sub">• <strong>Wine &amp; Beer (&le;30% ABV):</strong> <strong>0% Duty in Hong Kong!</strong> You can bring back Alsace Riesling, Crémant &amp; Franken Silvaner duty-free.<br>• <strong>Hard Liquor / Spirits (&gt;30% ABV, e.g., Zibärtle ~42% or Mampe ~31%–40%):</strong> HK Customs allows <strong>1 liter per adult passenger (2L total for the two of you)</strong> duty-free!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="shop-3"><div class="pack-label"><span class="pack-label-title">1× Packable Zippered Duffle Bag + 2× Foldable Reusable Totebags</span><span class="pack-label-sub">German supermarkets (REWE, EDEKA) charge for bags, and if your suitcases fill up with vintage cameras, antiques &amp; wine bottles, you can check your hard suitcases and carry clothes onto Etihad in the foldable duffle.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="shop-4"><div class="pack-label"><span class="pack-label-title">Dedicated Folder for Global Blue / Planet VAT Tax-Refund Forms (Min. €50.01 per Receipt in Germany)</span><span class="pack-label-sub">When buying cameras/lenses (Foto-Meyer, Leica, Calumet, Foto Dinkel) or wine &gt;€50.01, ask for a <strong>Tax-Free Form</strong>. At MUC Airport on Thu 19 Nov morning (07:20 AM), get the <strong>Zoll (Customs) stamp BEFORE checking in suitcases</strong> containing those items!</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Category 7: Winter Skincare, Meds & Toiletries -->
+      <div class="pack-cat-card" data-pack-cat="toiletry">
+        <div class="pack-cat-header">
+          <h3>🧴 7. Dry-Heated Winter Skincare, Toiletries &amp; Meds</h3>
+          <span class="badge">HK Humidity → Dry 2°C</span>
+        </div>
+        <ul class="pack-list">
+          <li class="pack-item"><input type="checkbox" data-pack-id="med-1"><div class="pack-label"><span class="pack-label-title">Heavy Lip Balm + Rich Hand Cream + Facial Moisturizer + Saline Nasal Spray</span><span class="pack-label-sub">Coming from Hong Kong's 75% humidity, German radiator-heated apartments and 2°C outdoor air cause chapped lips and dry nasal passages within 48 hours.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="med-2"><div class="pack-label"><span class="pack-label-title">Toothbrushes, Toothpaste &amp; Deodorant in Easy-Access Toiletry Pouch</span><span class="pack-label-sub">European eco-regulations mean German/French hotels (including Logis Saint-Martin, Karlito &amp; Timehouse) do NOT provide disposable toothbrushes or toothpaste in rooms!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="med-3"><div class="pack-label"><span class="pack-label-title">Digestive Enzymes / Pepcid / Po Chai Pills + Ibuprofen/Paracetamol + Blister Plasters (Compeed)</span><span class="pack-label-sub">Rich Bavarian pork knuckle (Schweinshaxe), Eisbein, Obatzda cheese, and beer are heavy on the stomach—and remember German pharmacies (<em>Apotheke</em>) are 100% closed on Sundays!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="med-4"><div class="pack-label"><span class="pack-label-title">Pocket Tissue Packs (Tempo) + Wet Wipes + Small Hand Sanitizer</span><span class="pack-label-sub">Essential for Christmas market street food, Mauerpark flea market browsing, and regional train restrooms.</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- VERIFIED 3-STOP LAUNDROMAT & WASHING GUIDE -->
+    <h3 style="margin:1.4rem 0 0.6rem;">🧺 Verified 3-Stop Laundry Guide: Where &amp; How to Wash Across Berlin, Freiburg &amp; Munich</h3>
+    <p style="margin-bottom:0.9rem;">
+      Because you are travelling for 16 days across 4 cities without in-room washing machines in Berlin or Freiburg, here are the <strong>exact verified self-service laundromats (<em>SB-Waschsalon</em>) and apartment laundry facilities</strong> next to your bases—plus how German machines work:
+    </p>
+
+    <div class="table-scroll"><table class="fare-table">
+      <thead>
+        <tr>
+          <th>Wash Window</th>
+          <th>City &amp; Base</th>
+          <th>Nearest Verified Laundromat / Facility</th>
+          <th>Walking Distance, Hours &amp; Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">Wash #1 (Optional · Day 3–4)</span><br><strong>Sat 7 or Sun 8 Nov</strong></td>
+          <td><strong>Berlin-Mitte</strong><br>Karlito Apartmenthaus<br>(<code>Linienstraße 60</code>)</td>
+          <td>
+            <strong>Option A (Open Sundays!): Waschsalon Schleudertraum Mitte</strong> (<code>Memhardstraße 1, 10178 Berlin</code> — right by Alexanderplatz / Rosa-Luxemburg-Platz).<br>
+            <strong>Option B: Waschsalon 115 GmbH</strong> (<code>Torstraße 115, 10119 Berlin</code>).
+          </td>
+          <td>
+            • <strong>Walk:</strong> 4–7 mins from Karlito!<br>
+            • <strong>Hours (Schleudertraum):</strong> <strong>Daily 06:00 – 22:00 (including Sunday 8 Nov before your 20:52 Nightjet!)</strong>.<br>
+            • <strong>Price:</strong> 7kg wash <strong>€7.00</strong> / 8kg wash <strong>€8.50</strong> (<strong>detergent &amp; softener automatically included!</strong>). Commercial dryer: <strong>€2.00 per 10 mins</strong> (20–30 mins dries a full load).
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge success">Wash #2 (Best Mid-Trip Reset · Day 5–7)</span><br><strong>Mon 9, Tue 10 or Wed 11 Nov Evening</strong></td>
+          <td><strong>Freiburg (Stühlinger)</strong><br>Schlossbergblick Airbnb<br>(<code>Mathildenstraße 14</code>)</td>
+          <td>
+            <strong>1) 30°grad SB Waschsalon Freiburg</strong> (<code>Lehener Straße 27, 79106 Freiburg-Stühlinger</code>).<br>
+            <strong>2) Waschsalon Wasch &amp; Fun</strong> (<code>Egonstraße 25, 79106 Freiburg-Stühlinger</code>).
+          </td>
+          <td>
+            • <strong>Walk:</strong> Both are in your exact <strong>Stühlinger</strong> neighborhood just <strong>4–5 minutes' walk (350m–450m) west of Mathildenstraße 14</strong>!<br>
+            • <strong>Hours (30°grad Lehener Str. 27):</strong> <strong>Mon–Sat 06:00 – 23:00</strong> (Closed Sun). Modern Electrolux self-service washers &amp; high-speed dryers (~€5–€7 wash + €1.50–€2/10-min dry; ~60 mins total).
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge gold">Wash #3 (Final Reset · Day 10–13)</span><br><strong>Sun 15, Mon 16 or Tue 17 Nov Evening</strong></td>
+          <td><strong>Munich</strong><br>Timehouse (<code>Leopoldstr. 204a</code>) or Bob W (<code>Schwanthalerstr. 61</code>)</td>
+          <td>
+            <strong>At Timehouse Munich:</strong> <strong>In-Building Guest Laundry Room (<em>Waschküche</em>)</strong> inside Leopoldstraße 204a (washers &amp; dryers on site!), backed up by <strong>SB Waschsalon München Schwabing</strong> (<code>Leopoldstraße 100</code>, U6 Giselastraße).<br>
+            <strong>At Bob W Munich City Centre:</strong> <strong>Eco-Express Waschsalon</strong> (<code>Senefelderstraße / Goethestraße</code> area near Hbf).
+          </td>
+          <td>
+            • <strong>Timehouse Advantage:</strong> You don't even have to leave the building—throw a load in the basement <em>Waschküche</em> after returning from Neuschwanstein or Dachau while relaxing in your apartment!<br>
+            • <strong>Packable Backup:</strong> Use your packed paper detergent sheets and €1/€2 coins (or app/card payment at Timehouse).
+          </td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="grid-3" style="margin-top:1.15rem;">
+      <div class="card">
+        <div class="card-body">
+          <div class="badge-row"><span class="badge">German Laundromat Rule #1</span></div>
+          <h4>Temperature &amp; Cycle Decoder</h4>
+          <p>
+            • <strong>30°C / 40°C Pflegeleicht (Easy-Care / Synthetics) or Buntwäsche (Coloreds):</strong> Use this for 95% of your travel clothes (merino base layers, shirts, socks, jeans). Runs ~35–40 minutes.<br>
+            • <strong>NEVER select 60°C or 90°C Kochwäsche (Boil Wash):</strong> It runs for 70+ minutes and will shrink wool/Heattech!
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="badge-row"><span class="badge gold">German Laundromat Rule #2</span></div>
+          <h4>Central Payment Terminal (Kassenautomat)</h4>
+          <p>
+            In German <em>SB-Waschsalons</em>, you do <strong>not</strong> put coins into the washing machine door! Instead:<br>
+            1) Load your clothes &amp; close the door firmly.<br>
+            2) Note the <strong>Machine Number</strong> (e.g., <em>Maschine Nr. 4</em>).<br>
+            3) Walk to the central wall payment box (<em>Kassenautomat</em>), press <strong>#4</strong>, insert coins/notes (€1, €2, €5, €10), and press Start on the machine.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="badge-row"><span class="badge danger">German Laundromat Rule #3</span></div>
+          <h4>Merino &amp; Heattech Drying Warning</h4>
+          <p>
+            Commercial gas dryers (<em>Trockner</em>) at German laundromats run hot. Put cotton socks, underwear, t-shirts, and jeans in the dryer on <strong>Schonend / Niedrige Temperatur (Low/Medium Heat)</strong> for 20 minutes, and hang your thin merino wool / Uniqlo Heattech tops on hangers in your heated apartment overnight (they dry in 3 hours on radiators!).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
     <!-- SECTION: BERLIN LEG (5–8 NOV 2026) & 1:1 MAP-ALIGNED ITINERARY -->
   <section id="sec-berlin" class="section-panel">
-    <h2 style="margin-bottom:0.45rem;">Leg 1: Berlin Itinerary (Thu 5 Nov 06:00 AM – Sun 8 Nov 20:52 Sleeper) · Base: Karlito Apartmenthaus</h2>
+    <h2 style="margin-bottom:0.45rem;">Leg 1: Berlin Itinerary (Thu 5 Nov 06:20 AM Condor DE 2553 Arrival – Sun 8 Nov 20:52 Sleeper) · Base: Karlito Apartmenthaus</h2>
     <p style="margin-bottom:1rem;">
-      <strong>Verified Base Hotel (#59 on Your List!):</strong> <strong>Karlito Apartmenthaus</strong> (<code>Linienstraße 60, 10119 Berlin-Mitte</code>, U2 <em>Rosa-Luxemburg-Platz</em>).<br>
-      <strong>Non-Negotiables Locked In:</strong> <strong>#48 Mampe Berlin</strong> (Thu 5 Nov at 16:30 right before BRLO Brwhouse), <strong>#14 Fleischerei Domke</strong> (Fri 6 Nov at 16:45 when its hot butcher counter is open until 18:00!), and <strong>#63 Berlin Zoological Garden</strong> (Sat 7 Nov 09:00–13:30).<br>
+      <strong>Outbound Flights (Booking Ref: <code>7AK639</code>):</strong> <strong>Wed 4 Nov 19:35 HKG → 00:25+1 AUH (Etihad EY 871)</strong> + <strong>Thu 5 Nov 02:20 AUH → 06:20 BER (Condor DE 2553)</strong>.<br>
+      <strong>Verified Base Hotel (#59 on Your List · Booking #<code>5126078467</code>):</strong> <strong>Karlito Apartmenthaus</strong> (<code>Linienstraße 60, 10119 Berlin-Mitte</code>, Family Apartment with Balcony · Check-in Nov 5 14:00–23:00, Check-out Nov 8 08:00–10:00 · U2 <em>Rosa-Luxemburg-Platz</em>).<br>
+      <strong>Non-Negotiables &amp; Reservations Locked In:</strong> <strong>#48 Mampe Berlin</strong> (Thu 5 Nov at 16:30 right before BRLO Brwhouse), <strong>#14 Fleischerei Domke</strong> (Fri 6 Nov at 16:30 when its hot butcher counter is open until 18:00!), <strong>CONFIRMED 18:30 Dinner Reservation at Yorckschlösschen</strong> (Fri 6 Nov at 18:30 for 2 people, <code>Yorckstraße 15</code>), and <strong>#63 Berlin Zoological Garden</strong> (Sat 7 Nov 09:00–13:30).<br>
       <strong>1:1 Map Alignment Guarantee:</strong> Every single stop in the 4-day written schedule below has its exact numbered pin on the map above, and omitted pins are separated into the <em>"Show Omitted Pins"</em> filter so they never clutter your daily route lines.
     </p>
 
@@ -471,27 +1201,27 @@
       <div class="card">
         <img src="assets/images/hotel_karlito_berlin.jpg" alt="Karlito Apartmenthaus Linienstrasse 60 Berlin Mitte">
         <div class="card-body">
-          <div class="badge-row"><span class="badge success">Your Berlin Base · List #59</span><span class="badge">U2 Rosa-Luxemburg-Platz</span></div>
+          <div class="badge-row"><span class="badge success">Your Berlin Base · Booking #5126078467</span><span class="badge">Family Apt with Balcony</span></div>
           <h4>Karlito Apartmenthaus (Linienstraße 60, 10119 Berlin-Mitte)</h4>
-          <p><strong>Airport Transfer (Thu 5 Nov 06:00 AM):</strong> Take FEX / RE8 from BER Airport to <em>Alexanderplatz</em> (~30 mins), then walk 9 mins (or 1 stop on U2 to <em>Rosa-Luxemburg-Platz</em>) to Linienstraße 60. Walk 3 mins out your front door to <strong>#45 Zeit für Brot</strong> and 5 mins to <strong>#04 FOTOIMPEX</strong>!</p>
+          <p><strong>Airport Transfer (Thu 5 Nov 06:20 AM Condor DE 2553 Arrival):</strong> Take FEX / RE8 from BER Airport to <em>Alexanderplatz</em> (~30 mins), then walk 9 mins (or 1 stop on U2 to <em>Rosa-Luxemburg-Platz</em>) to Linienstraße 60 for bag drop before 14:00–23:00 official check-in (Check-out Sun 8 Nov 08:00–10:00). Walk 3 mins out your front door to <strong>#45 Zeit für Brot</strong> and 5 mins to <strong>#04 FOTOIMPEX</strong>!</p>
         </div>
       </div>
 
       <div class="card">
         <img src="assets/images/berlin_zoo.jpg" alt="Berlin Zoological Garden Hippo House">
         <div class="card-body">
-          <div class="badge-row"><span class="badge gold">Non-Negotiable Must-Gos</span><span class="badge">Zoo (#63) · Domke (#14) · Mampe (#48)</span></div>
-          <h4>Why Domke is on Friday &amp; Mampe is on Thursday</h4>
-          <p>• <strong>#14 Fleischerei Domke</strong> (Warschauer Str. 64) closes at <strong>14:00 on Saturdays</strong> (and is closed Sundays), while <strong>Mon–Fri it stays open until 18:00</strong>! Putting Friedrichshain &amp; Domke on <strong>Friday 6 Nov afternoon</strong> means you get both a full Saturday morning at <strong>#63 Berlin Zoo</strong> AND a hot butcher feast (Eisbein, Schnitzel, Bouletten) at Domke!<br>
+          <div class="badge-row"><span class="badge gold">Confirmed Fri 6 Nov 18:30</span><span class="badge">Yorckschlösschen + Domke (#14) + Mampe (#48)</span></div>
+          <h4>How Domke (16:30) &amp; Confirmed Yorckschlösschen (18:30) Fit Friday</h4>
+          <p>• <strong>#14 Fleischerei Domke</strong> (Warschauer Str. 64) closes at <strong>14:00 on Saturdays</strong> (and is closed Sundays), while <strong>Mon–Fri it stays open until 18:00</strong>! Visiting Friedrichshain on <strong>Friday 6 Nov afternoon (16:30 early butcher tasting at Domke)</strong> lets you take S-Bahn directly from <em>Warschauer Straße</em> to <em>Yorckstraße</em> (~20 mins) for your <strong>confirmed 18:30 dinner reservation at Yorckschlösschen (Yorckstraße 15, Berlin's legendary 1902 jazz &amp; soul garden Kneipe)</strong>!<br>
           • <strong>#48 Mampe Berlin</strong> (Am Tempelhofer Berg 6, open Thu–Sat 12:00–18:00) sits just 12 mins walk from <strong>#57 BRLO Brwhouse</strong>—pairing them on <strong>Thursday 5 Nov (16:30 Mampe → 18:30 BRLO)</strong> is a seamless 1-line U2 trip!</p>
         </div>
       </div>
     </div>
 
     <div class="day-subtabs">
-      <button class="sub-btn active" data-berlin-day="region-berlin">Show All 4 Berlin Days (23 Active Stops)</button>
-      <button class="sub-btn" data-berlin-day="day-05">Thu 5 Nov (Arrival + WWII + Mampe + BRLO · 6 Stops)</button>
-      <button class="sub-btn" data-berlin-day="day-06">Fri 6 Nov (Cameras + Courtyards + Domke + East Side · 11 Stops)</button>
+      <button class="sub-btn active" data-berlin-day="region-berlin">Show All 4 Berlin Days (25 Active Stops)</button>
+      <button class="sub-btn" data-berlin-day="day-05">Thu 5 Nov (06:20 BER + WWII + Mampe + BRLO · 6 Stops)</button>
+      <button class="sub-btn" data-berlin-day="day-06">Fri 6 Nov (Cameras + Domke + 18:30 Yorckschlösschen · 12 Stops)</button>
       <button class="sub-btn" data-berlin-day="day-07">Sat 7 Nov (Berlin Zoo + Foto-Meyer + Zeughaus + StäV · 5 Stops)</button>
       <button class="sub-btn" data-berlin-day="day-08">Sun 8 Nov (Wall Memorial + Mauerpark + Dr. Kochan + Nightjet · 5 Stops)</button>
     </div>
@@ -500,29 +1230,29 @@
     <div class="timeline" style="margin-bottom:1.5rem;">
       <div class="tl-item" data-berlin-card="day-05">
         <div class="tl-time">Thu 5 Nov · Day 1<br><span style="font-size:0.78rem; color:#5a6577;">(6 Map Pins)</span></div>
-        <div><strong>06:00 AM BER Arrival → Karlito (#59) → Zeit für Brot (#45) → WWII History Core → Mampe Berlin (#48) → BRLO Brwhouse (#57):</strong><br>
-        • <strong>Pin 1 — ★ #59 Karlito Apartmenthaus (07:30 Bag Drop):</strong> Drop luggage at <code>Linienstraße 60</code>.<br>
+        <div><strong>06:20 AM BER Arrival (Condor DE 2553 / Etihad EY 871, Ref <code>7AK639</code>) → Karlito (#59) → Zeit für Brot (#45) → WWII History Core → Mampe Berlin (#48) → BRLO Brwhouse (#57):</strong><br>
+        • <strong>Pin 1 — ★ #59 Karlito Apartmenthaus (07:45 Bag Drop · Booking #<code>5126078467</code>):</strong> Drop luggage at <code>Linienstraße 60</code> (Family Apartment with Balcony; official check-in 14:00–23:00).<br>
         • <strong>Pin 2 — ★ #45 Zeit für Brot (08:15 Breakfast):</strong> Walk 3 mins to <code>Alte Schönhauser Str. 4</code> (`nice 包包`) for warm organic <em>Zimtschnecken</em>.<br>
         • <strong>Pin 3 — Topography of Terror (10:00–11:45):</strong> Ride U2 to <em>Potsdamer Platz</em> for your priority WWII Gestapo/SS headquarters exhibition.<br>
-        • <strong>Pin 4 — Holocaust Memorial, Brandenburg Gate &amp; Reichstag (12:00–14:00):</strong> Walk north through the Memorial to the Murdered Jews of Europe and Brandenburg Gate to the Reichstag, then return to <strong>Karlito (#59)</strong> for check-in &amp; a post-flight rest (14:15–16:00).<br>
+        • <strong>Pin 4 — Holocaust Memorial, Brandenburg Gate &amp; Reichstag (12:00–14:00):</strong> Walk north through the Memorial to the Murdered Jews of Europe and Brandenburg Gate to the Reichstag, then return to <strong>Karlito (#59)</strong> for 14:00 check-in &amp; a post-flight rest (14:15–16:00).<br>
         • <strong>Pin 5 — ★ #48 Mampe Berlin (16:30–18:00 · NON-NEGOTIABLE MUST-GO):</strong> Take U2/U6 to <em>Platz der Luftbrücke</em> (`Am Tempelhofer Berg 6`, open Thu–Sat 12:00–18:00). Visit Berlin's oldest 1831 spirits manufactory inside the historic brick brewery courtyard to taste &amp; buy elephant-label <em>Halb &amp; Halb</em> bitter-orange herbal schnaps, <em>Elefantenkümmel</em> &amp; Kreuzberg Gin!<br>
         • <strong>Pin 6 — ★ #57 BRLO Brwhouse (18:30–21:30 Dinner):</strong> Walk 12 mins (or 1 stop to <em>Gleisdreieck</em>) to <code>Schöneberger Str. 16</code> (`Brewery tour &amp; beer garden!`) for craft beer flights &amp; smoked meats/vegetables, then take U2 straight back to Karlito.</div>
       </div>
 
       <div class="tl-item" data-berlin-card="day-06">
-        <div class="tl-time">Fri 6 Nov · Day 2<br><span style="font-size:0.78rem; color:#5a6577;">(11 Map Pins)</span></div>
-        <div><strong>Analog Camera Mecca (#05 Safelight + #04 FOTOIMPEX) + Mitte Courtyards (#46 &amp; #47) → Friedrichshain Feast at #14 Fleischerei Domke, #12 Silo, #13 Avci, #19 RAW &amp; #21 East Side Gallery:</strong><br>
+        <div class="tl-time">Fri 6 Nov · Day 2<br><span style="font-size:0.78rem; color:#5a6577;">(12 Map Pins)</span></div>
+        <div><strong>Analog Camera Mecca (#05 Safelight + #04 FOTOIMPEX) + Mitte Courtyards (#46 &amp; #47) → Friedrichshain Afternoon (#14 Fleischerei Domke, #12 Silo, #13 Avci) → CONFIRMED 18:30 Dinner at Yorckschlösschen → #19 RAW &amp; #21 East Side Gallery:</strong><br>
         • <strong>Pin 1 — ★ #59 Karlito Apartmenthaus (Start):</strong> Leisurely morning in Mitte.<br>
         • <strong>Pin 2 — ★ #05 Safelight Berlin (12:00–12:50):</strong> Hop 2 U2 stops north to <em>Schönhauser Allee</em> (<code>Schivelbeiner Str. 9</code>, open Tue–Sat 12:00–19:00; <strong>closed Sun/Mon</strong>) for indie film cameras &amp; analog stocks.<br>
         • <strong>Pin 3 — ★ #04 FOTOIMPEX GmbH (13:15–14:15):</strong> Ride U2 back to <code>Alte Schönhauser Str. 32B</code> (opens 12:00) for Europe's #1 analog film &amp; darkroom flagship.<br>
         • <strong>Pin 4 — ★ #46 Hackesche Höfe (14:20–15:00):</strong> Walk 4 mins to <code>Rosenthaler Str. 40</code> to explore the 8 restored Jugendstil courtyards.<br>
         • <strong>Pin 5 — ★ #47 Rosenthaler Str. 39 / Haus Schwarzenberg (15:00–15:30):</strong> Step next door into the gritty street-art alley (Otto Weidt Workshop for the Blind Museum &amp; Monsterkabinett).<br>
-        • <strong>Pin 6 — ★ #12 Silo Coffee (15:50–16:25 Coffee):</strong> Take S-Bahn from Hackescher Markt to <em>Ostkreuz / Warschauer Str.</em> for afternoon specialty coffee at <code>Gabriel-Max-Str. 4</code>.<br>
-        • <strong>Pin 7 — ★ #20 Boxhagener Platz (16:25–16:40):</strong> Stroll across Friedrichshain's leafy neighborhood square.<br>
-        • <strong>Pin 8 — ★ #14 Fleischerei Domke (16:45–17:45 · NON-NEGOTIABLE MUST-GO!):</strong> Walk 3 mins to <code>Warschauer Str. 64</code> (<strong>open Mon–Fri until 18:00</strong>, vs 14:00 close on Sat!). Order from Berlin's most famous traditional butcher hot counter: tender <em>Eisbein</em> (cured pork knuckle with pea mash &amp; sauerkraut), crisp <em>Schnitzel</em>, <em>Bouletten</em> meatballs &amp; house sausages!<br>
-        • <strong>Pin 9 — ★ #13 Avci Bistro (18:00–19:00):</strong> Literally 20 meters around the corner at <code>Kopernikusstr. 30</code> for Turkish-Berlin meze, grilled skewers &amp; tea.<br>
-        • <strong>Pin 10 — ★ #19 RAW-Gelände &amp; Michelberger Bar (19:10–20:15):</strong> Walk 4 mins south to <code>Revaler Str. 99</code> to see the industrial railway arts compound (and taste #50 MXPSM schnaps at Michelberger Hotel bar across the street).<br>
-        • <strong>Pin 11 — ★ #21 East Side Gallery (20:15–21:00):</strong> Evening stroll along the illuminated 1.3km painted Berlin Wall at <code>Mühlenstraße</code>.</div>
+        • <strong>Pin 6 — ★ #12 Silo Coffee (15:45–16:15 Coffee):</strong> Take S-Bahn from Hackescher Markt to <em>Ostkreuz / Warschauer Str.</em> for afternoon specialty coffee at <code>Gabriel-Max-Str. 4</code>.<br>
+        • <strong>Pin 7 — ★ #20 Boxhagener Platz (16:15–16:25):</strong> Stroll across Friedrichshain's leafy neighborhood square.<br>
+        • <strong>Pin 8 — ★ #14 Fleischerei Domke (16:30–17:20 · NON-NEGOTIABLE MUST-GO!):</strong> Walk 3 mins to <code>Warschauer Str. 64</code> (<strong>open Mon–Fri until 18:00</strong>, vs 14:00 close on Sat!). Share a hot afternoon butcher tasting from Berlin's most famous traditional butcher counter: tender <em>Eisbein</em>, crisp <em>Schnitzel</em>, <em>Bouletten</em> meatballs &amp; house sausages!<br>
+        • <strong>Pin 9 — ★ #13 Avci Bistro (17:25–17:50 Tea/Meze):</strong> Literally 20 meters around the corner at <code>Kopernikusstr. 30</code> for Turkish tea or a quick bite.<br>
+        • <strong>Pin 10 — ★ #19 RAW-Gelände &amp; #21 East Side Gallery Walk (17:50–18:10):</strong> Stroll past <code>Revaler Str. 99</code> and the illuminated painted Berlin Wall at <code>Mühlenstraße</code> (<strong>Pin 11</strong>) on the way to S-Bahn <em>Warschauer Straße</em>.<br>
+        • <strong>Pin 12 — ★ CONFIRMED 18:30 Dinner Reservation: Yorckschlösschen (18:30–21:30 · 2 People Confirmed!):</strong> Take S-Bahn/U-Bahn (~20 mins) to <code>Yorckstraße 15, 10965 Berlin-Kreuzberg</code>. Dine at Berlin's legendary 120-year-old historic Kiezkneipe &amp; live jazz/blues tavern on German comfort classics and cold draft beer!</div>
       </div>
 
       <div class="tl-item" data-berlin-card="day-07">
@@ -537,22 +1267,22 @@
 
       <div class="tl-item" data-berlin-card="day-08">
         <div class="tl-time">Sun 8 Nov · Day 4<br><span style="font-size:0.78rem; color:#5a6577;">(5 Map Pins)</span></div>
-        <div><strong>Berlin Wall Memorial, #44 Mauerpark Sunday Flea Market, #49 Dr. Kochan Liquor Culture &amp; 20:52 Nightjet 408 to Freiburg:</strong><br>
-        • <strong>Pin 1 — ★ #59 Karlito Apartmenthaus (Check-out &amp; Store Bags):</strong> Leave suitcases at Karlito until 19:30.<br>
+        <div><strong>08:00–10:00 Karlito Checkout, Berlin Wall Memorial, #44 Mauerpark Sunday Flea Market, #49 Dr. Kochan Liquor Culture &amp; 20:52 ÖBB Nightjet 408 to Freiburg:</strong><br>
+        • <strong>Pin 1 — ★ #59 Karlito Apartmenthaus (Check-out 08:00–10:00 &amp; Store Bags):</strong> Check out by 10:00 AM (Booking #<code>5126078467</code>) and store suitcases at Karlito (or Berlin Hbf lockers) until evening.<br>
         • <strong>Pin 2 — Berlin Wall Memorial at Bernauer Straße (09:30–11:00):</strong> Walk 15 mins from Karlito to <code>Bernauer Str. 111</code> to see the preserved Cold War death-strip, watchtower &amp; outdoor exhibition.<br>
         • <strong>Pin 3 — ★ #44 Mauerpark Flohmarkt (11:00–15:00 · Sunday Only!):</strong> Walk straight up Bernauer Straße into <code>Bernauer Str. 64</code> (`Sunday flea market`, 08:00–18:00) for vintage cameras, lenses, DDR antiques, street food &amp; live music.<br>
-        • <strong>Pin 4 — ★ #49 Dr. Kochan Liquor Culture (15:30–17:30):</strong> Walk 15 mins to <code>Immanuelkirchstraße 4</code> in Prenzlauer Berg for artisanal barrel-aged spirits (then pick up bags from Karlito at 19:30).<br>
-        • <strong>Pin 5 — Berlin Hauptbahnhof Track 3 (20:25 Boarding / 20:52 Nightjet NJ 408 Departure):</strong> Board <strong>ÖBB Nightjet NJ 408</strong> (Coach 309, Berths 52/56, Double Deluxe with shower/WC &amp; breakfast) to wake up at Freiburg Hbf at 06:17 AM!</div>
+        • <strong>Pin 4 — ★ #49 Dr. Kochan Liquor Culture (15:30–17:30):</strong> Walk 15 mins to <code>Immanuelkirchstraße 4</code> in Prenzlauer Berg for artisanal barrel-aged spirits (and optional quick laundry at daily-open <strong>Waschsalon Schleudertraum Mitte</strong>, <code>Memhardstraße 1</code>, 06:00–22:00).<br>
+        • <strong>Pin 5 — Berlin Hauptbahnhof (Tiefgeschoß / Track 3 · 20:25 Boarding / 20:52 Nightjet NJ 408 Departure):</strong> Board <strong>ÖBB Nightjet NJ 408</strong> (Booking Code: <code>0698 9390 6002 7647</code> · Berlin Hbf Tiefgeschoß to Freiburg(Breisgau) Hbf for 2 passengers, Coach 309, Berths 52/56, Double Deluxe with shower/WC &amp; breakfast) to wake up at Freiburg Hbf at 06:17 AM!</div>
       </div>
     </div>
 
-    <h3 style="margin:1.2rem 0 0.75rem;">Berlin Complete Scorecard: 20 Saved Pins Included vs. Only 2 Omitted</h3>
+    <h3 style="margin:1.2rem 0 0.75rem;">Berlin Complete Scorecard: 20 Saved Pins + Yorckschlösschen Reservation Included vs. Only 2 Omitted</h3>
     <div class="table-scroll"><table class="fare-table">
       <thead>
         <tr>
           <th>Status</th>
           <th># in List</th>
-          <th>Saved Berlin Pin / Must-Do</th>
+          <th>Saved Berlin Pin / Confirmed Booking</th>
           <th>Assigned Day &amp; Why Included / Omitted</th>
         </tr>
       </thead>
@@ -560,8 +1290,14 @@
         <tr>
           <td><span class="badge success">INCLUDED (Base)</span></td>
           <td><strong>#59</strong></td>
-          <td><strong>Karlito Apartmenthaus (Linienstr. 60)</strong></td>
-          <td><strong>Thu 5 – Sun 8 Nov Base:</strong> Pinned on all 4 days.</td>
+          <td><strong>Karlito Apartmenthaus (Linienstr. 60 · Booking #<code>5126078467</code>)</strong></td>
+          <td><strong>Thu 5 – Sun 8 Nov Base:</strong> Family Apartment with Balcony. Check-in Nov 5 (14:00–23:00), Check-out Nov 8 (08:00–10:00). Pinned on all 4 days.</td>
+        </tr>
+        <tr>
+          <td><span class="badge success">CONFIRMED DINNER</span></td>
+          <td><strong>18:30 Res.</strong></td>
+          <td><strong>Yorckschlösschen (Yorckstraße 15, 10965 Berlin)</strong></td>
+          <td><strong>Fri 6 Nov (18:30 Confirmed for 2 people):</strong> Historic Kreuzberg jazz &amp; soul tavern; reached directly from Warschauer Str. after your afternoon Fleischerei Domke tasting.</td>
         </tr>
         <tr>
           <td><span class="badge success">INCLUDED (Non-Negotiable)</span></td>
@@ -573,7 +1309,7 @@
           <td><span class="badge success">INCLUDED (Non-Negotiable)</span></td>
           <td><strong>#14</strong></td>
           <td><strong>Fleischerei Domke (Warschauer Str. 64)</strong></td>
-          <td><strong>Fri 6 Nov (16:45):</strong> Open Mon–Fri until 18:00 (vs 14:00 close on Sat), so moving Friedrichshain to Friday afternoon guarantees your Domke butcher feast!</td>
+          <td><strong>Fri 6 Nov (16:30):</strong> Open Mon–Fri until 18:00 (vs 14:00 close on Sat), so visiting Friday afternoon before 18:30 Yorckschlösschen guarantees your Domke butcher feast!</td>
         </tr>
         <tr>
           <td><span class="badge success">INCLUDED (Non-Negotiable)</span></td>
@@ -589,9 +1325,9 @@
         </tr>
         <tr>
           <td><span class="badge success">INCLUDED (Fri 6 Nov)</span></td>
-          <td><strong>#04, #05, #12, #13, #19, #20, #21, #46, #47</strong></td>
-          <td><strong>Safelight (#05), FOTOIMPEX (#04), Hackesche Höfe (#46), Haus Schwarzenberg (#47), Silo (#12), Boxhagener Platz (#20), Domke (#14), Avci (#13), RAW (#19) &amp; East Side Gallery (#21)</strong></td>
-          <td><strong>Fri 6 Nov:</strong> All 11 stops pinned in exact chronological order on the `Fri 6 Nov` map filter.</td>
+          <td><strong>#04, #05, #12, #13, #19, #20, #21, #46, #47 + Yorck</strong></td>
+          <td><strong>Safelight (#05), FOTOIMPEX (#04), Hackesche Höfe (#46), Haus Schwarzenberg (#47), Silo (#12), Boxhagener Platz (#20), Domke (#14), Avci (#13), RAW (#19), East Side Gallery (#21) &amp; Yorckschlösschen (18:30)</strong></td>
+          <td><strong>Fri 6 Nov:</strong> All 12 stops pinned in exact chronological order on the `Fri 6 Nov` map filter.</td>
         </tr>
         <tr>
           <td><span class="badge success">INCLUDED (Sat 7 Nov)</span></td>
@@ -602,7 +1338,7 @@
         <tr>
           <td><span class="badge success">INCLUDED (Sun 8 Nov)</span></td>
           <td><strong>#44, #49 + Wall &amp; Hbf</strong></td>
-          <td><strong>Berlin Wall Memorial, Mauerpark Flohmarkt (#44), Dr. Kochan (#49) &amp; Berlin Hbf Nightjet</strong></td>
+          <td><strong>Berlin Wall Memorial, Mauerpark Flohmarkt (#44), Dr. Kochan (#49) &amp; Berlin Hbf (Tiefgeschoß) Nightjet (<code>0698 9390 6002 7647</code>)</strong></td>
           <td><strong>Sun 8 Nov:</strong> All 5 stops pinned in order on the `Sun 8 Nov` map filter.</td>
         </tr>
         <tr>
@@ -627,26 +1363,26 @@
     <h2 style="margin-bottom:0.45rem;">Leg 2: Freiburg, Baden-Baden, Lake Titisee &amp; Colmar Wine Tour (Mon 9 – Fri 13 Nov 2026)</h2>
     <p style="margin-bottom:1rem;">
       <strong>Verified Accommodations &amp; Rail Links:</strong><br>
-      • <strong>Mon 9 Nov (06:17 AM Arrival) – Thu 12 Nov (12:00 PM Checkout):</strong> <strong>Freiburg Airbnb at <code>Mathildenstraße 14, 79106 Freiburg im Breisgau (Stühlinger)</code></strong>. Just <strong>6 minutes' walk (450m) west of Freiburg Hbf</strong> across the station bridge! Your host confirmed <strong>early luggage drop right after your 06:17 AM Nightjet arrival</strong> before 15:00 check-in.<br>
-      • <strong>Thu 12 Nov – Fri 13 Nov (16:45 TGV Departure):</strong> <strong>Hôtel Saint-Martin Colmar</strong> (<code>38 Grand'Rue, 68000 Colmar</code>) — right in the medieval heart of Colmar Old Town &amp; Petite Venise!
+      • <strong>Mon 9 Nov (06:17 AM Arrival via ÖBB Nightjet <code>0698 9390 6002 7647</code>) – Thu 12 Nov (By 12:00 PM Checkout):</strong> <strong>Freiburg Airbnb — Schlossbergblick 1-Zimmer Dachgeschoss Apartment (hosted by Mario &amp; Nadine · Confirmation Code: <code>HMKTPHQE4H</code>)</strong> at <code>Mathildenstraße 14, 79106 Freiburg im Breisgau (Stühlinger)</code>. Entire home for 2 adults, just <strong>6 minutes' walk (450m) west of Freiburg Hbf</strong> across the station bridge! Your host confirmed <strong>early luggage drop right after your 06:17 AM Nightjet arrival</strong> before 15:00 check-in, and two self-service laundromats (<strong>30°grad SB Waschsalon</strong> at <code>Lehener Str. 27</code> &amp; <strong>Wasch &amp; Fun</strong> at <code>Egonstraße 25</code>) sit just 4–5 mins walk away!<br>
+      • <strong>Thu 12 Nov (Check-in 15:00–00:00) – Fri 13 Nov (Check-out 01:00–11:00 · 16:45 TGV Departure):</strong> <strong>Logis Hôtel Saint-Martin Colmar</strong> (<code>38 Grand'Rue, 68000 Colmar</code> · Superior Double or Twin Room · Booking #<code>6935982825</code>) — right in the medieval heart of Colmar Old Town &amp; Petite Venise!
     </p>
 
     <div class="grid-2" style="margin-bottom:1.25rem;">
       <div class="card">
         <img src="assets/images/sourdough_bakery.jpg" alt="Freiburg Old Town coffee and bakery base">
         <div class="card-body">
-          <div class="badge-row"><span class="badge success">Base 1 · Mon 9 – Thu 12 Nov</span><span class="badge">6 Mins Walk from Freiburg Hbf</span></div>
-          <h4>Freiburg Airbnb: Mathildenstraße 14, 79106 Freiburg (Stühlinger)</h4>
-          <p><strong>06:17 AM Sleeper Arrival Advantage:</strong> Walk 6 minutes from Platform 3 at Freiburg Hbf to Mathildenstraße 14, drop your suitcases with the host at 06:35 AM, and walk straight across the Bismarckallee bridge into Freiburg Old Town for 08:00 specialty coffee at <strong>#27 Günter Coffee Store</strong>! Being 6 mins from Hbf also makes boarding the <strong>Baden-Baden train (Tue 10 Nov)</strong> and <strong>Titisee Höllentalbahn (Wed 11 Nov)</strong> effortless.</p>
+          <div class="badge-row"><span class="badge success">Base 1 · Code HMKTPHQE4H</span><span class="badge">Hosted by Mario &amp; Nadine</span></div>
+          <h4>Schlossbergblick 1-Zimmer Dachgeschoss Apartment (Mathildenstraße 14, 79106 Freiburg)</h4>
+          <p><strong>06:17 AM Sleeper Arrival &amp; Mid-Trip Laundry Advantage:</strong> Walk 6 minutes from Platform 3 at Freiburg Hbf to Mathildenstraße 14, drop your suitcases with Mario &amp; Nadine at 06:35 AM (official check-in after 15:00, check-out Nov 12 by 12:00), and walk straight into Freiburg Old Town for 08:00 specialty coffee at <strong>#27 Günter Coffee Store</strong>! For your mid-trip laundry reset, <strong>30°grad SB Waschsalon (Lehener Str. 27, open Mon–Sat 06:00–23:00)</strong> is a 4-minute walk around the corner.</p>
         </div>
       </div>
 
       <div class="card">
         <img src="assets/images/hotel_saint_martin_colmar.webp" alt="Hotel Saint-Martin 38 Grand Rue Colmar Alsace">
         <div class="card-body">
-          <div class="badge-row"><span class="badge gold">Base 2 · Thu 12 – Fri 13 Nov</span><span class="badge">38 Grand'Rue, Colmar</span></div>
-          <h4>Hôtel Saint-Martin (38 Grand'Rue, 68000 Colmar)</h4>
-          <p>Located right on Colmar's historic Grand'Rue steps from the Koïfhus and Petite Venise canals, and ~15 mins walk (or 5 mins taxi) from <strong>Gare de Colmar</strong> for your <strong>Friday 13 Nov morning wine tour in Turckheim (#41–#43)</strong> and your <strong>16:45 TGV INOUI 2362 to Strasbourg &amp; Munich</strong>.</p>
+          <div class="badge-row"><span class="badge gold">Base 2 · Booking #6935982825</span><span class="badge">38 Grand'Rue, Colmar</span></div>
+          <h4>Logis Hôtel Saint-Martin (38 Grand'Rue, 68000 Colmar)</h4>
+          <p><strong>Superior Double or Twin Room (Check-in Nov 12 15:00–00:00, Check-out Nov 13 01:00–11:00):</strong> Located right on Colmar's historic Grand'Rue steps from the Koïfhus and Petite Venise canals, and ~15 mins walk (or 5 mins taxi) from <strong>Gare de Colmar</strong> for your <strong>Friday 13 Nov 10:00 AM biodynamic wine tour at Domaine François Baur in Turckheim (rebooked from Nov 12 to Nov 13!)</strong> and your <strong>16:45 TGV INOUI 2362 (Ref: <code>NZM3KL</code>) to Strasbourg &amp; Munich</strong>.</p>
         </div>
       </div>
     </div>
@@ -698,12 +1434,13 @@
       </div>
       <div class="tl-item" data-bf-card="day-13-colmar">
         <div class="tl-time">Fri 13 Nov · Day 5</div>
-        <div><strong>Confirmed 10:00 AM Biodynamic Wine Tour at #42 Domaine François Baur (Turckheim) + #41 Porte de Munster &amp; #43 Cave de Turckheim → 16:45 TGV to Munich:</strong><br>
-        • <strong>09:15–09:45 (Colmar → Turckheim):</strong> From <strong>Hôtel Saint-Martin (38 Grand'Rue)</strong>, take a 12-min taxi/Uber directly to Turckheim (or walk to Gare de Colmar for the 7-min TER train to <em>Turckheim</em> station), entering the medieval walls through <strong>#41 Porte de Munster (Obertor)</strong> (just 100m from the winery!).<br>
-        • <strong>10:00–11:30 (CONFIRMED BOOKING `815D4A45A0E85F6C`):</strong> <strong>Visit &amp; Tasting of Biodynamic Wines at #42 Domaine François Baur</strong> (<code>3 Grand'Rue, 68230 Turckheim</code> · 2 Adults · €24.00 via Winalist, charged Nov 3; free cancellation until Nov 6 at 10:00 AM). Taste biodynamic Alsace Grand Cru Brand Riesling, Pinot Gris &amp; Crémant d'Alsace.<br>
+        <div><strong>Confirmed 10:00 AM Biodynamic Wine Tour at #42 Domaine François Baur (Turckheim — Rebooked from Nov 12 to Nov 13!) + #41 Porte de Munster &amp; #43 Cave de Turckheim → 16:45 TGV to Munich:</strong><br>
+        • <strong>08:30–09:15 (Check Out of Logis Hôtel Saint-Martin · Booking #<code>6935982825</code>):</strong> Check-out window is 01:00–11:00 AM; store your bags at Hôtel Saint-Martin reception (`38 Grand'Rue`) until 15:45.<br>
+        • <strong>09:15–09:45 (Colmar → Turckheim):</strong> Take a 12-min taxi/Uber directly to Turckheim (or walk to Gare de Colmar for the 7-min TER train to <em>Turckheim</em> station), entering the medieval walls through <strong>#41 Porte de Munster (Obertor)</strong> (just 100m from the winery!).<br>
+        • <strong>10:00–11:30 (CONFIRMED BOOKING `815D4A45A0E85F6C` · Shifted from Nov 12 to Nov 13 at 10:00 AM):</strong> <strong>Visit &amp; Tasting of Biodynamic Wines at #42 Domaine François Baur</strong> (<code>3 Grand'Rue, 68230 Turckheim</code> · 2 Adults · €24.00 via Winalist). Taste biodynamic Alsace Grand Cru Brand Riesling, Pinot Gris &amp; Crémant d'Alsace.<br>
         • <strong>11:40–12:40:</strong> Optional second tasting 5 minutes' walk away at <strong>#43 CELLAR TURCKHEIM (Cave Vinicole de Turckheim)</strong>.<br>
-        • <strong>13:00–16:00:</strong> Return to Colmar for a leisurely Alsatian lunch → collect your bags from <strong>Hôtel Saint-Martin (38 Grand'Rue)</strong> → arrive at <strong>Gare de Colmar by 16:20</strong> (remember mandatory SNCF luggage tags!).<br>
-        • <strong>16:45–21:46:</strong> Board <strong>16:45 TGV INOUI 2362 (Colmar → 17:12 Strasbourg, Coach 13, Seats 308 &amp; 307)</strong> → 34-min transfer → <strong>17:46 TGV INOUI 9577 (Strasbourg → 21:46 München Hbf, Coach 13 Lower Deck, Seats 304 &amp; 305)</strong>!</div>
+        • <strong>13:00–16:00:</strong> Return to Colmar for a leisurely Alsatian lunch → collect your bags from <strong>Logis Hôtel Saint-Martin (38 Grand'Rue)</strong> → arrive at <strong>Gare de Colmar by 16:20</strong> (remember mandatory SNCF luggage tags!).<br>
+        • <strong>16:45–21:46:</strong> Board <strong>16:45 TGV INOUI 2362 (Colmar → 17:12 Strasbourg, Coach 13, Seats 308 &amp; 307, Folder Ref: <code>NZM3KL</code>)</strong> → 34-min transfer → <strong>17:46 TGV INOUI 9577 (Strasbourg → 21:46 München Hbf, Coach 13 Lower Deck, Seats 304 &amp; 305)</strong>!</div>
       </div>
     </div>
 
@@ -823,14 +1560,17 @@
           </div>
           <div class="tl-item">
             <div class="tl-time">21:46 – 22:25</div>
-            <div><strong>München Hbf → Timehouse Munich (Leopoldstraße 204a, 80804 Munich):</strong> If on time, take a taxi from Hbf North Exit (Arnulfstraße, ~15 mins, ~€25) directly to Leopoldstraße 204a before reception closes at <strong>22:30</strong>, or take S-Bahn to Marienplatz + <strong>U6 towards Garching-Forschungszentrum</strong> to <strong>Nordfriedhof</strong> (or <strong>Alte Heide</strong>) and use your pre-arranged <strong>24/7 Keybox code</strong>.</div>
+            <div><strong>München Hbf → Timehouse Munich (Leopoldstraße 204a, 80804 Munich · Booking #<code>6724144172</code>) OR Bob W Munich City Centre (Schwanthalerstr. 61 · Booking #<code>5210364141</code>):</strong><br>
+            • <strong>Option A — Timehouse Munich (Leopoldstraße 204a, 80804 Munich):</strong> Reception closes at <strong>22:30</strong>; you requested late check-in and Timehouse instructed you to <strong>message their WhatsApp on arrival</strong> (or email <code>wecare@timehouse.de</code> / call <code>+49 89 230 200 00</code> for your <strong>24/7 Keybox code</strong> in case of delay). Take a taxi from Hbf North Exit (~15 mins, ~€25) or S-Bahn to Marienplatz + <strong>U6 towards Garching-Forschungszentrum</strong> to <strong>Nordfriedhof</strong> (or <strong>Alte Heide</strong>).<br>
+            • <strong>Option B — Bob W Munich City Centre (Schwanthalerstr. 61, 80336 Munich):</strong> Just a 4-minute walk south from München Hbf! 100% digital self check-in from 15:00 via online form &amp; door code.</div>
           </div>
         </div>
         <div class="card">
           <img src="assets/images/tgv_train.jpg" alt="TGV Euroduplex First Class train from Colmar and Strasbourg to Munich">
           <div class="card-body">
-            <h3>Timehouse Munich Serviced Apartment</h3>
-            <p>Located at <strong>Leopoldstraße 204a, 80804 Munich</strong> in northern <strong>Schwabing</strong>. Features a full designer kitchen (dishwasher, stove, fridge) so you can store artisan sourdough bread, Bavarian cheeses, and Franconian wine.</p>
+            <h3>Munich Accommodation (Dual Booking Comparison)</h3>
+            <p><strong>Option 2 — Timehouse Munich Serviced Apartments</strong> (<strong>Leopoldstraße 204a, 80804 Munich</strong>, Booking #<code>6724144172</code>) in northern <strong>Schwabing</strong> features a full designer kitchen (dishwasher, stove, fridge), an in-building laundry room, and 6-min walk to the 25-min Lufthansa Express Bus.<br>
+            <strong>Option 1 — Bob W Munich City Centre</strong> (<strong>Schwanthalerstr. 61</strong>, Booking #<code>5210364141</code>) sits 4 mins walk from München Hbf with 24/7 online door code check-in.</p>
             <img src="assets/images/timehouse_room.jpg" alt="Timehouse Munich apartment bedroom in Schwabing" style="height:150px; border-radius:8px; margin-top:0.5rem;">
           </div>
         </div>
@@ -911,7 +1651,9 @@
           </div>
           <div class="tl-item">
             <div class="tl-time">10:30 – 15:30</div>
-            <div><strong>Neuschwanstein Castle (Winter Hours: 10:00 – 16:00):</strong> Book your timed English guided tour slot (~11:30–12:30) weeks in advance at <code>shop.ticket-center-hohenschwangau.de</code>. Walk up (~35–40 mins) or take the horse carriage / shuttle bus (weather permitting; Marienbrücke &amp; shuttle bus close if icy/snowy). Note: bulky rucksacks are not allowed inside the castle.</div>
+            <div><strong>Neuschwanstein Castle (Winter Hours: 10:00 – 16:00 · CONFIRMED TOUR #475 AT 14:15!):</strong><br>
+            • <strong>Confirmed Booking Details:</strong> <strong>Tour Number 475 at 14:15</strong> (Ticket Center Hohenschwangau · <strong>Invoice: <code>39901.1056944</code></strong>).<br>
+            • <strong>CRITICAL ENTRY RULE:</strong> You <strong>must be in the castle courtyard 15 minutes prior (by 14:00 sharp)</strong>—electronic turnstiles lock out latecomers! Enjoy a relaxed lakeside stroll around <em>Alpsee</em>, lunch in Hohenschwangau village, and walk up (~35–40 mins) or take the horse carriage / shuttle bus by <strong>12:45–13:00</strong> (Marienbrücke &amp; shuttle bus close if icy/snowy). Note: bulky rucksacks are not allowed inside the castle.</div>
           </div>
           <div class="tl-item">
             <div class="tl-time">16:05 – 18:30</div>
@@ -1046,26 +1788,28 @@
     <article class="day-card" data-day-card="day-19">
       <div class="day-header">
         <div>
-          <span class="badge danger">Day 7 · Thursday, 19 November 2026 (Departure)</span>
-          <h2>Express 25-Min Transfer from Schwabing to Munich Airport (MUC) for 10:00 AM Flight</h2>
+          <span class="badge danger">Day 7 · Thursday, 19 November – Friday, 20 November 2026 (Return Flights)</span>
+          <h2>Express 25-Min Transfer from Schwabing to Munich Airport (MUC) for Etihad EY 126 (10:30 AM Departure / 10:00 AM Boarding)</h2>
         </div>
         <div style="display:flex; gap:0.5rem; align-items:center;">
-          <span class="badge">Flight: 10:00 AM Departure from MUC</span>
+          <span class="badge">Flight Ref: 7AK639 · EY 126 (10:30 MUC→AUH) + EY 870 (21:15 AUH→HKG)</span>
           <a class="gmaps-btn" href="https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Nordfriedhof,+M%C3%BCnchen/Munich+Airport+(MUC)" target="_blank" rel="noopener">Day 7 Route in Google Maps ↗</a>
         </div>
       </div>
       <div class="timeline">
         <div class="tl-item">
-          <div class="tl-time">06:00 – 06:25</div>
-          <div><strong>Check Out of Timehouse Munich (Leopoldstraße 204a):</strong> Reception opens at 06:30 (or drop keys in the express check-out box if leaving at 06:20). Walk ~6 minutes to the <strong>München Schwabing / Nordfriedhof</strong> Lufthansa Express Bus stop (Ungererstraße / Schenkendorfstraße).</div>
+          <div class="tl-time">06:15 – 06:40</div>
+          <div><strong>Check Out of Timehouse Munich (Leopoldstraße 204a · Booking #<code>6724144172</code>) or Bob W (<code>5210364141</code>):</strong> At Timehouse, reception opens at 06:30 (or drop keys in the express check-out box). Walk ~6 minutes to the <strong>München Schwabing / Nordfriedhof</strong> Lufthansa Express Bus stop (Ungererstraße / Schenkendorfstraße). <em>(If staying at Bob W Schwanthalerstr. 61, walk 4 mins to München Hbf Arnulfstraße for the same Lufthansa Express Bus!).</em></div>
         </div>
         <div class="tl-item">
           <div class="tl-time">06:33 or 06:53</div>
           <div><strong>Lufthansa Express Bus from Schwabing / Nordfriedhof → Munich Airport (MUC):</strong> Departs every 20 minutes (<strong>06:13, 06:33, 06:53, 07:13</strong>). Takes just <strong>25 minutes non-stop</strong> to MUC Terminal 2 / Terminal 1 (€12.50 online / €13.50 from driver; 2 suitcases + 1 carry-on free per person). Far faster than taking the U6 into town + 45-min S1/S8 S-Bahn!</div>
         </div>
         <div class="tl-item">
-          <div class="tl-time">07:15 – 10:00</div>
-          <div><strong>Arrive at Munich Airport (MUC) by 07:18:</strong> Plenty of time for VAT tax-refund customs stamps (<em>Zoll</em>), baggage drop, security, and boarding your <strong>10:00 AM flight</strong>.</div>
+          <div class="tl-time">07:18 – 10:30</div>
+          <div><strong>Arrive at Munich Airport (MUC Terminal 1) by 07:20 for 10:00 AM Boarding / 10:30 AM Etihad EY 126 Flight (Booking Ref: <code>7AK639</code>):</strong> Plenty of time for VAT tax-refund customs stamps (<em>Zoll</em> — keep tax-free camera/wine/spirit purchases accessible before checking bags!), baggage drop, and security before your <strong>10:00 AM</strong> gate boarding and <strong>10:30 AM Etihad Airways EY 126</strong> departure.<br>
+          • <strong>Leg 1 (Thu 19 Nov):</strong> <strong>Etihad Airways EY 126</strong> — Departs Munich (MUC) at <strong>10:30</strong>, arrives Abu Dhabi (AUH) at <strong>19:30</strong> (1h 45m transit).<br>
+          • <strong>Leg 2 (Thu 19 – Fri 20 Nov):</strong> <strong>Etihad Airways EY 870</strong> — Departs Abu Dhabi (AUH) at <strong>21:15</strong>, arrives Hong Kong (HKG) at <strong>08:30 on Friday, 20 November 2026</strong>.</div>
         </div>
       </div>
     </article>
@@ -1586,7 +2330,6 @@
   </footer>
 </div>
 
-<script src="local-config.js"></script>
 <script src="assets/vendor/leaflet.js"></script>
 <script>
 // 1. Main section tabs
@@ -1687,7 +2430,8 @@
     {"id": 114, "name": "★ #14 Fleischerei Domke (NON-NEGOTIABLE MUST-GO!)", "lat": 52.510477, "lng": 13.452073, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Mon–Fri 06:30–18:00, Sat 06:30–14:00 (Closed Sun)", "addr": "Warschauer Str. 64, 10243 Berlin-Friedrichshain", "img": "assets/images/schweinshaxe.jpg", "note": "[Fri 6 Nov · 16:45 MUST-GO!] Because Domke closes at 14:00 on Sat (when you're at Berlin Zoo), visiting Friday afternoon (open until 18:00!) lets you feast on their legendary hot butcher counter: Eisbein, Schnitzel, Bouletten & Currywurst!"},
     {"id": 113, "name": "★ #13 Avci Bistro", "lat": 52.510585, "lng": 13.452151, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Daily until late", "addr": "Kopernikusstraße 30, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_brlo.jpg", "note": "[Fri 6 Nov · 18:00] Literally right around the corner (20 meters!) from Fleischerei Domke for Turkish-Berlin grilled plates & tea."},
     {"id": 119, "name": "★ #19 RAW-Gelände & Michelberger Bar (for #50 MXPSM Schnaps)", "lat": 52.507686, "lng": 13.451869, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7", "addr": "Revaler Str. 99 / Warschauer Str. 39, 10245 Berlin", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 19:00] 4 mins walk south of Domke/Avci! Explore the gritty 1867 railway repair compound & sip MXPSM herbal spirits at Michelberger Hotel bar across the street."},
-    {"id": 121, "name": "★ #21 East Side Gallery (1.3km Painted Berlin Wall)", "lat": 52.505022, "lng": 13.439695, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7 (Illuminated in evening)", "addr": "Mühlenstraße, 10243 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 20:00] Walk the longest surviving section of the Berlin Wall along the Spree from Warschauer Straße to Ostbahnhof."},
+    {"id": 121, "name": "★ #21 East Side Gallery (1.3km Painted Berlin Wall)", "lat": 52.505022, "lng": 13.439695, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7 (Illuminated in evening)", "addr": "Mühlenstraße, 10243 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 17:55] Walk the longest surviving section of the Berlin Wall along the Spree before hopping on the S-Bahn to Yorckschlösschen."},
+    {"id": 174, "name": "★ Yorckschlösschen (CONFIRMED 18:30 Dinner Reservation!)", "lat": 52.4931, "lng": 13.3812, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#067647", "hours": "CONFIRMED TABLE: Fri 6 Nov 2026 at 18:30 (2 People)", "addr": "Yorckstraße 15, 10965 Berlin-Kreuzberg (S/U Yorckstraße)", "img": "assets/images/berlin_brlo.jpg", "note": "[Fri 6 Nov · 18:30 CONFIRMED DINNER] Legendary 1902 Berlin jazz & soul tavern in Kreuzberg! Reservation confirmed for 2 people at 18:30."},
     {"id": 163, "name": "★ #63 Berlin Zoological Garden (MANDATORY MUST-DO!)", "lat": 52.50783, "lng": 13.339416, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Winter Hours: Daily 09:00–16:30 (Animal houses close 16:00; Aquarium til 18:00)", "addr": "Hardenbergplatz 8, 10787 Berlin (Direct U2 from Karlito!)", "img": "assets/images/berlin_zoo.jpg", "note": "[Sat 7 Nov · 09:00–13:30 MUST-DO] Direct 18-min U2 ride from Karlito! 4.5 hours for Giant Pandas, glass-domed Hippo House & giraffes."},
     {"id": 103, "name": "★ #03 Foto-Meyer Digital Imaging", "lat": 52.496226, "lng": 13.341651, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-camera", "color": "#067647", "hours": "Mon–Fri 10:00–18:30, Sat 10:00–15:00 (Closed Sun)", "addr": "Welserstraße 1, 10777 Berlin (U Viktoria-Luise-Platz)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Sat 7 Nov · 13:45–14:45] Just 2 U-Bahn stops south of Berlin Zoo—hit this right after the Zoo before its 15:00 Saturday close!"},
     {"id": 160, "name": "★ #60 The Berlin Art Market by the Zeughaus", "lat": 52.518129, "lng": 13.397811, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Sat & Sun Only 11:00–17:00", "addr": "Am Zeughaus 1-2, 10117 Berlin (Museum Island)", "img": "assets/images/berlin_hackesche.jpg", "note": "[Sat 7 Nov · 15:30–17:00] Open-air art, print, vintage book & craft market beside the Zeughaus on Museum Island."},
@@ -1727,7 +2471,8 @@
     {"id": 234, "name": "✖ #34 Holzschlägermatte (OMITTED — Cable Car Closed in Nov)", "lat": 47.91512, "lng": 7.880996, "region": "region-blackforest", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted", "addr": "Schauinslandstraße 359, 79100 Freiburg", "img": "assets/images/neuschwanstein.jpg", "note": "OMITTED: Mountain pass stop on Schauinsland."},
     {"id": 235, "name": "✖ #35 Schauinslandbahn Cable Car (CLOSED IN NOV FOR MAINTENANCE!)", "lat": 47.936043, "lng": 7.865329, "region": "region-blackforest", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "CLOSED Every November for Herbstrevision", "addr": "Bohrerstraße 11, 79289 Horben", "img": "assets/images/neuschwanstein.jpg", "note": "OMITTED: Cable car shuts down every November for mandatory annual cable inspection. Replaced by Lake Titisee!"},
     {"id": 236, "name": "✖ #36 Die Bergstation Schauinsland (CLOSED IN NOV!)", "lat": 47.90966, "lng": 7.891262, "region": "region-blackforest", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "CLOSED during Nov Cable Car Maintenance", "addr": "Schauinslandstraße 390, 79117 Freiburg", "img": "assets/images/neuschwanstein.jpg", "note": "OMITTED: Top station of the Schauinsland cable car."},
-    {"id": 1, "name": "Timehouse Munich (Hotel Base)", "lat": 48.1765, "lng": 11.5923, "days": ["day-13", "day-14", "day-15", "day-16", "day-17", "day-18", "day-19"], "cat": "cat-hotel", "color": "#005f87", "hours": "Reception 06:30–22:30 (24/7 Keybox)", "addr": "Leopoldstraße 204a, 80804 München (U6 Nordfriedhof)", "img": "assets/images/timehouse_room.jpg", "note": "[Fri 13 – Thu 19 Nov Base] Serviced apartment in Schwabing with full designer kitchen; 6 mins walk to Lufthansa Express Bus."},
+    {"id": 1, "name": "Timehouse Munich (Hotel Option 2 · Booking #6724144172)", "lat": 48.1765, "lng": 11.5923, "days": ["day-13", "day-14", "day-15", "day-16", "day-17", "day-18", "day-19"], "cat": "cat-hotel", "color": "#005f87", "hours": "Reception 06:30–22:30 (WhatsApp Late Check-In / 24/7 Keybox)", "addr": "Leopoldstraße 204a, 80804 München (U6 Nordfriedhof)", "img": "assets/images/timehouse_room.jpg", "note": "[Fri 13 – Thu 19 Nov Base · Ref 6724144172] Serviced apartment in Schwabing with full designer kitchen, laundry room & 6 mins walk to Lufthansa Express Bus."},
+    {"id": 34, "name": "Bob W Munich City Centre (Hotel Option 1 · Booking #5210364141)", "lat": 48.1369, "lng": 11.5562, "days": ["day-13", "day-19"], "cat": "cat-hotel", "color": "#067647", "hours": "Check-in from 15:00 via Online Form / 24/7 Door Code", "addr": "Schwanthalerstraße 61, 80336 München (4 mins walk from Hbf)", "img": "assets/images/timehouse_room.jpg", "note": "[Fri 13 – Thu 19 Nov Overlap Option 1 · Ref 5210364141] 4 mins walk south of München Hbf with 24/7 digital door code check-in."},
     {"id": 2, "name": "München Hauptbahnhof (Hbf)", "lat": 48.1402, "lng": 11.5586, "days": ["day-13", "day-15", "day-16"], "cat": "cat-transit", "color": "#475467", "hours": "24/7 Rail Hub", "addr": "Bayerstraße 10A, 80335 München", "img": "assets/images/tgv_train.jpg", "note": "[Fri 13 Nov 21:46 TGV Arrival & Sun 15 Nov 07:52 Füssen Train] Tracks 27–36 for BRB RB 68 to Füssen."},
     {"id": 3, "name": "Julius Brantner Brothandwerk (Sat-Only Croissants!)", "lat": 48.1518, "lng": 11.5761, "days": ["day-14"], "cat": "cat-bakery", "color": "#b8860b", "hours": "Tue–Sat 08:30–18:30 (Closed Sun/Mon)", "addr": "Adalbertstraße 25, Maxvorstadt (U6 Universität)", "img": "assets/images/sourdough_bakery.jpg", "note": "[Sat 14 Nov · 09:15] Famous 54-layer Butter Croissant & Sourdough Baguette are Fri/Sat specials!"},
     {"id": 27, "name": "★ #51 Feinkost Olé - Spanische Weine & Spezialitäten", "lat": 48.1551, "lng": 11.5751, "days": ["day-14"], "saved": true, "cat": "cat-wine", "color": "#7c3aed", "hours": "Tue–Fri 11:00–19:00, Sat 10:00–16:00", "addr": "Georgenstraße 43, 80799 München (Maxvorstadt)", "img": "assets/images/garibaldi_wein.jpg", "note": "[Sat 14 Nov · 09:50] 4 mins walk north of Julius Brantner! Spanish wine, sherry, jamón Ibérico & Manchego."},
@@ -1742,7 +2487,7 @@
     {"id": 29, "name": "★ #18 Karlsplatz (Stachus)", "lat": 48.139246, "lng": 11.566021, "days": ["day-14"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7", "addr": "Karlsplatz, 80335 München", "img": "assets/images/marienplatz.jpg", "note": "[Sat 14 Nov · 16:50] Grand square & medieval Karlstor gate directly between Kunst-Oase Ottostraße and Calumet/Sauter."},
     {"id": 10, "name": "Calumet Photographic / Foto-Video Sauter", "lat": 48.1355, "lng": 11.5642, "days": ["day-14"], "cat": "cat-camera", "color": "#067647", "hours": "Mon–Sat 10:00–19:00 (Closed Sun)", "addr": "Sonnenstraße 26, 80331 München", "img": "assets/images/calumet_sauter.webp", "note": "[Sat 14 Nov · 17:10] Merged Calumet + Sauter superstore for analog film & used camera bodies."},
     {"id": 11, "name": "Haxnbauer (Reopened at Im Tal 38!)", "lat": 48.1357, "lng": 11.5806, "days": ["day-14"], "cat": "cat-food", "color": "#d97706", "hours": "Daily 11:30–23:00", "addr": "Tal 38, 80331 München (New Address!)", "img": "assets/images/schweinshaxe.jpg", "note": "[Sat 14 Nov · 19:00 Dinner] Reopened by Kuffler at Im Tal 38! Famous 24-hr brined Schweinshaxe & Kalbshaxe."},
-    {"id": 12, "name": "★ #62 Schloss Neuschwanstein & Hohenschwangau", "lat": 47.5576, "lng": 10.7498, "days": ["day-15"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Winter Hours: 10:00–16:00 daily", "addr": "Neuschwansteinstraße 20, 87645 Schwangau", "img": "assets/images/neuschwanstein.jpg", "note": "[Sun 15 Nov · 10:30–15:30] Full-Day Alpine Excursion via Bayern-Ticket (€44 for 2) + RVA Bus 73/78 from Füssen."},
+    {"id": 12, "name": "★ #62 Schloss Neuschwanstein (CONFIRMED 14:15 Tour #475!)", "lat": 47.5576, "lng": 10.7498, "days": ["day-15"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Winter Hours: 10:00–16:00 · CONFIRMED Tour #475 at 14:15 (Courtyard 14:00!)", "addr": "Neuschwansteinstraße 20, 87645 Schwangau (Ticket Center Hohenschwangau)", "img": "assets/images/neuschwanstein.jpg", "note": "[Sun 15 Nov · 14:15 Tour #475 · Invoice 39901.1056944] Must be in the courtyard 15 mins prior (14:00)! Covered by Bayern-Ticket (€44 for 2)."},
     {"id": 13, "name": "KZ-Gedenkstätte Dachau (Memorial Site)", "lat": 48.2701, "lng": 11.4683, "days": ["day-16"], "cat": "cat-sight", "color": "#005f87", "hours": "Open Daily 09:00–17:00 (Including Mondays!)", "addr": "Alte Römerstraße 75, 85221 Dachau", "img": "assets/images/dachau.jpg", "note": "[Mon 16 Nov · 10:30–14:15] 11:00 English Guided Tour. Covered by MVV Zone M-1 Group Day Ticket (€21.20)."},
     {"id": 14, "name": "Foto Dinkel (Weekday Pro Camera Shop)", "lat": 48.1369, "lng": 11.5608, "days": ["day-16"], "cat": "cat-camera", "color": "#067647", "hours": "Mon–Fri 09:00–17:30 (CLOSED SAT/SUN!)", "addr": "Landwehrstraße 6, 80336 München", "img": "assets/images/foto_dinkel.jpg", "note": "[Mon 16 Nov · 15:00] Right off Hbf after returning from Dachau on S2. Pro used gear & analog film."},
     {"id": 15, "name": "★ #54 Augustiner Bräustuben (Holzfass Beer Hall)", "lat": 48.1389, "lng": 11.5442, "days": ["day-16"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Daily 10:00–24:00", "addr": "Landsberger Straße 19, 80339 München (Hackerbrücke)", "img": "assets/images/augustiner.jpg", "note": "[Mon 16 Nov · 17:00] Locals' favorite brewery taproom pouring Edelstoff & Helles from wooden barrels (Holzfass)."},
@@ -1768,7 +2513,7 @@
   var DAY_GMAPS = {
     "all": "https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Julius+Brantner+Brothandwerk,+Adalbertstra%C3%9Fe+25,+M%C3%BCnchen/Schneider+Br%C3%A4uhaus,+Tal+7,+M%C3%BCnchen/Marienplatz,+M%C3%BCnchen/Viktualienmarkt,+M%C3%BCnchen/Caf%C3%A9+Frischhut,+Pr%C3%A4lat-Zistl-Stra%C3%9Fe+8,+M%C3%BCnchen/Leica+Store+M%C3%BCnchen,+Maffeistra%C3%9Fe+4/Kunst-Oase,+Ottostra%C3%9Fe+6,+M%C3%BCnchen/Calumet+Photographic+M%C3%BCnchen,+Sonnenstra%C3%9Fe+26/Haxnbauer,+Tal+38,+M%C3%BCnchen",
     "day-05": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zeit+f%C3%BCr+Brot,+Alte+Sch%C3%B6nhauser+Str.+4,+Berlin/Topographie+des+Terrors,+Berlin/Brandenburger+Tor,+Berlin/Reichstag,+Berlin/Mampe+Berlin,+Am+Tempelhofer+Berg+6,+Berlin/BRLO+Brwhouse,+Sch%C3%B6neberger+Str.+16,+Berlin",
-    "day-06": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Safelight+Berlin,+Schivelbeiner+Str.+9,+Berlin/FOTOIMPEX,+Alte+Sch%C3%B6nhauser+Str.+32B,+Berlin/Hackesche+H%C3%B6fe,+Berlin/Haus+Schwarzenberg,+Rosenthaler+Str.+39,+Berlin/Silo+Coffee,+Gabriel-Max-Stra%C3%9Fe+4,+Berlin/Boxhagener+Platz,+Berlin/Fleischerei+Domke,+Warschauer+Str.+64,+Berlin/Avci+Bistro,+Kopernikusstra%C3%9Fe+30,+Berlin/RAW-Gel%C3%A4nde,+Berlin/East+Side+Gallery,+Berlin",
+    "day-06": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Safelight+Berlin,+Schivelbeiner+Str.+9,+Berlin/FOTOIMPEX,+Alte+Sch%C3%B6nhauser+Str.+32B,+Berlin/Hackesche+H%C3%B6fe,+Berlin/Haus+Schwarzenberg,+Rosenthaler+Str.+39,+Berlin/Silo+Coffee,+Gabriel-Max-Stra%C3%9Fe+4,+Berlin/Boxhagener+Platz,+Berlin/Fleischerei+Domke,+Warschauer+Str.+64,+Berlin/Avci+Bistro,+Kopernikusstra%C3%9Fe+30,+Berlin/RAW-Gel%C3%A4nde,+Berlin/East+Side+Gallery,+Berlin/Yorckschl%C3%B6sschen,+Yorckstra%C3%9Fe+15,+10965+Berlin",
     "day-07": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zoologischer+Garten+Berlin/Foto-Meyer,+Welserstra%C3%9Fe+1,+Berlin/Am+Zeughaus+1-2,+Berlin/St%C3%A4ndige+Vertretung,+Schiffbauerdamm+8,+Berlin",
     "day-08": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Gedenkst%C3%A4tte+Berliner+Mauer,+Bernauer+Str./Mauerpark+Flohmarkt,+Berlin/Dr.+Kochan+Liquor+Culture,+Immanuelkirchstra%C3%9Fe+4,+Berlin/Am+Zeughaus+1-2,+Berlin/Berlin+Hbf",
     "day-09": "https://www.google.com/maps/dir/Freiburg+Hbf/Mathildenstra%C3%9Fe+14,+79106+Freiburg/G%C3%BCnter+Coffee+Store,+Freiburg/Markthalle,+Freiburg/Confiserie+Gmeiner,+Freiburg/caf%C3%A9+hinterzimmer,+Freiburg/Freiburgs+Finest,+Freiburg/Alte+Wache,+Freiburg/Hausbrauerei+Feierling,+Freiburg",
@@ -1909,6 +2654,163 @@
 
     renderMap('all');
   }
+
+  // 5. Quick-Jump Pills & Map Collapse Toggle
+  function activateTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
+    });
+    document.querySelectorAll('.section-panel').forEach(function(p) {
+      p.classList.toggle('active', p.id === tabId);
+    });
+    var target = document.getElementById(tabId);
+    if (target && typeof target.scrollIntoView === 'function') {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  document.querySelectorAll('[data-jump-tab]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tabId = btn.getAttribute('data-jump-tab');
+      activateTab(tabId);
+      if (tabId === 'sec-berlin' && window.setMapFilter) window.setMapFilter('region-berlin');
+      if (tabId === 'sec-blackforest' && window.setMapFilter) window.setMapFilter('region-blackforest');
+      if (tabId === 'sec-itinerary' && window.setMapFilter) window.setMapFilter('all');
+    });
+  });
+
+  var toggleMapBtn = document.getElementById('toggle-map-btn');
+  var mapBox = document.getElementById('interactive-map-box');
+  if (toggleMapBtn && mapBox) {
+    toggleMapBtn.addEventListener('click', function() {
+      var isHidden = mapBox.style.display === 'none';
+      mapBox.style.display = isHidden ? '' : 'none';
+      toggleMapBtn.textContent = isHidden ? '🗺️ Hide/Show Map' : '🗺️ Show Interactive Map';
+    });
+  }
+
+  // 6. Bookings Category Filter & 1-Click Copy Confirmation Codes
+  document.querySelectorAll('[data-booking-filter]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('[data-booking-filter]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.getAttribute('data-booking-filter');
+      document.querySelectorAll('[data-booking-card]').forEach(function(card) {
+        card.style.display = (cat === 'all' || card.getAttribute('data-booking-card') === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  document.querySelectorAll('.copy-code-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var code = btn.getAttribute('data-copy') || '';
+      var orig = btn.innerHTML;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).catch(function() {});
+      }
+      btn.classList.add('copied');
+      btn.textContent = '✓ Copied: ' + code;
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        btn.innerHTML = orig;
+      }, 1800);
+    });
+  });
+
+  // 7. Interactive Packing Checklist with LocalStorage Persistence
+  var PACK_STORAGE_KEY = 'germany2026_packing_v1';
+  var savedPackState = {};
+  try {
+    var rawPack = localStorage.getItem(PACK_STORAGE_KEY);
+    if (rawPack) savedPackState = JSON.parse(rawPack) || {};
+  } catch (e) {}
+
+  var hideCheckedItems = false;
+  var packCheckboxes = document.querySelectorAll('input[type="checkbox"][data-pack-id]');
+
+  function saveAndRenderPacking() {
+    var total = packCheckboxes.length;
+    var checkedCount = 0;
+    packCheckboxes.forEach(function(cb) {
+      var id = cb.getAttribute('data-pack-id');
+      var isChecked = !!cb.checked;
+      savedPackState[id] = isChecked;
+      if (isChecked) checkedCount++;
+      var itemLi = cb.closest('.pack-item');
+      if (itemLi) {
+        itemLi.classList.toggle('checked', isChecked);
+        itemLi.style.display = (hideCheckedItems && isChecked) ? 'none' : '';
+      }
+    });
+    try {
+      localStorage.setItem(PACK_STORAGE_KEY, JSON.stringify(savedPackState));
+    } catch (e) {}
+
+    var pct = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+    var countEl = document.getElementById('pack-count-text');
+    var pctEl = document.getElementById('pack-pct-text');
+    var quickPctEl = document.getElementById('quick-pack-pct');
+    var fillEl = document.getElementById('pack-progress-fill');
+    var barEl = document.getElementById('pack-progressbar');
+    if (countEl) countEl.textContent = checkedCount + ' / ' + total;
+    if (pctEl) pctEl.textContent = pct + '%';
+    if (quickPctEl) quickPctEl.textContent = pct + '%';
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (barEl) barEl.setAttribute('aria-valuenow', String(pct));
+  }
+
+  packCheckboxes.forEach(function(cb) {
+    var id = cb.getAttribute('data-pack-id');
+    if (savedPackState[id]) cb.checked = true;
+    cb.addEventListener('change', saveAndRenderPacking);
+    var itemLi = cb.closest('.pack-item');
+    if (itemLi) {
+      itemLi.addEventListener('click', function(ev) {
+        if (ev.target !== cb) {
+          cb.checked = !cb.checked;
+          saveAndRenderPacking();
+        }
+      });
+    }
+  });
+
+  var toggleUncheckedBtn = document.getElementById('pack-toggle-unchecked');
+  if (toggleUncheckedBtn) {
+    toggleUncheckedBtn.addEventListener('click', function() {
+      hideCheckedItems = !hideCheckedItems;
+      toggleUncheckedBtn.textContent = hideCheckedItems ? '👁️ Show All Items' : '👁️ Hide Checked Items';
+      saveAndRenderPacking();
+    });
+  }
+
+  var checkAllBtn = document.getElementById('pack-check-all');
+  if (checkAllBtn) {
+    checkAllBtn.addEventListener('click', function() {
+      packCheckboxes.forEach(function(cb) { cb.checked = true; });
+      saveAndRenderPacking();
+    });
+  }
+
+  var resetAllBtn = document.getElementById('pack-reset-all');
+  if (resetAllBtn) {
+    resetAllBtn.addEventListener('click', function() {
+      packCheckboxes.forEach(function(cb) { cb.checked = false; });
+      saveAndRenderPacking();
+    });
+  }
+
+  document.querySelectorAll('[data-pack-filter]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('[data-pack-filter]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var cat = btn.getAttribute('data-pack-filter');
+      document.querySelectorAll('[data-pack-cat]').forEach(function(card) {
+        card.style.display = (cat === 'all' || card.getAttribute('data-pack-cat') === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  saveAndRenderPacking();
 
 </script>
 </body>

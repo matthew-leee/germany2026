@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0] - 2026-10-31
+### Added
+- **Master Bookings & Confirmation Wallet (`sec-bookings`):** Added a dedicated interactive section housing all 12 confirmed flight, accommodation, rail, dining, and tour reservations (Wed 4 Nov – Fri 20 Nov 2026) with category filters (`All`, `Flights`, `Hotels & Airbnbs`, `Trains`, `Dining & Tours`) and 1-click clipboard copy buttons for every confirmation number (`7AK639`, `5126078467`, `0698 9390 6002 7647`, `HMKTPHQE4H`, `6935982825`, `815D4A45A0E85F6C`, `NZM3KL`, `5210364141`, `6724144172`, `39901.1056944`).
+- **Interactive Packing Checklist & 3-Stop Laundromat Guide (`sec-packing`):** Added a 35-item interactive packing checklist tailored to a 5-to-6-day November thermal capsule washed 2–3 times across the trip, with `localStorage` persistence, real-time progress bar, category/unchecked filters, and print-friendly layout.
+- **Verified Laundromat Strategy:** Mapped walking-distance self-service laundromats (*SB-Waschsalon*) and apartment facilities across all 3 legs: **Waschsalon Schleudertraum Mitte** (`Memhardstraße 1`, open Sundays 06:00–22:00) & **Waschsalon 115** (`Torstraße 115`) in Berlin, **30°grad SB Waschsalon** (`Lehener Straße 27`) & **Wasch & Fun** (`Egonstraße 25`) in Freiburg-Stühlinger, and **Timehouse Munich's in-building guest laundry room (*Waschküche*)** + **SB Waschsalon Schwabing** (`Leopoldstraße 100`) in Munich.
+- **UI/UX Convenience Upgrades:** Added a top Quick-Jump Command Bar with live packing completion percentage, 1-click region/tab switching, and a map collapse toggle (`Hide/Show Map`) for faster mobile reading.
+
+### Changed
+- Updated all itinerary sections and map pins with the latest confirmed booking details:
+  - Outbound flights: **Etihad EY 871** (Wed 4 Nov 19:35 HKG → 00:25 AUH) + **Condor DE 2553** (Thu 5 Nov 02:20 AUH → 06:20 BER, Ref `7AK639`).
+  - Berlin: **Karlito Apartmenthaus** Family Apartment with Balcony (`5126078467`) and confirmed **Friday 6 Nov 18:30 dinner reservation at Yorckschlösschen** (`Yorckstraße 15`, pinned as #12 on Friday's route after Fleischerei Domke).
+  - Freiburg & Colmar: **ÖBB Nightjet** (`0698 9390 6002 7647`), **Schlossbergblick 1-Zimmer Dachgeschoss Apartment** hosted by Mario & Nadine (`HMKTPHQE4H`), **Logis Hôtel Saint-Martin** Superior Room (`6935982825`), and **Domaine François Baur** biodynamic wine tour shifted to **Fri 13 Nov at 10:00 AM**.
+  - Munich: Highlighted the overlapping hotel bookings (**Bob W Munich City Centre** `#5210364141` at `Schwanthalerstr. 61` vs **Timehouse Serviced Apartments** `#6724144172` at `Leopoldstraße 204a` with WhatsApp late check-in), **Neuschwanstein Castle Tour #475 at 14:15** on Sun 15 Nov (Invoice `39901.1056944`, mandatory 14:00 courtyard arrival), and return flights **Etihad EY 126** (10:30 MUC → 19:30 AUH) + **EY 870** (21:15 AUH → 08:30 HKG on Fri 20 Nov, Ref `7AK639`).
+
 ## [1.1.0] - 2026-10-17
 ### Changed
 - Full mobile responsiveness pass verified with gstack headless Chromium ($B) at 320/360/375/390/414/768/1280 px: zero horizontal page overflow at every width (was 2px leak at 320px from a nowrap Google Maps button).

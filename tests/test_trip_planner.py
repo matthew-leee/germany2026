@@ -1202,7 +1202,66 @@ def test_responsive_layout_rules_present() -> None:
     assert "minmax(min(340px, 100%), 1fr)" in src, "grid-2 must not overflow narrow phones"
     assert "minmax(min(290px, 100%), 1fr)" in src, "grid-3 must not overflow narrow phones"
     assert "minmax(min(260px, 100%), 1fr)" in src, "logistics-bar must not overflow narrow phones"
-    assert src.count('<div class="table-scroll">') >= 4, (
-        "wide fare/audit tables must be wrapped in .table-scroll containers"
+    assert src.count('<div class="table-scroll">') >= 5, (
+        "wide fare/audit/laundry tables must be wrapped in .table-scroll containers"
     )
     assert re.search(r"max-width:\s*620px", src), "mobile breakpoint for swipe-scrollable tab bars missing"
+
+
+# ---------------------------------------------------------------------------
+# REQ-10: Master Bookings Wallet, Interactive Packing Checklist & Laundry Guide
+# ---------------------------------------------------------------------------
+
+REQ10_BOOKING_AND_PACKING_CHECKS = [
+    ("outbound_flights_etihad_condor_7ak639",
+     "Outbound flights Etihad EY 871 (19:35 HKG->00:25 AUH) + Condor DE 2553 (02:20 AUH->06:20 BER), Ref 7AK639",
+     near("EY 871", "DE 2553", "7AK639", hhmm("19:35"), hhmm("06:20"), window=450)),
+    ("berlin_karlito_booking_5126078467",
+     "Karlito Apartmenthaus Family Apartment with Balcony, Booking #5126078467",
+     near("Karlito", "5126078467", Re(r"balcony"), window=320)),
+    ("berlin_yorckschloesschen_fri_6_nov_1830",
+     "Yorckschlösschen confirmed dinner reservation Fri 6 Nov at 18:30 for 2 people",
+     near("Yorckschlösschen", hhmm("18:30"), Re(r"\b2\b"), window=280)),
+    ("oebb_nightjet_booking_0698_9390_6002_7647",
+     "ÖBB Nightjet Berlin Hbf (Tiefgeschoß) to Freiburg(Breisgau) Hbf booking code 0698 9390 6002 7647",
+     near("0698 9390 6002 7647", Re(r"tiefgeschoss"), "Freiburg", window=320)),
+    ("freiburg_airbnb_mario_nadine_hmktphqe4h",
+     "Freiburg Airbnb Schlossbergblick 1-Zimmer Dachgeschoss Apartment hosted by Mario & Nadine, code HMKTPHQE4H",
+     near("Schlossbergblick", "Mario", "Nadine", "HMKTPHQE4H", window=320)),
+    ("colmar_logis_saint_martin_6935982825",
+     "Logis Hôtel Saint-Martin Colmar Superior Double or Twin Room, booking #6935982825",
+     near("Saint-Martin", "6935982825", Re(r"superior"), window=320)),
+    ("turckheim_domaine_baur_shifted_fri_13_nov",
+     "Domaine François Baur biodynamic wine tasting shifted from Nov 12 to Fri 13 Nov at 10:00 AM",
+     near("Domaine", "Baur", hhmm("10:00"), Re(r"rebook\w*|shift\w*"), window=360)),
+    ("munich_overlap_bob_w_5210364141_and_timehouse_6724144172",
+     "Overlapping Munich bookings: Bob W Munich City Centre (Schwanthalerstr. 61, #5210364141) and Timehouse (#6724144172, WhatsApp late check-in)",
+     AllOf(near("Bob W", "Schwanthalerstr", "5210364141", window=300),
+           near("Timehouse", "6724144172", Re(r"whatsapp"), window=350))),
+    ("neuschwanstein_tour_475_1415_invoice_39901_1056944",
+     "Neuschwanstein Castle Tour #475 at 14:15 (15 mins prior in courtyard), Invoice 39901.1056944",
+     near("Neuschwanstein", hhmm("14:15"), "475", "39901.1056944", window=380)),
+    ("return_flights_ey126_ey870_7ak639",
+     "Return flights Etihad EY 126 (10:30 MUC->19:30 AUH) + EY 870 (21:15 AUH->08:30 HKG Nov 20), Ref 7AK639",
+     near("EY 126", "EY 870", hhmm("10:30"), hhmm("21:15"), hhmm("08:30"), "7AK639", window=500)),
+    ("laundromat_strategy_berlin_freiburg_munich",
+     "Verified 3-stop laundromat guide across Berlin (Schleudertraum / Waschsalon 115), Freiburg (30grad Lehener Str. 27 / Wasch & Fun Egonstraße 25), and Munich (Timehouse Waschküche / SB Waschsalon)",
+     AllOf(near("Schleudertraum", "Memhardstr", window=260),
+           near(Re(r"30\W*grad"), "Lehener", "Egonstraße", window=380),
+           near("Timehouse", Re(r"waschkueche|laundry\s*room"), window=320))),
+]
+
+
+@_parametrize(REQ10_BOOKING_AND_PACKING_CHECKS)
+def test_req10_bookings_and_packing_laundry(page: Page, check_id, description, matcher) -> None:
+    """REQ-10: all 12 updated user bookings, interactive packing checklist, and 3-stop laundromat guide."""
+    assert_match(matcher, f"REQ-10 {check_id}: {description}", page)
+
+
+def test_req10_interactive_packing_checkboxes_present(page: Page) -> None:
+    """REQ-10: interactive packing checklist has >= 25 checkboxes persisted via localStorage."""
+    assert page.exists
+    checkboxes = re.findall(r'input\s+type="checkbox"\s+data-pack-id="[^"]+"', page.source)
+    assert len(checkboxes) >= 25, f"Expected >= 25 packing checkboxes, found {len(checkboxes)}"
+    assert "localStorage" in page.source, "Packing checklist must persist state in localStorage"
+
