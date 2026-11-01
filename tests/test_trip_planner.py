@@ -1,4 +1,4 @@
-"""Acceptance test suite for the Munich & Bavaria trip planner deliverable.
+"""Acceptance test suite for the Germany & Alsace (4-20 Nov 2026) planner.
 
 Validates ``index.html`` (repository root) against every requirement recorded in
 the authoritative vision source:
@@ -9,7 +9,7 @@ Requirement coverage
 --------------------
 REQ-01  Inbound rail logistics (TGV INOUI 2362 + 9577, Fri 13 Nov 2026) ... REQ-01
 REQ-02  Timehouse Munich accommodation & the 22:30 check-in trap ......... REQ-02
-REQ-03  Outbound flight (Thu 19 Nov 2026, 10:00 AM, MUC) ................. REQ-03
+REQ-03  Return flight (Thu 19 Nov 2026, Etihad EY 126 at 10:30, MUC) ..... REQ-03
 REQ-04  Mandatory day trips (Neuschwanstein Sun 15 Nov + Dachau Mon 16 Nov) REQ-04
 REQ-05  Mandatory Christmas market (Residenz Kaiserhof) ................. REQ-05
 REQ-06  Interests: delicacies, beer, must-sees, neighborhoods, museum
@@ -19,6 +19,9 @@ REQ-07  Bavarian transport & ticketing survival guide ................... REQ-07
 REQ-08  HK first-timer to Germany hiccups ............................... REQ-08
 REQ-09  Interactive, responsive, self-contained HTML5 deliverable with
         verified local photographs (also the file/validity/image checks) . REQ-09
+REQ-10  Master bookings wallet, packing checklist & laundromat guide ...... REQ-10
+Revision  Revised itinerary (Berlin leg, Black Forest hours, 81-pin audit,
+        Hamy, Foto Erhardt) as approved and verified on 1 Nov 2026
 
 How matching works
 ------------------
@@ -745,11 +748,11 @@ REQ03_CHECKS = [
     ("date_thu_19_nov_2026",
      "departure date Thursday 19 Nov 2026",
      on_weekday("thu", 19)),
-    ("flight_10am_from_muc",
-     "10:00 AM flight departing Munich Airport (MUC)",
-     near(Re(r"\b0?10[:.]\d{2}\b|\b10\W{0,2}(?:am|a\.m\.|uhr)"),
+    ("flight_ey126_1030_from_muc",
+     "Etihad EY 126 flight departing Munich Airport (MUC) at 10:30",
+     near(Re(r"\bey\W{0,3}126\b"), hhmm("10:30"),
           Re(r"\bmuc\b|munich\s*airport|flughafen\s*muenchen|flughafen\s*munchen|airport"),
-          window=240)),
+          window=300)),
     ("departure_flight",
      "the 19 Nov 2026 departure is explicitly a flight",
      near(nov_date(19), Re(r"depart\w*|flight|flug\w*|abflug|leaving"), window=320)),
@@ -954,7 +957,10 @@ REQ06_CHECKS = [
     ("camera_leica_store_maffeistr",
      "Leica Store & Galerie at Maffeistrasse",
      near(Re(r"leica"), Re(r"maffeistr"), window=280)),
-    ("camera_foto_dinkel", "Foto Dinkel", seq("Foto", "Dinkel", gap=r"\W{0,8}")),
+    ("camera_foto_erhardt_renamed",
+     "Foto Erhardt (ehem. Foto Dinkel) on Landwehrstraße 6, open Mon-Fri 09:30-18:30 / Sat 10:00-16:00",
+     near(Re(r"foto\s*erhardt"), Re(r"landwehrstr"), hhmm("09:30"), hhmm("18:30"),
+          hhmm("16:00"), window=500)),
     ("camera_calumet", "Calumet", lit("Calumet")),
     ("camera_sauter", "Sauter", lit("Sauter")),
 ]
@@ -1118,7 +1124,7 @@ def test_req02_timehouse_accommodation(page: Page, check_id, description, matche
 
 @_parametrize(REQ03_CHECKS)
 def test_req03_outbound_flight(page: Page, check_id, description, matcher) -> None:
-    """REQ-03: departure Thursday 19 Nov 2026, 10:00 AM flight from MUC."""
+    """REQ-03: departure Thursday 19 Nov 2026, Etihad EY 126 at 10:30 from MUC."""
     assert_match(matcher, f"REQ-03 {check_id}: {description}", page)
 
 
@@ -1234,10 +1240,13 @@ REQ10_BOOKING_AND_PACKING_CHECKS = [
     ("turckheim_domaine_baur_shifted_fri_13_nov",
      "Domaine François Baur biodynamic wine tasting shifted from Nov 12 to Fri 13 Nov at 10:00 AM",
      near("Domaine", "Baur", hhmm("10:00"), Re(r"rebook\w*|shift\w*"), window=360)),
-    ("munich_overlap_bob_w_5210364141_and_timehouse_6724144172",
-     "Overlapping Munich bookings: Bob W Munich City Centre (Schwanthalerstr. 61, #5210364141) and Timehouse (#6724144172, WhatsApp late check-in)",
-     AllOf(near("Bob W", "Schwanthalerstr", "5210364141", window=300),
-           near("Timehouse", "6724144172", Re(r"whatsapp"), window=350))),
+    ("munich_single_confirmed_base_timehouse_6724144172",
+     "Timehouse (#6724144172) is the sole confirmed Munich base with the WhatsApp late check-in",
+     near("Timehouse", "6724144172", Re(r"whatsapp"), window=350)),
+    ("munich_bob_w_only_a_cancelled_record",
+     "Bob W Munich City Centre (Schwanthalerstr. 61, #5210364141) appears only as a cancelled/archived record",
+     near(Re(r"bob\s*w"), Re(r"cancel\w*|archiv\w*|stale"),
+          Re(r"5210364141|schwanthalerstr"), window=340)),
     ("neuschwanstein_tour_475_1415_invoice_39901_1056944",
      "Neuschwanstein Castle Tour #475 at 14:15 (15 mins prior in courtyard), Invoice 39901.1056944",
      near("Neuschwanstein", hhmm("14:15"), "475", "39901.1056944", window=380)),
@@ -1254,7 +1263,8 @@ REQ10_BOOKING_AND_PACKING_CHECKS = [
 
 @_parametrize(REQ10_BOOKING_AND_PACKING_CHECKS)
 def test_req10_bookings_and_packing_laundry(page: Page, check_id, description, matcher) -> None:
-    """REQ-10: all 12 updated user bookings, interactive packing checklist, and 3-stop laundromat guide."""
+    """REQ-10: confirmed bookings (Timehouse as the single Munich base, Bob W kept
+    only as a cancelled record), interactive packing checklist and laundromat guide."""
     assert_match(matcher, f"REQ-10 {check_id}: {description}", page)
 
 
@@ -1264,4 +1274,137 @@ def test_req10_interactive_packing_checkboxes_present(page: Page) -> None:
     checkboxes = re.findall(r'input\s+type="checkbox"\s+data-pack-id="[^"]+"', page.source)
     assert len(checkboxes) >= 25, f"Expected >= 25 packing checkboxes, found {len(checkboxes)}"
     assert "localStorage" in page.source, "Packing checklist must persist state in localStorage"
+
+
+def test_req10_bob_w_is_never_presented_as_an_active_munich_hotel(page: Page) -> None:
+    """REQ-10: the traveller must see exactly one Munich hotel. Every mention of
+    Bob W has to sit inside a cancellation notice, otherwise the old overlapping
+    booking would look like a live reservation again."""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    mentions = list(re.finditer(r"bob\s*w", page.corpus))
+    for mention in mentions:
+        context = page.corpus[max(0, mention.start() - 260): mention.start() + 420]
+        assert re.search(r"cancel\w*|archiv\w*|stale", context), (
+            "Bob W is mentioned outside a cancellation context, so the site would "
+            f"look like it still books two Munich hotels: ...{context}..."
+        )
+
+
+def test_req03_return_flight_never_departs_at_1000(page: Page) -> None:
+    """REQ-03: EY 126 departs MUC at 10:30. The superseded 10:00 departure time
+    must not survive anywhere next to the flight, or the traveller may plan the
+    airport transfer an hour too generously."""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    stale = re.findall(
+        r"ey\s*126[^.]{0,60}?\bdeparts?\b[^.]{0,30}?\b0?10[:.]00\b", page.corpus
+    )
+    assert not stale, (
+        "EY 126 must be documented as departing 10:30, not 10:00; found: "
+        + "; ".join(stale)
+    )
+
+
+# ---------------------------------------------------------------------------
+# Revised itinerary (approved & verified 1 Nov 2026)
+#
+# The five legs were re-checked against published hours and the user's shared
+# Google Maps list. These checks pin the user-visible outcome of that revision:
+# the rewritten Berlin leg, the corrected Black Forest opening hours, the
+# 81-place list audit and the renamed/added Munich stops.
+# ---------------------------------------------------------------------------
+
+MALY_KSIAZE = Re(r"ma\S{0,2}y\s*ksi\S{0,6}")
+
+REVISION_CHECKS = [
+    # -- Berlin: Thu 5 Nov (arrival + Zeit für Brot + Mampe + BRLO) --------
+    ("berlin_thu_zeit_fuer_brot_hours",
+     "Zeit für Brot on Thu 5 Nov within its verified Mon-Fri 07:00-20:00 hours",
+     near(Re(r"zeit\s*fuer\s*brot"), on_weekday("thu", 5), hhmm("07:00"), hhmm("20:00"),
+          window=600)),
+    ("berlin_thu_mampe_hours",
+     "Mampe Berlin verified Mon-Fri 10:00-18:00 for the Thu 5 Nov tasting",
+     near(Re(r"mampe"), Re(r"mon\W{0,3}fri"), hhmm("10:00"), hhmm("18:00"),
+          window=320)),
+    ("berlin_thu_brlo_monday_closed",
+     "BRLO Brwhouse states it is closed on Mondays",
+     near(Re(r"brlo"),
+          Re(r"mon\w*\W{0,3}closed|closed\w*\W{0,3}mon|montag\w*\W{0,12}geschlossen"),
+          window=400)),
+
+    # -- Berlin: Fri 6 Nov (Domke breakfast, cameras, Yorckschlösschen) ----
+    ("berlin_fri_domke_breakfast_hours",
+     "Fleischerei Domke ~09:30 Hackepeter breakfast inside its Mon-Fri 06:00-21:00 hours",
+     near(Re("domke"), hhmm("09:30"), hhmm("06:00"),
+          Re(r"breakfast|fruehstueck"), window=420)),
+    ("berlin_fri_safelight_and_maly_ksiaze",
+     "Fri 6 Nov camera stop at Safelight followed by Mały Książę Polish groceries",
+     near(Re("safelight"), MALY_KSIAZE, window=300)),
+
+    # -- Berlin: Sat 7 Nov (Zoo, Foto-Meyer, C/O Berlin, Hamy) -------------
+    ("berlin_sat_zoo_november_hours",
+     "Berlin Zoo November hours 09:00-16:30",
+     near(Re(r"zoologischer\s*garten|berlin\s*zoo"), Re(r"november"),
+          hhmm("09:00"), hhmm("16:30"), window=380)),
+    ("berlin_sat_foto_meyer_mon_sat_hours",
+     "Foto-Meyer corrected hours Mon-Sat 10:00-19:00",
+     near("Foto-Meyer", Re(r"mon\W{0,3}sat"), hhmm("10:00"), hhmm("19:00"),
+          window=350)),
+    ("berlin_sat_co_berlin_amerika_haus",
+     "C/O Berlin at Amerika Haus as the Sat 7 Nov photography stop",
+     near(Re(r"c/o\s*berlin"), Re(r"amerika\s*haus"), window=200)),
+    ("berlin_sat_hamy_vietnamese_dinner",
+     "Hamy Vietnamese dinner on Sat 7 Nov",
+     near("Hamy", Re(r"vietnam"), Re(r"dinner|19:00"), window=380)),
+
+    # -- Berlin: Sun 8 Nov (Wall Memorial, Mauerpark, Nightjet NJ 408) -----
+    ("berlin_sun_wall_memorial_and_mauerpark",
+     "Sun 8 Nov combines the Berlin Wall Memorial with the Mauerpark flea market",
+     near(Re(r"berlin\s*wall\s*memorial"), Re(r"mauerpark\W{0,40}(?:flohmarkt|flea)"),
+          window=360)),
+    ("berlin_sun_mauerpark_hours",
+     "Mauerpark flea market verified Sunday hours 10:00-18:00",
+     near(Re(r"mauerpark"), Re(r"sunday"), hhmm("10:00"), hhmm("18:00"), window=340)),
+    ("berlin_sun_nightjet_nj408_2052_platform3",
+     "Nightjet NJ 408 departs Berlin Hbf platform 3 at 20:52 and reaches Freiburg at 06:17",
+     near(Re(r"nj\s*408"), hhmm("20:52"), Re(r"bahnsteig\s*3"), hhmm("06:17"),
+          window=450)),
+
+    # -- Black Forest / Alsace: Mon 9, Wed 11, Thu 12 Nov ------------------
+    ("blackforest_mon_kolben_kaffee_breakfast",
+     "Monday breakfast at Kolben Kaffee within its Mon-Sat 07:30 opening hours",
+     near(Re(r"kolben\s*kaffee"), Re(r"mon\W{0,3}sat"), hhmm("07:30"),
+          Re(r"breakfast|fruehstueck"), window=420)),
+    ("blackforest_thu_freiburgs_finest_1000",
+     "Freiburgs Finest moved to Thu 12 Nov 10:00 and closes at 18:00",
+     near(Re(r"freiburgs\s*finest"), on_weekday("thu", 12), hhmm("10:00"),
+          hhmm("18:00"), window=500)),
+    ("blackforest_schauinsland_omitted_for_real_reasons",
+     "Schauinsland omission explained by the winter-closed mine/farm while the cable car's 16 Nov-4 Dec revision is stated",
+     near(Re(r"schauinsland"), Re(r"16\s*nov\W{0,14}4\s*dec"),
+          Re(r"mine|bergwerk|schniederlihof"), window=800)),
+    ("blackforest_titisee_wed_11_nov",
+     "Lake Titisee scheduled for Wednesday 11 Nov",
+     near(Re(r"titisee"), on_weekday("wed", 11), window=340)),
+
+    # -- Munich: 81-pin list audit and renamed/added stops ----------------
+    ("munich_audit_81_saved_places",
+     "shared Google Maps list audited as 81 saved places (was 66)",
+     near(Re(r"\b81\b"), Re(r"saved\s*places|saved\s*pins"), window=220)),
+    ("munich_audit_3_krakow_pins_out_of_scope",
+     "the 3 Kraków pins are flagged out of scope for this trip",
+     near(Re(r"krak"), Re(r"\b3\b"), Re(r"out\s*of\s*scope|poland"), window=340)),
+    ("munich_feinkost_ole_wed_18_nov",
+     "Feinkost Olé scheduled on Wed 18 Nov",
+     near(Re(r"feinkost\s*ole"), on_weekday("wed", 18), window=340)),
+    ("munich_sauter_sonnenstrasse_21",
+     "Sauter / Calumet camera store at Sonnenstraße 21",
+     near(Re("sauter"), Re(r"sonnenstr"), Re(r"\b21\b"), window=340)),
+]
+
+
+@_parametrize(REVISION_CHECKS)
+def test_revised_itinerary(page: Page, check_id, description, matcher) -> None:
+    """Revision (approved 1 Nov 2026): rewritten Berlin leg, corrected Black
+    Forest hours, Nightjet timings, 81-pin audit and renamed/added stops."""
+    assert_match(matcher, f"Revision {check_id}: {description}", page)
 

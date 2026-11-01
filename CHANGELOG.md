@@ -1,5 +1,24 @@
 # Changelog
 
+## [Unreleased]
+### Changed
+- **Itinerary revision across all 5 legs (approved and re-verified 1 Nov 2026):**
+  - **Berlin (5–8 Nov):** Thu 5 Nov rewritten as arrival + Zeit für Brot (Mon–Fri 07:00–20:00) + Mampe (16:15–17:45, Mon–Fri 10:00–18:00) + BRLO (~19:30, Mon closed); Fri 6 Nov is Domke Hackepeter breakfast ~09:30 (opens 06:00) → Safelight → Mały Książę → confirmed 18:30 Yorckschlösschen; Sat 7 Nov is Zoo (November 09:00–16:30) → Foto-Meyer (Mon–Sat 10:00–19:00) → C/O Berlin → Hamy; Sun 8 Nov is Berlin Wall Memorial → Mauerpark (Sun 10:00–18:00) → 20:52 ÖBB Nightjet NJ 408 from Berlin Hbf Bahnsteig 3, arriving Freiburg 06:17.
+  - **Black Forest & Alsace (9–13 Nov):** Monday breakfast at Kolben Kaffee; Freiburgs Finest moved to Thu 12 Nov 10:00 because it closes at 18:00; the 5 Schauinsland pins stay omitted for the real reasons (silver mine winter-closed, Schniederlihof May–Oct only) while stating the cable car is open until 15 Nov (2026 revision 16 Nov – 4 Dec); Lake Titisee fixed on Wed 11 Nov.
+  - **Munich (13–19 Nov):** Timehouse is now presented as the single confirmed base; return flight corrected to **Etihad EY 126 departing MUC 10:30** (was 10:00); Feinkost Olé scheduled Wed 18 Nov; Calumet / Foto-Video Sauter address stated as Sonnenstraße 21.
+- **Google Maps list audit refreshed from 66 to 81 saved places:** 36 Berlin · 20 Freiburg & Black Forest · 16 Munich & Bavaria · 6 Baden-Baden & Alsace · 3 Kraków, with the Kraków pins explicitly marked out of scope and kept out of every day route.
+- README updated to describe the full 4–20 Nov 2026 five-leg trip (no longer Munich-centric), the 81-pin list state, the single confirmed Munich base and the current build/test commands.
+
+### Added
+- **Hamy (Hasenheide 10, Kreuzberg)** added as the Sat 7 Nov Vietnamese dinner, replacing Ständige Vertretung (which becomes an optional off-route backup).
+- Acceptance suite extended to **169 checks**, including revision coverage for the rewritten Berlin leg, the corrected Black Forest hours, the Nightjet Berlin Hbf/20:52/platform 3 → Freiburg 06:17 detail, the 81-pin audit and the renamed/added Munich stops.
+
+### Fixed
+- **Bob W Munich City Centre (`#5210364141`) cancellation cleanup:** the stale overlapping booking is shown only as an archived/cancelled record ("nothing to act on") instead of a live second Munich hotel; Timehouse (`#6724144172`) is the sole confirmed base, and a regression test now fails if any Bob W mention appears outside a cancellation context.
+- **Verified opening-hours corrections:** Berlin Zoo November 09:00–16:30 (last admission 15:30), Foto-Meyer Mon–Sat 10:00–19:00 (the old "15:00 Saturday close" note was wrong), Mampe, Zeit für Brot, Domke, Mauerpark, Kolben Kaffee and Freiburgs Finest now carry their re-checked hours.
+- **Camera shop renamed:** "Foto Dinkel" is now **Foto Erhardt (ehem. Foto Dinkel)** at Landwehrstraße 6 with verified Mon–Fri 09:30–18:30 / Sat 10:00–16:00 hours; the REQ-06 camera assertion and trail/map text follow the new name.
+- Removed the superseded "10:00 AM MUC departure" narrative and added a regression test asserting EY 126 is never documented as departing 10:00.
+
 ## [1.2.0] - 2026-10-31
 ### Added
 - **Master Bookings & Confirmation Wallet (`sec-bookings`):** Added a dedicated interactive section housing all 12 confirmed flight, accommodation, rail, dining, and tour reservations (Wed 4 Nov – Fri 20 Nov 2026) with category filters (`All`, `Flights`, `Hotels & Airbnbs`, `Trains`, `Dining & Tours`) and 1-click clipboard copy buttons for every confirmation number (`7AK639`, `5126078467`, `0698 9390 6002 7647`, `HMKTPHQE4H`, `6935982825`, `815D4A45A0E85F6C`, `NZM3KL`, `5210364141`, `6724144172`, `39901.1056944`).

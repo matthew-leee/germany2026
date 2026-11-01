@@ -4,24 +4,25 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
     <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.75rem; margin-bottom:0.85rem;">
       <div>
         <h2 style="margin-bottom:0.25rem;">📋 Master Bookings &amp; Confirmation Wallet (Wed 4 Nov – Fri 20 Nov 2026)</h2>
-        <p style="color:var(--muted); font-size:0.92rem;">All 12 confirmed flights, apartments, hotels, sleeper/high-speed trains, restaurant reservations &amp; timed tickets in chronological order. Click any confirmation code to copy it to your clipboard.</p>
+        <p style="color:var(--muted); font-size:0.92rem;">All 11 confirmed flights, apartments, hotels, sleeper/high-speed trains, restaurant reservations &amp; timed tickets in chronological order. Click any confirmation code to copy it to your clipboard.</p>
       </div>
       <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-        <button class="sub-btn active" data-booking-filter="all">All Bookings (12)</button>
+        <button class="sub-btn active" data-booking-filter="all">All Bookings (11)</button>
         <button class="sub-btn" data-booking-filter="flight">✈️ Flights (2)</button>
-        <button class="sub-btn" data-booking-filter="hotel">🏨 Hotels &amp; Airbnbs (5)</button>
+        <button class="sub-btn" data-booking-filter="hotel">🏨 Hotels &amp; Airbnbs (4)</button>
         <button class="sub-btn" data-booking-filter="train">🚆 Trains (2)</button>
         <button class="sub-btn" data-booking-filter="activity">🍷 Dining &amp; Tours (3)</button>
       </div>
     </div>
 
-    <div class="alert-banner" style="margin-bottom:1.25rem;">
-      <strong>⚠️ ACTION REQUIRED — OVERLAPPING MUNICH HOTEL BOOKINGS (13–19 NOV 2026):</strong><br>
-      You currently hold <strong>two active hotel reservations</strong> for the exact same 6 nights in Munich (Fri 13 Nov – Thu 19 Nov 2026):<br>
-      • <strong>Option 1 — Bob W Munich City Centre</strong> (<code>Schwanthalerstr. 61, 80336 München</code> · Booking #<code>5210364141</code>): 4 mins walk south of München Hbf; frictionless 24/7 online check-in form &amp; digital door code (zero stress if TGV 9577 is delayed past 22:30).<br>
-      • <strong>Option 2 — Timehouse Serviced Apartments</strong> (<code>Leopoldstraße 204a, 80804 München-Schwabing</code> · Booking #<code>6724144172</code>): Spacious Schwabing apartment with full designer kitchen, in-building laundry room, and 6-min walk to the 25-min Lufthansa Express Bus to MUC. Reception closes at <strong>22:30</strong>; you requested late check-in and they instructed you to <strong>message their WhatsApp on arrival</strong>.<br>
-      👉 <em>Check your Booking.com free-cancellation deadline and cancel whichever backup option you decide not to use!</em>
+    <div class="alert-banner" style="margin-bottom:1rem;">
+      <strong>✅ MUNICH HOTEL — BOOKED &amp; SETTLED (FRI 13 – THU 19 NOV 2026, 6 NIGHTS):</strong><br>
+      <strong>Timehouse Serviced Apartments</strong> (<code>Leopoldstraße 204a, 80804 München-Schwabing</code> · Booking #<code>6724144172</code>) is your <strong>one and only</strong> Munich reservation for all 6 nights: full designer kitchen, in-building guest laundry room (<em>Waschküche</em>), and a 6-min walk to the 25-min Lufthansa Express Bus to MUC. Reception closes at <strong>22:30</strong>; you requested late check-in and Timehouse instructed you to <strong>message their WhatsApp on arrival</strong> (24/7 keybox backup).
     </div>
+
+    <p style="font-size:0.85rem; color:var(--muted); margin:0 0 1.25rem;">
+      <strong>🗄️ Cancelled bookings (archived stale record — nothing to act on):</strong> Bob W Munich City Centre (<code>Schwanthalerstr. 61, 80336 München</code> · #<code>5210364141</code>) was cancelled long ago. It is kept only as a closed record and is <strong>not</strong> an open option or a decision to make.
+    </p>
 
     <div class="booking-grid">
       <div class="booking-card flight" data-booking-card="flight">
@@ -164,33 +165,16 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
         </div>
       </div>
 
-      <div class="booking-card conflict" data-booking-card="hotel">
+      <div class="booking-card hotel" data-booking-card="hotel">
         <div class="badge-row">
-          <span class="badge danger">Overlap Option 1 · 13–19 Nov</span>
-          <span class="badge">Near München Hbf</span>
+          <span class="badge success">Your Munich Hotel · 13–19 Nov 2026</span>
+          <span class="badge gold">Late Check-in Requested</span>
         </div>
-        <h4>9A. Munich Hotel Option 1: Bob W Munich City Centre</h4>
-        <p>
-          • <strong>Address:</strong> <code>Schwanthalerstr. 61, 80336 München</code> (4 mins walk south of München Hbf).<br>
-          • <strong>Check-in:</strong> From <strong>15:00</strong> via online check-in form &amp; 24/7 digital door code.<br>
-          • <strong>Pros/Cons:</strong> Zero 22:30 reception cutoff stress after your 21:46 TGV arrival, right at Hbf; more compact studio than Timehouse Schwabing.
-        </p>
-        <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
-          <span style="font-size:0.8rem; color:var(--muted);">Booking Number:</span>
-          <button type="button" class="copy-code-btn" data-copy="5210364141" title="Click to copy Bob W Booking Number">📋 5210364141</button>
-        </div>
-      </div>
-
-      <div class="booking-card conflict" data-booking-card="hotel">
-        <div class="badge-row">
-          <span class="badge danger">Overlap Option 2 · 13–19 Nov</span>
-          <span class="badge success">Late Check-in Requested</span>
-        </div>
-        <h4>9B. Munich Hotel Option 2: Timehouse Serviced Apartments (Schwabing)</h4>
+        <h4>9. Munich Hotel: Timehouse Serviced Apartments (Schwabing)</h4>
         <p>
           • <strong>Address:</strong> <code>Leopoldstraße 204a, 80804 München</code> (U6 <em>Nordfriedhof</em> / <em>Alte Heide</em>).<br>
-          • <strong>Check-in:</strong> <strong>15:00 – 22:30</strong>. <strong>Late Check-In Protocol:</strong> You requested late check-in and Timehouse asked you to <strong>message their WhatsApp on arrival</strong> (plus 24/7 Keybox backup).<br>
-          • <strong>Pros:</strong> Full designer kitchen, basement laundry room, and 6 mins walk to the 25-min Lufthansa Express Bus to MUC!
+          • <strong>Check-in:</strong> <strong>15:00 – 22:30</strong>. <strong>Late Check-In Protocol:</strong> You requested late check-in and Timehouse asked you to <strong>message their WhatsApp on arrival</strong> (plus 24/7 Keybox backup) — essential after your 21:46 TGV arrival.<br>
+          • <strong>Why it works:</strong> Full designer kitchen, in-building basement laundry room (<em>Waschküche</em>), and 6 mins walk to the 25-min Lufthansa Express Bus to MUC! This is your only Munich booking—no alternatives outstanding.
         </p>
         <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
           <span style="font-size:0.8rem; color:var(--muted);">Booking Number:</span>
@@ -222,7 +206,7 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
         </div>
         <h4>11. Return Flights: Munich (MUC) → Abu Dhabi (AUH) → Hong Kong (HKG)</h4>
         <p>
-          • <strong>Leg 1 (Thu 19 Nov):</strong> <strong>Etihad Airways EY 126</strong> · Departs Munich (MUC) at <strong>10:30 AM</strong> (10:00 AM boarding) → Arrives Abu Dhabi (AUH) at <strong>19:30</strong>.<br>
+          • <strong>Leg 1 (Thu 19 Nov):</strong> <strong>Etihad Airways EY 126</strong> · Departs Munich (MUC) at <strong>10:30</strong> → Arrives Abu Dhabi (AUH) at <strong>19:30</strong>.<br>
           • <strong>Transit at AUH:</strong> 1 hr 45 mins connection.<br>
           • <strong>Leg 2 (Thu 19 – Fri 20 Nov):</strong> <strong>Etihad Airways EY 870</strong> · Departs AUH at <strong>21:15</strong> → Arrives HKG at <strong>08:30 AM on Friday, 20 Nov 2026</strong>.
         </p>
@@ -356,10 +340,10 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
           <span class="badge gold">Mampe · Zibärtle · Wine</span>
         </div>
         <ul class="pack-list">
-          <li class="pack-item"><input type="checkbox" data-pack-id="shop-1"><div class="pack-label"><span class="pack-label-title">4–6× Inflatable Wine Bottle Protector Sleeves ("Wine Skins") + Heavy Ziploc Bags</span><span class="pack-label-sub">You are visiting <strong>#48 Mampe Berlin</strong> (Halb &amp; Halb schnaps), <strong>#49 Dr. Kochan</strong>, <strong>#09 Freiburgs Finest</strong> (Zibärtle plum spirit), <strong>#42 Domaine François Baur</strong> (Alsace Riesling), and <strong>Feinkost Olé / GARIBALDI</strong>! All bottles &gt;100ml MUST be checked in your suitcase for the MUC→AUH→HKG flights.</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="shop-1"><div class="pack-label"><span class="pack-label-title">4–6× Inflatable Wine Bottle Protector Sleeves ("Wine Skins") + Heavy Ziploc Bags</span><span class="pack-label-sub">You are visiting <strong>#48 Mampe Berlin</strong> (Halb &amp; Halb schnaps), <strong>#49 Dr. Kochan</strong>, <strong>#09 Freiburgs Finest</strong> (Zibärtle plum spirit — visited <strong>Thu 12 Nov morning</strong>; Mon–Sat 10:00–18:00, so do not leave it for the evening), <strong>#42 Domaine François Baur</strong> (Alsace Riesling), and <strong>Feinkost Olé / GARIBALDI</strong>! All bottles &gt;100ml MUST be checked in your suitcase for the MUC→AUH→HKG flights.</span></div></li>
           <li class="pack-item"><input type="checkbox" data-pack-id="shop-2"><div class="pack-label"><span class="pack-label-title">Know Hong Kong Customs Duty-Free Liquor vs. Wine Rules (2 Adults)</span><span class="pack-label-sub">• <strong>Wine &amp; Beer (&le;30% ABV):</strong> <strong>0% Duty in Hong Kong!</strong> You can bring back Alsace Riesling, Crémant &amp; Franken Silvaner duty-free.<br>• <strong>Hard Liquor / Spirits (&gt;30% ABV, e.g., Zibärtle ~42% or Mampe ~31%–40%):</strong> HK Customs allows <strong>1 liter per adult passenger (2L total for the two of you)</strong> duty-free!</span></div></li>
           <li class="pack-item"><input type="checkbox" data-pack-id="shop-3"><div class="pack-label"><span class="pack-label-title">1× Packable Zippered Duffle Bag + 2× Foldable Reusable Totebags</span><span class="pack-label-sub">German supermarkets (REWE, EDEKA) charge for bags, and if your suitcases fill up with vintage cameras, antiques &amp; wine bottles, you can check your hard suitcases and carry clothes onto Etihad in the foldable duffle.</span></div></li>
-          <li class="pack-item"><input type="checkbox" data-pack-id="shop-4"><div class="pack-label"><span class="pack-label-title">Dedicated Folder for Global Blue / Planet VAT Tax-Refund Forms (Min. €50.01 per Receipt in Germany)</span><span class="pack-label-sub">When buying cameras/lenses (Foto-Meyer, Leica, Calumet, Foto Dinkel) or wine &gt;€50.01, ask for a <strong>Tax-Free Form</strong>. At MUC Airport on Thu 19 Nov morning (07:20 AM), get the <strong>Zoll (Customs) stamp BEFORE checking in suitcases</strong> containing those items!</span></div></li>
+          <li class="pack-item"><input type="checkbox" data-pack-id="shop-4"><div class="pack-label"><span class="pack-label-title">Dedicated Folder for Global Blue / Planet VAT Tax-Refund Forms (Min. €50.01 per Receipt in Germany)</span><span class="pack-label-sub">When buying cameras/lenses (Foto-Meyer, Leica, Calumet, Foto Erhardt — formerly Foto Dinkel) or wine &gt;€50.01, ask for a <strong>Tax-Free Form</strong>. At MUC Airport on Thu 19 Nov morning (07:20 AM), get the <strong>Zoll (Customs) stamp BEFORE checking in suitcases</strong> containing those items!</span></div></li>
         </ul>
       </div>
 
@@ -421,10 +405,9 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
         </tr>
         <tr>
           <td><span class="badge gold">Wash #3 (Final Reset · Day 10–13)</span><br><strong>Sun 15, Mon 16 or Tue 17 Nov Evening</strong></td>
-          <td><strong>Munich</strong><br>Timehouse (<code>Leopoldstr. 204a</code>) or Bob W (<code>Schwanthalerstr. 61</code>)</td>
+          <td><strong>Munich (Schwabing)</strong><br>Timehouse (<code>Leopoldstr. 204a</code>)</td>
           <td>
-            <strong>At Timehouse Munich:</strong> <strong>In-Building Guest Laundry Room (<em>Waschküche</em>)</strong> inside Leopoldstraße 204a (washers &amp; dryers on site!), backed up by <strong>SB Waschsalon München Schwabing</strong> (<code>Leopoldstraße 100</code>, U6 Giselastraße).<br>
-            <strong>At Bob W Munich City Centre:</strong> <strong>Eco-Express Waschsalon</strong> (<code>Senefelderstraße / Goethestraße</code> area near Hbf).
+            <strong>At Timehouse Munich:</strong> <strong>In-Building Guest Laundry Room (<em>Waschküche</em>)</strong> inside Leopoldstraße 204a (washers &amp; dryers on site!), backed up by <strong>SB Waschsalon München Schwabing</strong> (<code>Leopoldstraße 100</code>, U6 Giselastraße).
           </td>
           <td>
             • <strong>Timehouse Advantage:</strong> You don't even have to leave the building—throw a load in the basement <em>Waschküche</em> after returning from Neuschwanstein or Dachau while relaxing in your apartment!<br>

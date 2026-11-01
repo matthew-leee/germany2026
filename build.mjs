@@ -42,7 +42,7 @@ const html0 = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Munich &amp; Bavaria Autumn-Winter Trip Planner | 13–19 Nov 2026</title>
+  <title>Germany &amp; Alsace Trip Planner | 4–20 November 2026</title>
   <link rel="stylesheet" href="assets/vendor/leaflet.css">
   <style>
 ${css}
@@ -79,7 +79,7 @@ ${hero}
   ${secHk}
 
   <footer>
-    <p>Munich &amp; Bavaria Bespoke Interactive Planner (13–19 November 2026) · Prepared for Tak Hin Lee &amp; Yun Yu Tang · Modular Component Architecture</p>
+    <p>Germany &amp; Alsace Bespoke Interactive Planner (4–20 November 2026 · Berlin → Nightjet → Black Forest &amp; Colmar → Munich) · Prepared for Tak Hin Lee &amp; Yun Yu Tang · Modular Component Architecture</p>
   </footer>
 </div>
 

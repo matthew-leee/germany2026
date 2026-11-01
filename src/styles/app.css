@@ -107,6 +107,18 @@
       color: #fff;
       border-color: var(--accent);
     }
+    /* DEFECT-1/2 fix: several .tab-btn / .sub-btn carry an inline `color` for per-leg
+       theming, and an inline declaration outranks a plain class rule. The active/hover
+       states set their own background, so the label must be forced back to white here
+       (otherwise #003d59 on #005f87 = 1.65:1, far below WCAG AA 4.5:1).
+       !important on `color` only: backgrounds, borders and inactive states are untouched. */
+    .tab-btn.active,
+    .tab-btn.active:hover,
+    .tab-btn:hover,
+    .sub-btn.active,
+    .sub-btn.active:hover {
+      color: #fff !important;
+    }
     .section-panel { display: none; }
     .section-panel.active { display: block; }
     .day-subtabs, .filter-bar {
