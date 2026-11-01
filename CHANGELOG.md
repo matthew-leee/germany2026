@@ -14,6 +14,9 @@
 - Acceptance suite extended to **169 checks**, including revision coverage for the rewritten Berlin leg, the corrected Black Forest hours, the Nightjet Berlin Hbf/20:52/platform 3 → Freiburg 06:17 detail, the 81-pin audit and the renamed/added Munich stops.
 
 ### Fixed
+- **Friday Berlin no longer schedules a café straight after the Domke breakfast.** Silo Coffee is now marked optional/off-route instead of a stop between Domke and RAW-Gelände; Friday reads 11 pins.
+- **Both bakery must-haves are now labelled unmistakably in plain language:** Thu 5 Nov — *MUST-HAVE cinnamon roll / Zimtschnecke* at Zeit für Brot (09:30); Sat 14 Nov — *MUST-HAVE fried bread / Auszogne* at Café Frischhut (14:15).
+- Café Frischhut map pin no longer asserts contradictory opening hours; it now says hours are unverified and to confirm on the day.
 - **Bob W Munich City Centre (`#5210364141`) cancellation cleanup:** the stale overlapping booking is shown only as an archived/cancelled record ("nothing to act on") instead of a live second Munich hotel; Timehouse (`#6724144172`) is the sole confirmed base, and a regression test now fails if any Bob W mention appears outside a cancellation context.
 - **Verified opening-hours corrections:** Berlin Zoo November 09:00–16:30 (last admission 15:30), Foto-Meyer Mon–Sat 10:00–19:00 (the old "15:00 Saturday close" note was wrong), Mampe, Zeit für Brot, Domke, Mauerpark, Kolben Kaffee and Freiburgs Finest now carry their re-checked hours.
 - **Camera shop renamed:** "Foto Dinkel" is now **Foto Erhardt (ehem. Foto Dinkel)** at Landwehrstraße 6 with verified Mon–Fri 09:30–18:30 / Sat 10:00–16:00 hours; the REQ-06 camera assertion and trail/map text follow the new name.

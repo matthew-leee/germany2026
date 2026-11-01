@@ -9,6 +9,10 @@ Once GitHub Pages is enabled on the `main` branch (root `/`), this planner is ac
 ## Trip Coverage (4–20 November 2026)
 - **Master Bookings & Confirmation Wallet (`sec-bookings`):** Centralised **11 confirmed** booking cards with 1-click clipboard copy for all flight PNRs (`7AK639`), hotel booking numbers (`5126078467`, `HMKTPHQE4H`, `6935982825`, `6724144172`), ÖBB Nightjet code (`0698 9390 6002 7647`), SNCF TGV reference (`NZM3KL`), Yorckschlösschen Fri 6 Nov 18:30 dinner reservation, Domaine François Baur tasting (`815D4A45A0E85F6C`), and Neuschwanstein Castle Tour #475 (`39901.1056944`). The cancelled Bob W booking (`5210364141`) is kept as a single archived record only — there is nothing left to cancel.
 
+## Two Non-Negotiable Bakery Stops (labelled in plain words on purpose)
+- ✅ **Cinnamon roll — Zeit für Brot**, Alte Schönhauser Str. 4, Berlin: **Thu 5 Nov, 09:30**. Listed as *"MUST-HAVE cinnamon roll / Zimtschnecke"* because searching "cinnamon roll" must find it. Mon–Fri 07:00–20:00, Sat 08:00–20:00, Sun 08:00–18:00.
+- ✅ **Fried bread — Café Frischhut**, Prälat-Zistl-Str. 8, Munich: **Sat 14 Nov, 14:15**. Listed as *"MUST-HAVE fried bread (Auszogne)"* — the Schmalznudel. Hours are unverified (no official site), so confirm on the day.
+
 ## Pre-Trip Action Checklist (open items, checked 1 Nov 2026)
 - ☎️ **Fleischerei Domke** `+49 30 291 76 35` — ask whether fresh Hackepeter/Mettbrötchen are on the counter on **Fri 6 Nov morning** (strongly evidenced, but a 30-second call removes the last doubt).
 - ☎️ **Hamy** (Vietnamese, Hasenheide 10) `+49 30 61625959` — reconfirm the daily 12:00–23:30 hours before relying on the **Sat 7 Nov ~19:00** dinner (website is offline; hours come from OpenStreetMap).
