@@ -7,7 +7,20 @@ Once GitHub Pages is enabled on the `main` branch (root `/`), this planner is ac
 - `https://matthew-leee.github.io/germany2026/`
 
 ## Trip Coverage (4–20 November 2026)
-- **Master Bookings & Confirmation Wallet (`sec-bookings`):** Centralised 12-card wallet with 1-click clipboard copy for all flight PNRs (`7AK639`), hotel booking numbers (`5126078467`, `HMKTPHQE4H`, `6935982825`, `5210364141`, `6724144172`), ÖBB Nightjet code (`0698 9390 6002 7647`), SNCF TGV reference (`NZM3KL`), Yorckschlösschen Fri 6 Nov 18:30 dinner reservation, Domaine François Baur tasting (`815D4A45A0E85F6C`), and Neuschwanstein Castle Tour #475 (`39901.1056944`).
+- **Master Bookings & Confirmation Wallet (`sec-bookings`):** Centralised **11 confirmed** booking cards with 1-click clipboard copy for all flight PNRs (`7AK639`), hotel booking numbers (`5126078467`, `HMKTPHQE4H`, `6935982825`, `6724144172`), ÖBB Nightjet code (`0698 9390 6002 7647`), SNCF TGV reference (`NZM3KL`), Yorckschlösschen Fri 6 Nov 18:30 dinner reservation, Domaine François Baur tasting (`815D4A45A0E85F6C`), and Neuschwanstein Castle Tour #475 (`39901.1056944`). The cancelled Bob W booking (`5210364141`) is kept as a single archived record only — there is nothing left to cancel.
+
+## Pre-Trip Action Checklist (open items, checked 1 Nov 2026)
+- ☎️ **Fleischerei Domke** `+49 30 291 76 35` — ask whether fresh Hackepeter/Mettbrötchen are on the counter on **Fri 6 Nov morning** (strongly evidenced, but a 30-second call removes the last doubt).
+- ☎️ **Hamy** (Vietnamese, Hasenheide 10) `+49 30 61625959` — reconfirm the daily 12:00–23:30 hours before relying on the **Sat 7 Nov ~19:00** dinner (website is offline; hours come from OpenStreetMap).
+- 🥨 **Café Frischhut** has no official site — confirm opening hours on the day of the **Sat 14 Nov 14:15** Schmalznudel visit.
+- 🖨️ Print the **ÖBB Nightjet NJ 408** ticket on white A4 (20:52 Berlin Hbf, Bahnsteig 3) and carry photo ID.
+- 🏷️ Attach SNCF name/phone luggage tags before boarding the **Fri 13 Nov 16:45** TGV at Colmar.
+- 🚆 Confirm the exact **RB 68 München Hbf → Füssen** departure for Sun 15 Nov the day before (direct ~2h, otherwise change at Buchloe).
+
+## Verification Status (1 Nov 2026)
+- `node build.mjs` assembles `index.html` from the modular `src/` components deterministically.
+- `python3 -m pytest tests/test_trip_planner.py -q` → **169 assertions green** (content, hours, bookings, map/pin day alignment).
+- Headless-Chrome spot checks at 1440×900, 1440×740, 390×844 and 320×568 archived (git-ignored) in `artifacts/ui-audit/20261101__session-01a19578/` with an `INDEX.md` ledger; no console errors, no broken images, no horizontal overflow.
 - **Interactive Packing Checklist & 3-Stop Laundromat Guide (`sec-packing`):** 35-item interactive checklist across 7 categories with `localStorage` persistence, real-time progress bar, category/unchecked filters, and a verified 3-wash laundromat strategy across Berlin (**Waschsalon Schleudertraum Mitte** & **Waschsalon 115**), Freiburg (**30°grad SB Waschsalon Lehener Str. 27** & **Wasch & Fun Egonstraße 25**), and Munich (**Timehouse in-building Waschküche** & **SB Waschsalon Schwabing**).
 1. **Leg 1 — Berlin (Wed 4 Nov 19:35 HKG Departure / Thu 5 Nov 06:20 AM BER Arrival – Sun 8 Nov 20:52 Sleeper · Base: Karlito Apartmenthaus, Linienstraße 60, Booking #5126078467):**
    - Outbound flights: **Etihad EY 871** (HKG 19:35 → AUH 00:25) + **Condor DE 2553** (AUH 02:20 → BER 06:20, Ref `7AK639`).
