@@ -51,7 +51,7 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
         <p>
           • <strong>Address:</strong> <code>Linienstraße 60, 10119 Berlin-Mitte</code> (U2 <em>Rosa-Luxemburg-Platz</em>).<br>
           • <strong>Unit:</strong> Family Apartment with Balcony.<br>
-          • <strong>Check-in:</strong> Thu 5 Nov (<strong>14:00 – 23:00</strong>; early bag drop at 07:45 AM after 06:20 BER arrival).<br>
+          • <strong>Check-in:</strong> Thu 5 Nov (<strong>14:00 – 23:00</strong>; an early bag drop ~07:45–08:00 is intended after the 06:20 BER arrival but is <strong>not confirmed</strong> — Berlin Hbf lockers are the backup).<br>
           • <strong>Check-out:</strong> Sun 8 Nov (<strong>08:00 – 10:00</strong>).
         </p>
         <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
@@ -68,8 +68,8 @@ export const MunichBookingsAndPackingSection = `  <!-- SECTION: MASTER BOOKINGS 
         <h4>3. Berlin Dinner Reservation: Yorckschlösschen</h4>
         <p>
           • <strong>Address:</strong> <code>Yorckstraße 15, 10965 Berlin-Kreuzberg</code> (S1/S2/S25/S26/U7 <em>Yorckstraße</em>).<br>
-          • <strong>Details:</strong> Confirmed dinner table for <strong>2 people at 18:30</strong> on Friday, 6 November 2026.<br>
-          • <strong>Route Fit:</strong> Head straight here on the S-Bahn (~20 mins) after your 16:30 afternoon hot-counter tasting at <strong>#14 Fleischerei Domke</strong>!
+          • <strong>Details:</strong> Confirmed dinner table for <strong>2 people at 18:30</strong> on Friday, 6 November 2026 — the <strong>only confirmed Berlin restaurant reservation</strong> in the plan.<br>
+          • <strong>Route Fit:</strong> A <strong>15–20 min walk</strong> (or a short S/U-Bahn hop) after the non-negotiable <strong>#48 Mampe Berlin</strong> Hofladen visit on Fri 6 Nov, where you arrive <strong>~16:15–16:40</strong> (30–40 min from Museum Island) and stay <strong>up to ~17:30</strong> — the shop closes at 18:00, so keep that buffer. Friday no longer includes a Domke stop.
         </p>
         <div style="margin-top:auto; padding-top:0.45rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
           <span style="font-size:0.8rem; color:var(--muted);">Reservation Time:</span>

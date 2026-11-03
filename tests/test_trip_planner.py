@@ -20,8 +20,10 @@ REQ-08  HK first-timer to Germany hiccups ............................... REQ-08
 REQ-09  Interactive, responsive, self-contained HTML5 deliverable with
         verified local photographs (also the file/validity/image checks) . REQ-09
 REQ-10  Master bookings wallet, packing checklist & laundromat guide ...... REQ-10
-Revision  Revised itinerary (Berlin leg, Black Forest hours, 81-pin audit,
-        Hamy, Foto Erhardt) as approved and verified on 1 Nov 2026
+Revision  Revised itinerary (Berlin leg re-sequenced on 3 Nov 2026: Street Food
+        Thursday, Museum Island + Mampe + Yorckschlösschen, zoo + BRLO,
+        Domke Sunday lunch; 84-pin list snapshot; Black Forest hours and
+        renamed/added Munich stops from the 1 Nov 2026 verification)
 
 How matching works
 ------------------
@@ -44,6 +46,7 @@ Run with::
 
 from __future__ import annotations
 
+import json
 import re
 import unicodedata
 from functools import lru_cache
@@ -657,6 +660,33 @@ def test_req09_has_interactive_javascript(page: Page) -> None:
     assert has_behaviour, (
         "index.html JavaScript must actually interact with the DOM "
         "(addEventListener/querySelector/... not found)"
+    )
+
+
+def test_rendered_javascript_parses(page: Page, tmp_path: Path) -> None:
+    """The inlined controller must be valid JavaScript. A syntax error there
+    would silently kill the map, the Berlin day filters and the packing
+    checklist while every content assertion still passed."""
+    import shutil
+    import subprocess
+
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    inline = re.search(r"<script>\n([\s\S]*?)\n</script>", page.source)
+    assert inline, "index.html must inline the interactive controller script"
+    node = shutil.which("node")
+    if not node:  # build.mjs itself needs node, so this is only a local guard
+        pytest.skip("node is unavailable, skipping the JavaScript syntax check")
+    script_path = tmp_path / "controller.js"
+    script_path.write_text(inline.group(1), encoding="utf-8")
+    result = subprocess.run(
+        [node, "--check", str(script_path)],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    assert result.returncode == 0, (
+        "the inlined controller script is not valid JavaScript: "
+        + (result.stderr or result.stdout)
     )
 
 
@@ -1305,70 +1335,18 @@ def test_req03_return_flight_never_departs_at_1000(page: Page) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Revised itinerary (approved & verified 1 Nov 2026)
+# Revised itinerary (Black Forest / Alsace / Munich, verified 1 Nov 2026)
 #
-# The five legs were re-checked against published hours and the user's shared
+# These legs were re-checked against published hours and the user's shared
 # Google Maps list. These checks pin the user-visible outcome of that revision:
-# the rewritten Berlin leg, the corrected Black Forest opening hours, the
-# 81-place list audit and the renamed/added Munich stops.
+# the corrected Black Forest opening hours, the Nightjet timings, the
+# 84-place list snapshot and the renamed/added Munich stops. The Berlin leg has
+# its own section further down (re-sequenced on 3 Nov 2026).
 # ---------------------------------------------------------------------------
 
 MALY_KSIAZE = Re(r"ma\S{0,2}y\s*ksi\S{0,6}")
 
 REVISION_CHECKS = [
-    # -- Berlin: Thu 5 Nov (arrival + Zeit für Brot + Mampe + BRLO) --------
-    ("berlin_thu_zeit_fuer_brot_hours",
-     "Zeit für Brot on Thu 5 Nov within its verified Mon-Fri 07:00-20:00 hours",
-     near(Re(r"zeit\s*fuer\s*brot"), on_weekday("thu", 5), hhmm("07:00"), hhmm("20:00"),
-          window=600)),
-    ("berlin_thu_mampe_hours",
-     "Mampe Berlin verified Mon-Fri 10:00-18:00 for the Thu 5 Nov tasting",
-     near(Re(r"mampe"), Re(r"mon\W{0,3}fri"), hhmm("10:00"), hhmm("18:00"),
-          window=320)),
-    ("berlin_thu_brlo_monday_closed",
-     "BRLO Brwhouse states it is closed on Mondays",
-     near(Re(r"brlo"),
-          Re(r"mon\w*\W{0,3}closed|closed\w*\W{0,3}mon|montag\w*\W{0,12}geschlossen"),
-          window=400)),
-
-    # -- Berlin: Fri 6 Nov (Domke breakfast, cameras, Yorckschlösschen) ----
-    ("berlin_fri_domke_breakfast_hours",
-     "Fleischerei Domke ~09:30 Hackepeter breakfast inside its Mon-Fri 06:00-21:00 hours",
-     near(Re("domke"), hhmm("09:30"), hhmm("06:00"),
-          Re(r"breakfast|fruehstueck"), window=420)),
-    ("berlin_fri_safelight_and_maly_ksiaze",
-     "Fri 6 Nov camera stop at Safelight followed by Mały Książę Polish groceries",
-     near(Re("safelight"), MALY_KSIAZE, window=300)),
-
-    # -- Berlin: Sat 7 Nov (Zoo, Foto-Meyer, C/O Berlin, Hamy) -------------
-    ("berlin_sat_zoo_november_hours",
-     "Berlin Zoo November hours 09:00-16:30",
-     near(Re(r"zoologischer\s*garten|berlin\s*zoo"), Re(r"november"),
-          hhmm("09:00"), hhmm("16:30"), window=380)),
-    ("berlin_sat_foto_meyer_mon_sat_hours",
-     "Foto-Meyer corrected hours Mon-Sat 10:00-19:00",
-     near("Foto-Meyer", Re(r"mon\W{0,3}sat"), hhmm("10:00"), hhmm("19:00"),
-          window=350)),
-    ("berlin_sat_co_berlin_amerika_haus",
-     "C/O Berlin at Amerika Haus as the Sat 7 Nov photography stop",
-     near(Re(r"c/o\s*berlin"), Re(r"amerika\s*haus"), window=200)),
-    ("berlin_sat_hamy_vietnamese_dinner",
-     "Hamy Vietnamese dinner on Sat 7 Nov",
-     near("Hamy", Re(r"vietnam"), Re(r"dinner|19:00"), window=380)),
-
-    # -- Berlin: Sun 8 Nov (Wall Memorial, Mauerpark, Nightjet NJ 408) -----
-    ("berlin_sun_wall_memorial_and_mauerpark",
-     "Sun 8 Nov combines the Berlin Wall Memorial with the Mauerpark flea market",
-     near(Re(r"berlin\s*wall\s*memorial"), Re(r"mauerpark\W{0,40}(?:flohmarkt|flea)"),
-          window=360)),
-    ("berlin_sun_mauerpark_hours",
-     "Mauerpark flea market verified Sunday hours 10:00-18:00",
-     near(Re(r"mauerpark"), Re(r"sunday"), hhmm("10:00"), hhmm("18:00"), window=340)),
-    ("berlin_sun_nightjet_nj408_2052_platform3",
-     "Nightjet NJ 408 departs Berlin Hbf platform 3 at 20:52 and reaches Freiburg at 06:17",
-     near(Re(r"nj\s*408"), hhmm("20:52"), Re(r"bahnsteig\s*3"), hhmm("06:17"),
-          window=450)),
-
     # -- Black Forest / Alsace: Mon 9, Wed 11, Thu 12 Nov ------------------
     ("blackforest_mon_kolben_kaffee_breakfast",
      "Monday breakfast at Kolben Kaffee within its Mon-Sat 07:30 opening hours",
@@ -1387,9 +1365,10 @@ REVISION_CHECKS = [
      near(Re(r"titisee"), on_weekday("wed", 11), window=340)),
 
     # -- Munich: 81-pin list audit and renamed/added stops ----------------
-    ("munich_audit_81_saved_places",
-     "shared Google Maps list audited as 81 saved places (was 66)",
-     near(Re(r"\b81\b"), Re(r"saved\s*places|saved\s*pins"), window=220)),
+    ("munich_audit_84_saved_places",
+     "shared Google Maps list audited as an 84-place 3 Nov 2026 snapshot",
+     near(Re(r"\b84\b"), Re(r"saved\s*places|saved\s*pins"),
+          Re(r"3\s*nov"), window=320)),
     ("munich_audit_3_krakow_pins_out_of_scope",
      "the 3 Kraków pins are flagged out of scope for this trip",
      near(Re(r"krak"), Re(r"\b3\b"), Re(r"out\s*of\s*scope|poland"), window=340)),
@@ -1404,7 +1383,994 @@ REVISION_CHECKS = [
 
 @_parametrize(REVISION_CHECKS)
 def test_revised_itinerary(page: Page, check_id, description, matcher) -> None:
-    """Revision (approved 1 Nov 2026): rewritten Berlin leg, corrected Black
-    Forest hours, Nightjet timings, 81-pin audit and renamed/added stops."""
+    """Revision (verified 1 Nov 2026): corrected Black Forest hours, Nightjet
+    timings, the 84-place list snapshot and renamed/added Munich stops."""
     assert_match(matcher, f"Revision {check_id}: {description}", page)
 
+
+
+# ---------------------------------------------------------------------------
+# Berlin leg re-sequenced to the user's 3 Nov 2026 decisions
+#
+# Thu 5 Nov  arrival -> Zeit fuer Brot -> memorial/gate -> one flex lunch ->
+#           Hackesche Hoefe -> Dead Chicken Alley/Otto Weidt -> FOTOIMPEX ->
+#           check-in & rest -> Street Food Thursday at Markthalle Neun
+# Fri 6 Nov  one bakery -> Museum Island (day ticket, not booked) -> Mampe
+#           16:00-17:30 -> confirmed 18:30 Yorckschloesschen
+# Sat 7 Nov  zoo all day -> BRLO as the only planned dinner, with at most one
+#           optional KaDeWe / C/O Berlin add-on (neither on the baseline route)
+# Sun 8 Nov  Wall Memorial -> Mauerpark -> Domke lunch -> East Side Gallery ->
+#           20:52 Nightjet NJ 408, at Berlin Hbf with bags by ~20:15
+# ---------------------------------------------------------------------------
+
+BERLIN_CHECKS = [
+    ("berlin_arrival_fex_re20_potsdamer_then_u2",
+     "BER arrival uses FEX/RE20 to Potsdamer Platz then U2 to Rosa-Luxemburg-Platz, "
+     "ABC ticket validated, timetable subject to a live check",
+     near(Re(r"fex"), Re(r"re\s*20"), Re(r"potsdamer\s*platz"),
+          Re(r"rosa-luxemburg-platz"), Re(r"\babc\b"), Re(r"validat"),
+          window=700)),
+    ("berlin_thu_zeit_fuer_brot_cinnamon_bun",
+     "Thu 5 Nov must-have cinnamon roll / Zimtschnecke at Zeit fuer Brot inside its "
+     "Mon-Fri 07:00-20:00 hours",
+     near(Re(r"zeit\s*fuer\s*brot"), Re(r"cinnamon\s*roll|zimtschnecke"),
+          on_weekday("thu", 5), hhmm("07:00"), hhmm("20:00"), window=700)),
+    ("berlin_thu_one_flexible_lunch",
+     "the single flexible Mitte lunch is Staendige Vertretung first and Sophien 11 second",
+     near("Ständige Vertretung", Re(r"sophien\s*11"),
+          Re(r"one\s*lunch\s*only|never\s*both"), window=500)),
+    ("berlin_thu_hackesche_and_otto_weidt",
+     "Hackesche Hoefe plus the optional Otto Weidt weekday 09:00-18:00 visit",
+     near(Re(r"hackesche\s*hoefe"), Re(r"otto\s*weidt"), hhmm("09:00"),
+          hhmm("18:00"), Re(r"optional"), window=700)),
+    ("berlin_thu_fotoimpex_11_to_19",
+     "FOTOIMPEX is a Thu 5 Nov stop open Mon-Sat 11:00-19:00",
+     near(Re(r"fotoimpex"), Re(r"mon\W{0,3}sat"), hhmm("11:00"), hhmm("19:00"),
+          window=320)),
+    ("berlin_thu_street_food_thursday_first_choice",
+     "Street Food Thursday at Markthalle Neun 17:00-22:00 is the first-choice dinner",
+     near(Re(r"street\s*food\s*thursday"), Re(r"markthalle\s*neun"), hhmm("17:00"),
+          hhmm("22:00"), Re(r"first[-\s]*choice"), window=420)),
+    ("berlin_thu_anjoy_backup_only",
+     "Anjoy (Rykestrasse 11) is the dinner backup and never combined with Street Food Thursday",
+     near(Re(r"anjoy"), Re(r"rykestr"), Re(r"backup"),
+          Re(r"never\s*both|not\s*both"), window=500)),
+    ("berlin_fri_one_bakery_only",
+     "Fri 6 Nov breakfast is one bakery: SammyS (Sophienstr. 30-31, opening subject to "
+     "check) or a Zeit repeat or CANAL at 10:00",
+     near("SammyS", Re(r"sophienstr\w*\s*30"), Re(r"canal"),
+          Re(r"subject\s*to\s*check"), window=600)),
+    ("berlin_fri_museum_island_day_ticket",
+     "Museum Island day pass is EUR 24 per person, not booked, the Pergamonmuseum main "
+     "building is closed and Das Panorama is a separate exhibition venue",
+     near(Re(r"museum\s*island"), money("24"), Re(r"not\s*booked"),
+          Re(r"pergamonmuseum(?:\s+main\s+building)?\s*(?:itself\s*)?(?:is\s*)?closed"),
+          Re(r"panorama"), window=900)),
+    ("berlin_fri_steak_doner_is_a_suggestion",
+     "the user-saved The Steak Döner (Spandauer Str. 4) is a suggestion only, not booked",
+     near(Re(r"the\s*steak\s*doener"), Re(r"spandauer\s*str"), Re(r"suggestion"),
+          Re(r"not\s*booked"), window=500)),
+    ("berlin_fri_mampe_window_before_hofladen_close",
+     "Fri 6 Nov Mampe window 16:00-17:30 before the Hofladen closes at 18:00",
+     near(Re(r"mampe"), on_weekday("fri", 6), hhmm("16:00"), hhmm("17:30"),
+          hhmm("18:00"), Re(r"hofladen"), window=500)),
+    ("berlin_fri_yorck_short_walk",
+     "the confirmed 18:30 Yorckschloesschen table is a 15-20 min walk from Mampe",
+     near("Yorckschlösschen", hhmm("18:30"), Re(r"15\W{0,3}20\s*min\s*walk"),
+          window=420)),
+    ("berlin_fri_states_no_domke_or_east_side",
+     "Friday explicitly carries no Domke stop and no East Side Gallery",
+     near(Re(r"friday"), Re(r"no\s*domke"), Re(r"east\s*side\s*gallery"),
+          window=200)),
+    ("berlin_sat_zoo_whole_day",
+     "Sat 7 Nov is the zoo all day 09:00-16:30 with last admission 15:30, a proper "
+     "lunch in the zoo (Waldschaenke) and houses closing at 16:00",
+     near(Re(r"zoological\s*garden|berlin\s*zoo"), hhmm("09:00"), hhmm("16:30"),
+          Re(r"last\s*admission\s*15:30"), Re(r"waldsch\w*nke"),
+          Re(r"close\w*\s*(?:at\s*)?16[:.]00"), window=700)),
+    ("berlin_sat_brlo_only_planned_dinner",
+     "BRLO is the only planned Sat 7 Nov dinner/beer stop with Sat 12:00-24:00 hours, "
+     "unverified availability and no reservation",
+     near(Re(r"brlo"), on_weekday("sat", 7), hhmm("12:00"), hhmm("24:00"),
+          Re(r"not\s*reserved|unverified"), window=520)),
+    ("berlin_sat_at_most_one_optional_addon",
+     "KaDeWe and C/O Berlin are optional add-ons of which at most one may be taken",
+     near(Re(r"kadewe"), Re(r"c/o\s*berlin"), Re(r"at\s*most\s*one"),
+          Re(r"optional"), window=520)),
+    ("berlin_sun_domke_lunch_to_confirm",
+     "Sun 8 Nov Domke lunch inside the verified Sun 09:00-21:00 hours, with "
+     "Mettbroetchen availability unconfirmed and the phone number to call",
+     near(Re(r"domke"), on_weekday("sun", 8), hhmm("09:00"), hhmm("21:00"),
+          Re(r"\+49\s*30\s*291\s*76\s*35"), Re(r"unconfirmed"), window=800)),
+    ("berlin_sun_east_side_in_daylight",
+     "Sun 8 Nov has the East Side Gallery as a daylight stop",
+     near(Re(r"east\s*side\s*gallery"), Re(r"daylight"), on_weekday("sun", 8),
+          window=520)),
+    ("berlin_sun_train_with_bags_by_2015",
+     "the 20:52 Nightjet departs Berlin Hbf with bags there by ~20:15",
+     near(Re(r"berlin\s*hbf|hauptbahnhof"), hhmm("20:15"), hhmm("20:52"),
+          Re(r"bags"), window=460)),
+]
+
+
+@_parametrize(BERLIN_CHECKS)
+def test_berlin_revised_leg(page: Page, check_id, description, matcher) -> None:
+    """Berlin (3 Nov 2026 decisions): day-by-day order, honest booking state and
+    the single flexible lunch/dinner/add-on options."""
+    assert_match(matcher, f"Berlin {check_id}: {description}", page)
+
+
+def test_berlin_luggage_storage_is_never_claimed_confirmed(page: Page) -> None:
+    """No claim that Karlito accepted an early bag drop or day storage. (The
+    Freiburg Airbnb's 06:35 early luggage drop *is* host-confirmed and stays.)"""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    assert near(Re(r"bag\s*drop"), Re(r"unconfirmed"), window=320).matches(page.corpus), (
+        "the Thu 5 Nov bag drop must be labelled unconfirmed"
+    )
+    assert near(Re(r"storage"), Re(r"unconfirmed"), window=320).matches(page.corpus), (
+        "the Sun 8 Nov day storage must be labelled unconfirmed"
+    )
+    stale = [
+        "bag drop confirmed",
+        "bag drop is confirmed",
+        "storage is confirmed",
+        "storage confirmed",
+        "luggage storage is confirmed",
+    ]
+    found = [phrase for phrase in stale if phrase in page.corpus]
+    assert not found, (
+        "Berlin luggage storage must never be presented as confirmed; found: "
+        + "; ".join(found)
+    )
+    assert "no confirmed luggage storage" in page.corpus, (
+        "the Berlin leg should state plainly that no luggage storage is confirmed"
+    )
+
+
+def test_berlin_polish_grocery_is_pending_with_true_coordinates(page: Page) -> None:
+    """The Polish-grocery priority stays visible as pending, with the corrected
+    location and distance instead of the old Mampe-adjacent 550 m claim."""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    assert near(MALY_KSIAZE, Re(r"52\.488025"), Re(r"13\.407631"), Re(r"pending"),
+                Re(r"1\.9\s*km"), window=800).matches(page.corpus), (
+        "Maly Ksiazę must be marked pending with its true saved coordinates and "
+        "the corrected ~1.9 km distance"
+    )
+    stale_proximity = re.findall(
+        r"(?:just|only|about|approx\w*)\s*550\s*m|550\s*m\s*(?:away|from)",
+        page.corpus,
+    )
+    assert not stale_proximity, (
+        "the old '550 m from Yorckschloesschen' claim must be gone; found: "
+        + "; ".join(stale_proximity)
+    )
+
+
+def test_berlin_removes_the_old_day_plan_wording(page: Page) -> None:
+    """Stale Berlin wording from the superseded plan must not survive."""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    stale = [
+        "RE8 / RB23",
+        "23 Active Stops",
+        "Mampe + BRLO · 5 Stops",
+        "Domke Mettbrötchen + Cameras",
+        "flexible Prenzlauer Berg wander",
+        "11 Stops",
+    ]
+    found = [phrase for phrase in stale if fold(phrase) in page.corpus]
+    assert not found, (
+        "superseded Berlin day wording is still rendered: " + "; ".join(found)
+    )
+
+
+# ---------------------------------------------------------------------------
+# Berlin map data: pin -> day alignment, chronological order and route links
+# ---------------------------------------------------------------------------
+
+
+def load_pois() -> list[dict]:
+    """The rendered map's pin dataset (name, days, optional flags, images)."""
+    page = load_page()
+    if not page.exists:
+        return []
+    match = re.search(r"var POIS = (\[[\s\S]*?\n  \]);", page.source)
+    assert match, "index.html must render the map pin dataset (var POIS = [...])"
+    return json.loads(match.group(1))
+
+
+def berlin_pins() -> list[dict]:
+    return [p for p in load_pois() if p.get("region") == "region-berlin"]
+
+
+def pins_on_day(day: str) -> list[dict]:
+    return [p for p in berlin_pins() if day in (p.get("days") or [])]
+
+
+def find_pin(fragment: str) -> dict:
+    matches = [
+        p for p in berlin_pins()
+        if not p.get("omitted") and fragment.lower() in p["name"].lower()
+    ]
+    assert len(matches) == 1, (
+        f"expected exactly one Berlin pin matching {fragment!r}, got "
+        f"{[p['name'] for p in matches]}"
+    )
+    return matches[0]
+
+
+BERLIN_PIN_DAYS = {
+    "Zeit für Brot": ["day-05"],
+    "Hackesche Höfe": ["day-05"],
+    "Dead Chicken Alley": ["day-05"],
+    "FOTOIMPEX": ["day-05"],
+    "Markthalle Neun": ["day-05"],
+    "SammyS": ["day-06"],
+    "Museum Island": ["day-06"],
+    "Mampe": ["day-06"],
+    "Yorckschlösschen": ["day-06"],
+    "Zoological Garden": ["day-07"],
+    "BRLO": ["day-07"],
+    "Berlin Wall Memorial": ["day-08"],
+    "Mauerpark": ["day-08"],
+    "Fleischerei Domke": ["day-08"],
+    "East Side Gallery": ["day-08"],
+    "Hauptbahnhof": ["day-08"],
+}
+
+BERLIN_OPTIONAL_PIN_NAMES = [
+    "Ständige Vertretung",
+    "Sophien 11",
+    "Anjoy",
+    "The Steak Döner",
+    "CANAL",
+    "KaDeWe",
+    "C/O Berlin",
+    "Mały Książę",
+    "Silo Coffee",
+    "Hamy",
+    "Safelight",
+    "Foto-Meyer",
+    "RAW-Gelände",
+    "Boxhagener Platz",
+]
+
+
+@pytest.mark.parametrize("fragment,days", BERLIN_PIN_DAYS.items(),
+                         ids=[f.replace(" ", "-") for f in BERLIN_PIN_DAYS])
+def test_berlin_pin_sits_on_the_right_day(fragment: str, days: list[str]) -> None:
+    """Each scheduled Berlin place is pinned on exactly the day it is planned."""
+    pin = find_pin(fragment)
+    assert pin["days"] == days, (
+        f"{pin['name']} must be pinned on {days}, found {pin['days']}"
+    )
+
+
+def test_berlin_pins_are_chronological_within_each_day() -> None:
+    """The numbered pins of each day follow the written order of the day."""
+    order = {
+        "day-05": ["Karlito", "Zeit für Brot", "Holocaust Memorial", "Hackesche Höfe",
+                   "Dead Chicken Alley", "FOTOIMPEX", "Markthalle Neun"],
+        "day-06": ["Karlito", "SammyS", "Museum Island", "Mampe", "Yorckschlösschen"],
+        "day-07": ["Karlito", "Zoological Garden", "BRLO"],
+        "day-08": ["Karlito", "Berlin Wall Memorial", "Mauerpark", "Fleischerei Domke",
+                   "East Side Gallery", "Hauptbahnhof"],
+    }
+    for day, fragments in order.items():
+        names = [p["name"].lower() for p in pins_on_day(day)]
+        positions = []
+        for fragment in fragments:
+            hits = [i for i, name in enumerate(names) if fragment.lower() in name]
+            assert len(hits) == 1, f"{fragment!r} is not pinned exactly once on {day}"
+            positions.append(hits[0])
+        assert positions == sorted(positions), (
+            f"{day} pins are out of chronological order: {[n['name'] for n in pins_on_day(day)]}"
+        )
+        assert len(names) == len(fragments), (
+            f"{day} should place {len(fragments)} pins, found {len(names)}"
+        )
+
+
+@pytest.mark.parametrize("fragment", BERLIN_OPTIONAL_PIN_NAMES,
+                         ids=[f.replace(" ", "-") for f in BERLIN_OPTIONAL_PIN_NAMES])
+def test_berlin_optional_pin_never_joins_a_daily_route(fragment: str) -> None:
+    """Alternatives, backups and pending places must stay out of every day
+    polyline and baseline Google directions, or they would read as mandatory stops."""
+    pin = find_pin(fragment)
+    assert pin["days"] == [], (
+        f"{pin['name']} is an alternative/backup/pending place and must not be "
+        f"scheduled on a day route, found {pin['days']}"
+    )
+
+
+def test_berlin_map_pins_reference_only_real_images() -> None:
+    """New pins must not invent or break image assets: either a real local photo
+    or no photo at all."""
+    assert berlin_pins(), "Berlin pins must be rendered on the map"
+    for pin in berlin_pins():
+        img = pin.get("img") or ""
+        if not img:
+            continue
+        path = resolve_ref(img)
+        assert path.is_file(), f"{pin['name']} references a missing image: {img}"
+        assert path.stat().st_size > MIN_IMAGE_BYTES, (
+            f"{pin['name']} references an unusable image: {img}"
+        )
+
+
+def test_berlin_saturday_routes_keep_alternatives_separate(page: Page) -> None:
+    """The default Sat 7 Nov route is zoo -> BRLO. KaDeWe and C/O Berlin are
+    offered only as separately labelled alternative route links."""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    baseline = re.search(r'"day-07": "(https://www\.google\.com/maps/dir/[^"]+)"',
+                         page.source)
+    assert baseline, "the Sat 7 Nov baseline route link must be rendered"
+    url = baseline.group(1)
+    assert "Zoologischer+Garten" in url and "BRLO" in url, (
+        "the Sat 7 Nov baseline route must run zoo -> BRLO"
+    )
+    assert "KaDeWe" not in url and "C%2FO" not in url, (
+        "optional Sat 7 Nov add-ons must not be baked into the baseline directions"
+    )
+
+    alt_match = re.search(r"var DAY_GMAPS_ALT = (\{[\s\S]*?\n  \});", page.source)
+    assert alt_match, "index.html must render the alternative route links"
+    alternatives = json.loads(alt_match.group(1))
+    saturday = alternatives.get("day-07") or []
+    assert len(saturday) == 2, (
+        f"expected the two labelled Saturday alternatives, got {len(saturday)}"
+    )
+    joined = json.dumps(saturday, ensure_ascii=False).lower()
+    assert "kadewe" in joined and "c/o berlin" in joined, (
+        "both optional add-ons must appear in the alternative route links"
+    )
+    for alternative in saturday:
+        label = alternative["label"].lower()
+        assert "optional" in label and "at most one" in label, (
+            f"alternative route link must be labelled optional: {alternative['label']}"
+        )
+        assert "brlo" in alternative["url"].lower(), (
+            "each alternative route must still end at BRLO"
+        )
+
+
+def test_berlin_audit_reports_the_84_place_snapshot(page: Page) -> None:
+    """The saved-list audit states the 3 Nov 2026 snapshot of 84 places and does
+    not present itself as a live-updating list."""
+    assert page.exists, f"index.html not found at {INDEX_HTML}"
+    assert near(Re(r"\b84\b"), Re(r"saved\s*places"), Re(r"3\s*nov\s*2026"),
+                Re(r"not\s*a\s*live\s*feed"), window=800).matches(page.corpus), (
+        "the audit must state the 84-place, 3 Nov 2026, non-live snapshot"
+    )
+    assert near(Re(r"the\s*steak\s*doener"), Re(r"super\s*shawarma"),
+                Re(r"stasi\s*museum"), window=400).matches(page.corpus), (
+        "the three newly added Berlin pins must be acknowledged in the audit"
+    )
+    assert near(Re(r"\b39\b"), Re(r"berlin"), Re(r"84\s*saved\s*pins|total", ),
+                window=400).matches(page.corpus) or near(
+        Re(r"39\s*\+\s*20\s*\+\s*16\s*\+\s*6\s*\+\s*3\s*=\s*84"),
+        window=40).matches(page.corpus), (
+        "the audit must show how the 84 pins split across the regions"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Berlin follow-up audit (4 Nov 2026)
+#
+# The first Berlin pass left six verified defects: several pins sat at the wrong
+# coordinates, the Thursday/Sunday routes hid the return legs, alternative-only
+# places were undiscoverable in their day filter, the timetable omitted real
+# transit/rest buffers, a few published facts were wrong (Pergamon/Panorama,
+# Otto Weidt hours, Ständige hours, BRLO's menu) and the scroll-stopping "only
+# reservation"/"1:1 route" claims overstated the plan. These tests pin the
+# corrected, user-visible outcome.
+# ---------------------------------------------------------------------------
+
+# Coordinates taken from the user's saved Google list pins; the last four from a
+# separate OpenStreetMap address check.
+EVIDENCE_COORDINATES = [
+    ("Markthalle Neun", 52.502135, 13.431599, "Eisenbahnstra"),
+    ("SammyS", 52.5263276, 13.399265, "Sophienstra"),
+    ("CANAL", 52.5252552, 13.4016845, "Sophienstra"),
+    ("Steak Döner", 52.5207058, 13.4046972, "Spandauer"),
+    ("C/O Berlin", 52.5066337, 13.330547, "Hardenbergstra"),
+    ("Yorckschlösschen", 52.493563, 13.382109, "Yorckstra"),
+    ("Sophien 11", 52.5249910, 13.4027756, "Sophienstra"),
+    ("Anjoy", 52.5362432, 13.4206010, "Rykestra"),
+    ("KaDeWe", 52.5015753, 13.3410035, "Tauentzienstra"),
+    ("Neues Museum", 52.5201553, 13.3977381, "Bodestra"),
+]
+
+
+@pytest.mark.parametrize(
+    "fragment,lat,lng,street",
+    EVIDENCE_COORDINATES,
+    ids=[item[0].replace(" ", "-").replace("/", "") for item in EVIDENCE_COORDINATES],
+)
+def test_berlin_evidence_coordinates(fragment, lat, lng, street) -> None:
+    """Each re-checked place sits on its evidenced coordinates, and its pin
+    carries the street address the marker navigates to."""
+    pin = find_pin(fragment)
+    assert pin["lat"] == pytest.approx(lat, abs=1e-7), (
+        f"{pin['name']} latitude must be the evidenced {lat}, found {pin['lat']}"
+    )
+    assert pin["lng"] == pytest.approx(lng, abs=1e-7), (
+        f"{pin['name']} longitude must be the evidenced {lng}, found {pin['lng']}"
+    )
+    assert fold(street) in fold(pin.get("addr", "")), (
+        f"{pin['name']} must carry the street address ({street}); found "
+        f"{pin.get('addr')!r}"
+    )
+
+
+def _run_pin_search_urls(pins: list[dict], tmp_path: Path) -> list[str]:
+    """Execute the controller's own Google Maps search-link builder in node."""
+    import shutil
+    import subprocess
+
+    source = load_page().source
+    match = re.search(
+        r"(function pinSearchUrl\(p\) \{[\s\S]*?)\n  // end pinSearchUrl", source
+    )
+    assert match, "the map must build its Google Maps search link with pinSearchUrl()"
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node is unavailable, skipping the pin search-link check")
+    script = (
+        match.group(1)
+        + "\nvar pins = "
+        + json.dumps(pins, ensure_ascii=False)
+        + ";\nconsole.log(JSON.stringify(pins.map(pinSearchUrl)));\n"
+    )
+    script_path = tmp_path / "pin_search.js"
+    script_path.write_text(script, encoding="utf-8")
+    result = subprocess.run(
+        [node, str(script_path)], capture_output=True, text=True, timeout=60
+    )
+    assert result.returncode == 0, (
+        "pinSearchUrl() must run in node: " + (result.stderr or result.stdout)
+    )
+    return json.loads(result.stdout)
+
+
+def test_berlin_pin_search_points_at_the_address(tmp_path: Path) -> None:
+    """Every popup's Google Maps link searches the street address, not the
+    decorated display name ("★ #48 … (NON-NEGOTIABLE!)")."""
+    from urllib.parse import unquote
+
+    decorated = [
+        find_pin("Mampe"),
+        find_pin("Markthalle Neun"),
+        find_pin("Yorckschlösschen"),
+        find_pin("FOTOIMPEX"),
+        find_pin("Domke"),
+        find_pin("Mauerpark"),
+        find_pin("Berlin Wall Memorial"),
+        find_pin("Hauptbahnhof"),
+        find_pin("Zeit für Brot"),
+        find_pin("Neues Museum"),
+    ]
+    urls = _run_pin_search_urls(decorated, tmp_path)
+    assert len(urls) == len(decorated)
+    for pin, url in zip(decorated, urls):
+        assert url.startswith("https://www.google.com/maps/search/?api=1&query="), url
+        query = unquote(url.split("query=", 1)[1])
+        street = fold(pin["addr"].split("(")[0].strip())
+        first_token = street.split(",")[0].strip()
+        assert first_token in fold(query), (
+            f"{pin['name']} must search its street address; query was {query!r}"
+        )
+        for decoration in ("★", "✖", "◇", "NON-NEGOTIABLE", "CONFIRMED", "#48", "#04"):
+            assert decoration.lower() not in fold(query), (
+                f"{pin['name']} search query leaks display decoration "
+                f"({decoration}) into the address search: {query!r}"
+            )
+
+
+def load_day_routes() -> dict[str, list[dict]]:
+    page = load_page()
+    match = re.search(r"var DAY_ROUTES = (\{[\s\S]*?\n  \});", page.source)
+    assert match, "index.html must render the day route data (var DAY_ROUTES = {...})"
+    return json.loads(match.group(1))
+
+
+def day_baseline_url(day: str) -> str:
+    page = load_page()
+    match = re.search(
+        r'"%s": "(https://www\.google\.com/maps/dir/[^"]+)"' % re.escape(day),
+        page.source,
+    )
+    assert match, f"the {day} baseline Google directions link must be rendered"
+    return match.group(1)
+
+
+def test_berlin_thursday_timeline_has_real_buffers(page: Page) -> None:
+    """Thu 5 Nov: memorial 10:15-11:45, one lunch 12:15-13:15, courtyards/alley
+    plus FOTOIMPEX 13:15-15:15, then the return to Karlito and a ~2h+ rest to
+    ~17:45 before dinner at ~18:30/19:00."""
+    assert near(Re(r"memorial|gedenkstaette"), hhmm("10:15"), hhmm("11:45"),
+                window=260).matches(page.corpus), (
+        "the Thursday memorial block must be timed 10:15-11:45"
+    )
+    assert near(Re(r"lunch"), hhmm("12:15"), hhmm("13:15"), window=200).matches(
+        page.corpus
+    ), "the single Thursday lunch must be timed 12:15-13:15"
+    assert near(Re(r"hackesche"), hhmm("13:15"), hhmm("14:15"), window=260).matches(
+        page.corpus
+    ), "the courtyard block must start after the lunch"
+    assert near(Re(r"fotoimpex"), hhmm("14:45"), hhmm("15:15"), window=220).matches(
+        page.corpus
+    ), "FOTOIMPEX must be timed ~14:45-15:15"
+    assert near(Re(r"rest"), hhmm("17:45"), Re(r"2\s*h|two\s*hours|~2h"),
+                window=320).matches(page.corpus), (
+        "the Thursday check-in/rest must run to ~17:45 and be a real ~2h+ rest"
+    )
+    assert near(Re(r"street\s*food\s*thursday"), hhmm("18:30"), window=600).matches(
+        page.corpus
+    ), "the Thursday dinner must be evidenced at ~18:30/19:00"
+
+
+def test_berlin_thursday_route_returns_home_before_dinner() -> None:
+    """FOTOIMPEX -> Karlito check-in/rest -> Markthalle must be the drawn route,
+    in the baseline directions, and explained as an unnumbered return."""
+    routes = load_day_routes()
+    steps = routes["day-05"]
+    ids = [step["id"] for step in steps]
+    karlito = find_pin("Karlito")["id"]
+    fotoimpex = find_pin("FOTOIMPEX")["id"]
+    markthalle = find_pin("Markthalle Neun")["id"]
+    assert ids.count(karlito) == 2, (
+        "the Thursday route must visit Karlito twice (arrival + check-in/rest)"
+    )
+    first_home = ids.index(karlito)
+    return_home = ids.index(karlito, first_home + 1)
+    assert fotoimpex in ids[:return_home] and markthalle in ids[return_home:], (
+        "the Thursday route must run FOTOIMPEX -> Karlito -> Markthalle, got "
+        f"{ids}"
+    )
+    return_step = steps[return_home]
+    assert return_step.get("kind") == "return", (
+        "the repeated Karlito location must be an unnumbered return waypoint"
+    )
+    assert "return" in return_step["label"].lower(), return_step["label"]
+
+    url = day_baseline_url("day-05")
+    linien = url.count("Linienstra%C3%9Fe+60")
+    assert linien >= 2, (
+        "the Thursday baseline Google directions must include the return home, got "
+        f"{url}"
+    )
+    assert url.index("FOTOIMPEX") < url.index("Markthalle+Neun"), (
+        "the Thursday baseline directions must end at Markthalle Neun"
+    )
+
+
+def test_berlin_friday_transit_buffer_to_mampe(page: Page) -> None:
+    """Fri 6 Nov: leave the island 15:45-16:00, 30-40 min travel, Mampe from
+    ~16:15-16:40 until ~17:30 before the 18:30 table."""
+    assert near(Re(r"island"), hhmm("15:45"), hhmm("16:00"), Re(r"30\W{0,3}40\s*min"),
+                window=300).matches(page.corpus), (
+        "Friday must allow a 15:45-16:00 island exit plus a 30-40 min ride"
+    )
+    assert near(Re(r"mampe"), hhmm("16:15"), hhmm("17:30"), window=260).matches(
+        page.corpus
+    ), "Mampe must be timed ~16:15/16:40 to ~17:30"
+
+
+def test_berlin_saturday_departure_and_zoo_window(page: Page) -> None:
+    """Sat 7 Nov: leave the apartment ~09:00, be in the zoo ~09:30-16:30 with
+    lunch inside the zoo."""
+    assert near(Re(r"karlito|apartment"), hhmm("09:00"), Re(r"leave|departure"),
+                window=240).matches(page.corpus), (
+        "Saturday must state the ~09:00 apartment departure"
+    )
+    assert near(Re(r"zoo"), hhmm("09:30"), hhmm("16:30"), window=260).matches(
+        page.corpus
+    ), "the Saturday zoo window must be ~09:30-16:30"
+    assert near(Re(r"lunch"), Re(r"inside\s+the\s+zoo"), window=200).matches(
+        page.corpus
+    ), "Saturday lunch must be inside the zoo, not an extra stop"
+
+
+def test_berlin_sunday_timed_sequence(page: Page) -> None:
+    """Sun 8 Nov: checkout 08:00-09:00, Wall Memorial 09:20-10:15, Mauerpark
+    10:30-12:15, 45-60 min to Domke, lunch 13:00-13:45, Gallery 14:00-15:30,
+    early dinner/train food ~17:30, Hbf 20:15 for the 20:52 Nightjet."""
+    assert near(Re(r"check\s*out|checkout"), hhmm("08:00"), hhmm("09:00"),
+                window=240).matches(page.corpus), (
+        "Sunday checkout must be timed 08:00-09:00"
+    )
+    assert near(Re(r"wall\s*memorial"), hhmm("09:20"), hhmm("10:15"), window=260).matches(
+        page.corpus
+    ), "the Wall Memorial block must be timed 09:20-10:15"
+    assert near(Re(r"mauerpark"), hhmm("10:30"), hhmm("12:15"), window=260).matches(
+        page.corpus
+    ), "the Mauerpark block must be timed 10:30-12:15"
+    assert near(Re(r"domke"), hhmm("13:00"), hhmm("13:45"), Re(r"45\W{0,3}60\s*min"),
+                window=400).matches(page.corpus), (
+        "Domke lunch must be 13:00-13:45 after a 45-60 min ride from the market"
+    )
+    assert near(Re(r"east\s*side\s*gallery"), hhmm("14:00"), hhmm("15:30"),
+                window=260).matches(page.corpus), (
+        "East Side Gallery must be timed 14:00-15:30"
+    )
+    assert near(Re(r"dinner|train\s*food"), hhmm("17:30"), window=200).matches(
+        page.corpus
+    ), "the early dinner / train food must be ~17:30"
+    assert near(MUNICH_HBF, hhmm("20:15"), hhmm("20:52"), window=460).matches(
+        page.corpus
+    ) or near(seq("Berlin", "Hbf"), hhmm("20:15"), hhmm("20:52"),
+              window=460).matches(page.corpus), (
+        "the Sunday station arrival must stay 20:15 for the 20:52 departure"
+    )
+
+
+def test_berlin_sunday_bag_pickup_is_conditional(page: Page) -> None:
+    """Gallery -> Karlito bag pickup -> Hbf only when the apartment stored the
+    bags; with Hbf lockers the route skips the apartment."""
+    assert near(Re(r"bag\s*pickup"), Re(r"only\s+if"), Re(r"hbf\s*lockers"),
+                window=420).matches(page.corpus), (
+        "the Sunday bag pickup must be stated as conditional on the apartment "
+        "having stored the bags, with Hbf lockers as the alternative"
+    )
+    stale = [
+        "back to karlito to collect the bags",
+        "collect bags at karlito first",
+    ]
+    found = [phrase for phrase in stale if phrase in page.corpus]
+    assert not found, (
+        "the Sunday plan must not assume bags are stored at Karlito; found: "
+        + "; ".join(found)
+    )
+    steps = load_day_routes()["day-08"]
+    ids = [step["id"] for step in steps]
+    karlito = find_pin("Karlito")["id"]
+    gallery = find_pin("East Side Gallery")["id"]
+    assert ids.count(karlito) == 2, "the Sunday route must show the return home"
+    home = ids.index(karlito, 1)
+    assert gallery in ids[:home] and ids[-1] == find_pin("Hauptbahnhof")["id"], (
+        f"the Sunday route must run Gallery -> Karlito -> Hbf, got {ids}"
+    )
+    assert "only if" in steps[home]["label"].lower(), steps[home]["label"]
+
+
+def test_berlin_old_infeasible_timings_are_gone(page: Page) -> None:
+    """The superseded schedule (13:00 flea finish, 13:15 Domke, 16:00 FOTOIMPEX
+    with a 17:30 departure and no rest, zoo from 09:00 with an 08:45 exit) must
+    not survive anywhere."""
+    stale = [
+        "mauerpark flohmarkt (11:00–13:00",
+        "13:15–14:30",
+        "14:45–16:15",
+        "fotoimpex gmbh (~16:00)",
+        "08:45 departure",
+        "10:00–~15:45",
+        "mampe 16:00–17:30",
+    ]
+    found = [phrase for phrase in stale if fold(phrase) in page.corpus]
+    assert not found, (
+        "superseded Berlin timings are still rendered: " + "; ".join(found)
+    )
+
+
+def test_berlin_museum_pass_facts_and_citation(page: Page) -> None:
+    """The Pergamonmuseum main building is closed; the €24 pass includes only
+    the separately housed Das Panorama exhibition, not the closed building's
+    collection; the pass is unbooked but not presented as something that must
+    be bought on arrival."""
+    assert near(Re(r"€24|24\s*(?:eur|€)"), Re(r"museum\s*island"),
+                Re(r"pergamonmuseum\s+main\s+building"), Re(r"closed"),
+                Re(r"panorama"), Re(r"separately\s+housed"),
+                window=700).matches(page.corpus), (
+        "the pass must state that the Pergamonmuseum main building is closed "
+        "and that only the separately housed Das Panorama is included"
+    )
+    incorrect = [
+        "includes the pergamonmuseum collection",
+        "pass includes the pergamonmuseum",
+        "covering the island museums and the pergamonmuseum collection",
+        "covers the island museums and the pergamonmuseum collection",
+    ]
+    found = [phrase for phrase in incorrect if phrase in page.corpus]
+    assert not found, (
+        "the closed Pergamonmuseum main building's collection must not be "
+        "described as included in the pass; found: " + "; ".join(found)
+    )
+    assert near(Re(r"panorama"), Re(r"separate\s+exhibition\s+venue"),
+                Re(r"not\s+a\s+separate\s+paid\s+ticket"), window=320).matches(
+        page.corpus
+    ), (
+        "Das Panorama must be described as a separate venue rather than a "
+        "separate paid ticket"
+    )
+    assert "smb.museum/en/plan-your-visit/prices-tickets" in page.source, (
+        "the museum pass claim must cite the SMB ticket page"
+    )
+    assert near(Re(r"special\s+exhibition"), Re(r"time\s+slot"), window=320).matches(
+        page.corpus
+    ), "special exhibitions may need an extra free time slot with the pass"
+    assert near(Re(r"pass|ticket"), Re(r"not\s+booked"), window=260).matches(
+        page.corpus
+    ), "the museum pass must stay explicitly unbooked"
+    stale = ["buy it on arrival", "buy on arrival", "must buy", "panorama is a separate ticket"]
+    found = [phrase for phrase in stale if phrase in page.corpus]
+    assert not found, (
+        "the pass must not be presented as mandatory-on-arrival or Panorama as a "
+        "separate ticket; found: " + "; ".join(found)
+    )
+
+
+def test_berlin_otto_weidt_hours_include_the_weekend(page: Page) -> None:
+    """Otto Weidt is open weekdays 09:00-18:00 and weekends 10:00-18:00, cited."""
+    assert near(Re(r"otto\s+weidt"), Re(r"weekdays?\s*09:00\W{0,3}18:00"),
+                Re(r"weekends?\s*10:00\W{0,3}18:00"), window=360).matches(
+        page.corpus
+    ), "Otto Weidt hours must state weekday 09:00-18:00 and weekend 10:00-18:00"
+    assert "museum-blindenwerkstatt.de/en" in page.source, (
+        "the Otto Weidt hours claim must cite museum-blindenwerkstatt.de"
+    )
+    stale = ["weekday-only", "weekdays only"]
+    found = [phrase for phrase in stale if phrase in page.corpus]
+    assert not found, (
+        "Otto Weidt must not be described as weekday-only; found: "
+        + "; ".join(found)
+    )
+
+
+def test_berlin_staendige_hours_daily_until_0100(page: Page) -> None:
+    """Ständige Vertretung is open daily 11:00-01:00, cited from staev.de."""
+    assert near(Re(r"staendige|ständige"), Re(r"daily\s*11:00\W{0,3}01:00"),
+                window=260).matches(page.corpus), (
+        "Ständige Vertretung must be stated as daily 11:00-01:00"
+    )
+    assert "staev.de/berlin-mitte.html" in page.source, (
+        "the Ständige Vertretung hours claim must cite staev.de"
+    )
+    pin = find_pin("Ständige Vertretung")
+    assert "11:00–01:00" in pin["hours"], (
+        f"the Ständige pin must carry the 11:00-01:00 hours, found {pin['hours']!r}"
+    )
+    assert not near(Re(r"staendige|ständige"), Re(r"daily\s*11:00\W{0,3}24:00"),
+                    window=260).matches(page.corpus), (
+        "the old Ständige 11:00-24:00 hours must be gone next to the Ständige "
+        "references"
+    )
+
+
+def test_berlin_brlo_menu_is_current_and_cited(page: Page) -> None:
+    """BRLO's current kitchen serves seasonal vegetable-focused shared plates;
+    smokehouse plates must not be presented as the default."""
+    assert near(Re(r"brlo"), Re(r"seasonal"), Re(r"vegetable"),
+                Re(r"shared\s+plates"), window=420).matches(page.corpus), (
+        "BRLO must be described with its current seasonal, vegetable-focused "
+        "shared plates"
+    )
+    assert "brlo.de/gastronomien/brlo-brwhouse" in page.source, (
+        "the BRLO menu claim must cite brlo.de"
+    )
+    assert "smokehouse plates at park" not in page.corpus and (
+        "for craft beer & smokehouse plates" not in page.corpus
+    ), "the superseded smokehouse-plates default is still rendered"
+    assert "not the current default" in page.corpus, (
+        "the plan should say the smokehouse framing is not the current default"
+    )
+
+
+def test_berlin_only_confirmed_restaurant_reservation(page: Page) -> None:
+    """Exactly three things are confirmed in Berlin (apartment, Fri 18:30 table,
+    Sun 20:52 Nightjet) and the reservation claim is scoped to restaurants."""
+    assert near(Re(r"only\s+confirmed\s+berlin\s+restaurant\s+reservation"),
+                window=80).matches(page.corpus) or (
+        "only confirmed berlin restaurant reservation" in page.corpus
+    ), "the reservation claim must be scoped to a Berlin restaurant reservation"
+    stale = ["only reservation in this leg", "the only berlin reservation"]
+    found = [phrase for phrase in stale if phrase in page.corpus]
+    assert not found, (
+        "the unscoped 'only reservation' claim must be gone; found: "
+        + "; ".join(found)
+    )
+    assert near(Re(r"confirmed"), Re(r"karlito|5126078467"),
+                Re(r"yorckschloesschen|yorckschlösschen"), hhmm("18:30"),
+                Re(r"nightjet|nj\s*408"), hhmm("20:52"), window=900).matches(
+        page.corpus
+    ), (
+        "the plan must name the three confirmed items: the apartment booking, the "
+        "18:30 table and the 20:52 Nightjet"
+    )
+
+
+OPTIONAL_DAY_PINS = {
+    "Ständige Vertretung": "day-05",
+    "Sophien 11": "day-05",
+    "Anjoy": "day-05",
+    "Steak Döner": "day-06",
+    "CANAL": "day-06",
+    "KaDeWe": "day-07",
+    "C/O Berlin": "day-07",
+}
+
+
+@pytest.mark.parametrize(
+    "fragment,day",
+    OPTIONAL_DAY_PINS.items(),
+    ids=[name.replace(" ", "-").replace("/", "") for name in OPTIONAL_DAY_PINS],
+)
+def test_berlin_alternative_is_discoverable_on_its_day(fragment, day) -> None:
+    """Alternative/backup places stay off the route but must be findable in the
+    day's map filter and sidebar, labelled optional and individually navigable."""
+    pin = find_pin(fragment)
+    assert pin["days"] == [], (
+        f"{pin['name']} must not be treated as a scheduled stop, found {pin['days']}"
+    )
+    assert pin.get("altDays") == [day], (
+        f"{pin['name']} must be discoverable in the {day} filter, found "
+        f"{pin.get('altDays')}"
+    )
+    assert pin.get("optional") is True, f"{pin['name']} must be flagged optional"
+    tag = fold(pin.get("tag", ""))
+    assert "optional" in tag or "backup" in tag, (
+        f"{pin['name']} needs an OPTIONAL/BACKUP label, found {pin.get('tag')!r}"
+    )
+    assert pin.get("addr"), f"{pin['name']} needs an address for individual navigation"
+
+
+def test_berlin_alternatives_never_join_a_route() -> None:
+    """No optional pin appears in a drawn day route or in the day's baseline
+    Google directions; the alternatives stay behind their own links."""
+    routes = load_day_routes()
+    optional_ids = {
+        find_pin(fragment)["id"]
+        for fragment in OPTIONAL_DAY_PINS
+    } | {find_pin("Mały Książę")["id"]}
+    for day, steps in routes.items():
+        for step in steps:
+            assert step["id"] not in optional_ids, (
+                f"{day} route illegally includes the alternative pin {step['id']}"
+            )
+    for day in ("day-05", "day-06", "day-07"):
+        url = day_baseline_url(day).lower()
+        for unwanted in ("anjoy", "kadewe", "c%2fo", "canal", "steak", "sophien+11", "staendige", "ständige"):
+            assert unwanted not in url, (
+                f"the {day} baseline directions must exclude {unwanted}: {url}"
+            )
+
+
+def test_berlin_optional_pins_excluded_from_the_default_route_line() -> None:
+    """The polyline is built from DAY_ROUTES (planned stops + returns) only, so an
+    optional pin can never be interpolated into the route line."""
+    source = load_page().source
+    assert "var declaredRoute = isDay ? (DAY_ROUTES[filterKey] || []) : [];" in source, (
+        "the map must draw the day route from the DAY_ROUTES data"
+    )
+    assert re.search(r"L\.polyline\(routeCoords", source), (
+        "the day polyline must be built from the route waypoints, not the pin list"
+    )
+    assert "altDays" in source and "optional" in source, (
+        "optional pins must be filtered and drawn with their own marker style"
+    )
+
+
+def test_berlin_day_routes_only_reference_planned_pins() -> None:
+    """Day route data must reference real pins, and every pin scheduled for a day
+    must appear in that day's route, in the written chronological order."""
+    pois = {p["id"]: p for p in berlin_pins()}
+    routes = load_day_routes()
+    assert set(routes) >= {"day-05", "day-06", "day-07", "day-08"}
+    for day, steps in routes.items():
+        scheduled = {p["id"] for p in pins_on_day(day)}
+        route_ids = [step["id"] for step in steps]
+        for step in steps:
+            assert step["id"] in pois, f"{day} route points at unknown pin {step['id']}"
+            if step.get("kind") != "return":
+                assert step["id"] in scheduled, (
+                    f"{day} route includes {pois[step['id']]['name']}, which is not "
+                    f"scheduled for {day}"
+                )
+                assert step.get("label"), "each numbered stop needs a timeline label"
+        assert scheduled <= set(route_ids), (
+            f"{day} route is missing scheduled pins: "
+            f"{sorted(scheduled - set(route_ids))}"
+        )
+        assert route_ids.index(route_ids[0]) == 0
+
+
+def test_berlin_saturday_has_no_route_stop_for_both_addons() -> None:
+    """KaDeWe A and C/O Berlin B are mutually exclusive add-ons, shown as
+    labelled alternatives with their own directions links."""
+    kadewe = find_pin("KaDeWe")
+    co = find_pin("C/O Berlin")
+    assert kadewe.get("badge") == "A" and co.get("badge") == "B", (
+        "the Saturday add-ons must be labelled A and B on the map"
+    )
+    page = load_page()
+    assert near(Re(r"option\s*a"), Re(r"option\s*b"), Re(r"at\s*most\s*one"),
+                Re(r"never\s*both"), window=700).matches(page.corpus), (
+        "the timeline must say Option A and Option B are alternatives, never both"
+    )
+    sat = load_day_routes()["day-07"]
+    assert kadewe["id"] not in [step["id"] for step in sat]
+    assert co["id"] not in [step["id"] for step in sat]
+
+
+def test_berlin_route_accuracy_is_not_claimed_as_1to1(page: Page) -> None:
+    """The plan must not claim a 1:1/turn-by-turn route while flexible lunches and
+    the rest are unpinned."""
+    stale = ["1:1 map", "1:1 aligned", "100% 1:1", "1:1 route", "21 pin placements"]
+    found = [phrase for phrase in stale if fold(phrase) in page.corpus]
+    assert not found, (
+        "the superseded 1:1 route-accuracy claim is still rendered: "
+        + "; ".join(found)
+    )
+    assert near(Re(r"approximate"), Re(r"not\s+a\s+turn\W{0,3}by\W{0,3}turn|itinerary\s+sketch"),
+                window=400).matches(page.corpus), (
+        "the plan must say the timings/route are approximate rather than 1:1"
+    )
+
+
+def test_berlin_hamy_is_a_suggestion_not_a_saved_place(page: Page) -> None:
+    """Hamy is unscheduled, only ever a Saturday idea, and not a saved Google list
+    place — the plan must not deny Hamy exists either."""
+    hamy = find_pin("Hamy")
+    assert not hamy.get("saved"), "Hamy is a suggestion and must not be marked saved"
+    assert hamy["days"] == [], "Hamy must not be scheduled on any day"
+    assert near(Re(r"hamy"), Re(r"not\s+(?:one\s+of\s+)?your\s+saved\s+google\s+list|not\s+a\s+saved\s+google\s+list"),
+                Re(r"saturday"), window=700).matches(page.corpus), (
+        "Hamy must be explained as an unscheduled Saturday-only suggestion that is "
+        "not on the saved Google list"
+    )
+    stale = ["no hamy on this trip", "no hamy anywhere", "not anywhere on this trip"]
+    found = [phrase for phrase in stale if phrase in page.corpus]
+    assert not found, (
+        "the plan must not imply Hamy is missing from the whole trip; found: "
+        + "; ".join(found)
+    )
+
+
+def test_berlin_polish_grocery_has_no_day(page: Page) -> None:
+    """The Polish-grocery priority is still pending, with no invented day."""
+    pin = find_pin("Mały Książę")
+    assert pin["days"] == [] and not pin.get("altDays"), (
+        "Mały Książę must stay unscheduled (no day, no day-filter assignment)"
+    )
+    assert "no day" in fold(pin.get("note", "")), (
+        "the pin note must say no day has been assigned"
+    )
+    assert near(MALY_KSIAZE, Re(r"pending"), Re(r"no\s+assigned\s+day|no\s+day"),
+                window=700).matches(page.corpus), (
+        "the timeline/scorecard must carry the Polish-grocery priority as pending "
+        "without assigning it a day"
+    )
+
+
+def test_berlin_marker_counts_are_not_brittle(page: Page) -> None:
+    """The Berlin UI must not advertise brittle pin counts that the map no longer
+    guarantees, while the audited 84-place snapshot stays."""
+    stale = [
+        "21 chronological pins",
+        "21 pin placements",
+        "14 optional/pending",
+        "7 map pins",
+        "5 map pins",
+        "6 map pins",
+        "3 map pins + 2 optional",
+    ]
+    found = [phrase for phrase in stale if fold(phrase) in page.corpus]
+    assert not found, (
+        "brittle Berlin marker counts are still rendered: " + "; ".join(found)
+    )
+    assert near(Re(r"\b84\b"), Re(r"3\s*nov\s*2026"), window=300).matches(page.corpus)
+
+
+def test_berlin_records_the_media_gap(page: Page) -> None:
+    """Honest REQ-09 media gap: new places may have no verified photo, and no
+    browser validation is claimed until it is separately verified."""
+    assert near(Re(r"no\s+verified\s+photograph|not\s+verified\s+photograph"),
+                Re(r"no\s+image|no\s+photo"), window=400).matches(page.corpus), (
+        "the plan must record that some re-pinned places have no verified photo "
+        "and show no image instead of a stand-in"
+    )
+    assert berlin_pins(), "Berlin pins must still render"
+    missing = [p["name"] for p in berlin_pins() if not p.get("img")]
+    assert missing, (
+        "at least one Berlin pin is expected to have no verified image so the gap "
+        "is real and documented"
+    )

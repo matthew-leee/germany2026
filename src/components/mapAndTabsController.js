@@ -81,36 +81,44 @@
 
   // 4. Interactive Multi-Pin Map (Leaflet + OpenStreetMap + 1-Click Google Maps Route Links)
   var POIS = [
-    {"id": 159, "name": "★ #59 Karlito Apartmenthaus (Berlin Base)", "lat": 52.52891, "lng": 13.405415, "region": "region-berlin", "days": ["day-05", "day-06", "day-07", "day-08"], "saved": true, "cat": "cat-hotel", "color": "#067647", "hours": "Check-in Thu 5 Nov 14:00–23:00 · Checkout Sun 8 Nov 08:00–10:00", "addr": "Linienstraße 60, 10119 Berlin-Mitte (U2 Rosa-Luxemburg-Platz)", "img": "assets/images/hotel_karlito_berlin.jpg", "note": "[Thu 5 – Sun 8 Nov Home Base] ~08:00 bag drop on Thu 5 Nov (early luggage storage unconfirmed; Berlin Hbf lockers backup). Checkout Sun 8 Nov 08:00–10:00 — ask about bag storage for the day (Hbf lockers backup). 3 mins walk to #45 Zeit für Brot & 5 mins to #04 FOTOIMPEX; direct U2 line to Berlin Zoo."},
-    {"id": 145, "name": "★ #45 Zeit für Brot ('nice 包包')", "lat": 52.528015, "lng": 13.408607, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-bakery", "color": "#b8860b", "hours": "Mon–Fri 07:00–20:00, Sat 08:00–20:00, Sun 08:00–18:00 (VERIFIED)", "addr": "Alte Schönhauser Str. 4, 10119 Berlin-Mitte", "img": "assets/images/berlin_zeit_fuer_brot.jpg", "note": "[Thu 5 Nov · 09:30 MUST-HAVE cinnamon roll (Zimtschnecke)] 250m from Karlito. Warm organic Zimtschnecken fresh from the oven — light snack before lunch. Verified hours: Mon–Fri 07:00–20:00, Sat 08:00–20:00, Sun 08:00–18:00."},
-    {"id": 171, "name": "Holocaust Memorial, Brandenburg Gate & Reichstag", "lat": 52.5163, "lng": 13.3777, "region": "region-berlin", "days": ["day-05"], "cat": "cat-sight", "color": "#005f87", "hours": "24/7 (Reichstag Dome requires advance booking)", "addr": "Pariser Platz / Platz der Republik, 10117 Berlin", "img": "assets/images/odeonsplatz.jpg", "note": "[Thu 5 Nov · 10:30–13:00] Walk from the Memorial to the Murdered Jews of Europe through Brandenburg Gate to the Reichstag — exterior visit only, the dome needs an advance booking. One relaxed lunch in Mitte follows at 13:00, then 14:00 check-in and rest at Karlito."},
-    {"id": 148, "name": "★ #48 Mampe Berlin (NON-NEGOTIABLE MUST-GO!)", "lat": 52.488876, "lng": 13.38728, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-wine", "color": "#7c3aed", "hours": "Mon–Fri 10:00–18:00, Sat 12:00–18:00 (Closed Sun) — VERIFIED", "addr": "Am Tempelhofer Berg 6, 10965 Berlin-Kreuzberg", "img": "assets/images/berlin_brlo.jpg", "note": "[Thu 5 Nov · 16:15–17:45 MUST-GO] Berlin's oldest spirits house (since 1831) inside the historic Viktoria-Quartier brewery courtyard! Taste & buy Halb & Halb bitter-orange herbal liqueur, Elefantenkümmel & Kreuzberg Gin."},
-    {"id": 157, "name": "★ #57 BRLO Brwhouse ('Brewery tour & beer garden!')", "lat": 52.500197, "lng": 13.3737, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Mon closed · Tue–Fri 17:00–00:00 · Sat 12:00–00:00 · Sun 12:00–22:00 (kitchen to 22:00)", "addr": "Schöneberger Str. 16, 10963 Berlin (Park am Gleisdreieck)", "img": "assets/images/berlin_brlo.jpg", "note": "[Thu 5 Nov · ~19:30 Dinner] 12 mins walk (or 1 stop) from Mampe Berlin. Day-of alternative: Street Food Thursday at Markthalle Neun (17:00–22:00) — your choice on the day."},
-    {"id": 114, "name": "★ #14 Fleischerei Domke (NON-NEGOTIABLE MUST-GO!)", "lat": 52.510477, "lng": 13.452073, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Mon–Fri 06:00–21:00, Sat 07:00–21:00, Sun 09:00–21:00 (VERIFIED)", "addr": "Warschauer Str. 64, 10243 Berlin-Friedrichshain", "img": "assets/images/schweinshaxe.jpg", "note": "[Fri 6 Nov · ~09:30 BREAKFAST MUST-GO!] Hackepeter / Mettbrötchen breakfast — evidenced by Domke's own Instagram bio (Belegtes Brötchen / Mettbrötchen 1,30 €) and a VICE article. Still advise a courtesy call on +49 30 291 76 35. Fallback: Gut Kerkow, Tucholskystr. 31 (Mon–Fri 08:00–19:00)."},
-    {"id": 112, "name": "◇ #12 Silo Coffee (OPTIONAL — off-route, not a meal stop)", "lat": 52.510075, "lng": 13.458378, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-bakery", "color": "#b8860b", "hours": "Daily 08:30–16:00 / 16:30", "addr": "Gabriel-Max-Straße 4, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_zeit_fuer_brot.jpg", "note": "[Fri 6 Nov · ~11:00 OPTIONAL Coffee] Aussie-style third-wave specialty coffee right off Boxhagener Platz — only if you still want coffee after the Domke Mettbrötchen breakfast."},
-    {"id": 119, "name": "★ #19 RAW-Gelände & Michelberger Bar (for #50 MXPSM Schnaps)", "lat": 52.507686, "lng": 13.451869, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7", "addr": "Revaler Str. 99 / Warschauer Str. 39, 10245 Berlin", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 10:30–11:30 · Choose One or Two] 4 mins walk south of Domke: the gritty 1867 railway repair compound, plus MXPSM herbal spirits at the Michelberger Hotel bar across the street."},
-    {"id": 120, "name": "★ #20 Boxhagener Platz", "lat": 52.510876, "lng": 13.459713, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7 (Neighborhood Square)", "addr": "Boxhagener Platz, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 10:30–11:30 · Choose One or Two] Heart of Friedrichshain, 200m from Silo Coffee & Fleischerei Domke — the leafy Kiez option in the RAW / Boxhagener / East Side cluster."},
-    {"id": 121, "name": "★ #21 East Side Gallery (1.3km Painted Berlin Wall)", "lat": 52.505022, "lng": 13.439695, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7", "addr": "Mühlenstraße, 10243 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "[Fri 6 Nov · 10:30–11:30 · Choose One or Two] The longest surviving section of the Berlin Wall along the Spree — 4 mins from Warschauer Straße, so pair it with RAW-Gelände if you have time."},
-    {"id": 105, "name": "★ #05 Safelight Berlin (Analog Camera Shop & Film Lab)", "lat": 52.551031, "lng": 13.411217, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-camera", "color": "#067647", "hours": "Tue–Sat 11:00–19:00 (CLOSED SUN & MON!) — VERIFIED", "addr": "Schivelbeiner Str. 9, 10439 Berlin (S/U Schönhauser Allee)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Fri 6 Nov · 12:15–13:15] U2 north to Schönhauser Allee, then across to Mitte for a light lunch at ~13:45. Cult indie film camera store & lab (Fri/Sat only — closed Sunday)."},
-    {"id": 146, "name": "★ #46 Hackesche Höfe", "lat": 52.524022, "lng": 13.402413, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Courtyards Open Daily (EAT BERLIN Mon–Sat 11:00–19:00)", "addr": "Rosenthaler Str. 40, 10178 Berlin-Mitte", "img": "assets/images/berlin_hackesche.jpg", "note": "[Fri 6 Nov · 14:45–15:45] 8 interconnected restored Art Nouveau (Jugendstil) courtyards with boutiques and cafes — EAT BERLIN inside the Höfe is open Mon–Sat 11:00–19:00."},
-    {"id": 147, "name": "★ #47 Rosenthaler Str. 39 (Haus Schwarzenberg)", "lat": 52.524562, "lng": 13.401827, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open Daily (Otto Weidt Museum 10:00–20:00)", "addr": "Rosenthaler Str. 39, 10178 Berlin-Mitte (Dead Chicken Alley)", "img": "assets/images/berlin_hackesche.jpg", "note": "[Fri 6 Nov · ~15:00, right after the Höfe] Dead Chicken Alley / Haus Schwarzenberg, 1 min from Hackesche Höfe — the gritty non-commercial street-art alley housing the free Otto Weidt Workshop for the Blind Museum & Monsterkabinett."},
-    {"id": 104, "name": "★ #04 FOTOIMPEX GmbH (Analog Film Mecca)", "lat": 52.525347, "lng": 13.406865, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-camera", "color": "#067647", "hours": "Mon–Sat 12:00–20:00 (Closed Sun) — VERIFIED", "addr": "Alte Schönhauser Str. 32B, 10119 Berlin-Mitte", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Fri 6 Nov · ~15:45] Europe's #1 analog film, Adox & darkroom flagship store—just 5 mins walk from Karlito Apartmenthaus!"},
-    {"id": 177, "name": "★ #11 Mały Książę Polish Groceries", "lat": 52.49245, "lng": 13.38925, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#7c3aed", "hours": "Mon–Sat 11:00–20:00, Sun 10:00–20:00 (VERIFIED)", "addr": "Lilienthalstraße 6, 10965 Berlin-Kreuzberg", "img": "assets/images/viktualienmarkt.jpg", "note": "[Fri 6 Nov · 16:15–17:00] Polish grocery shopping — NOT a meal: kiełbasa, pierogi, Polish chocolate & condiments to take home. 17:00–18:15 buffer before the confirmed 18:30 Yorckschlösschen dinner, ~550m away."},
-    {"id": 174, "name": "★ Yorckschlösschen (CONFIRMED 18:30 Dinner Reservation!)", "lat": 52.4931, "lng": 13.3812, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#067647", "hours": "CONFIRMED TABLE: Fri 6 Nov 2026 at 18:30 (2 People)", "addr": "Yorckstraße 15, 10965 Berlin-Kreuzberg (S/U Yorckstraße)", "img": "assets/images/berlin_brlo.jpg", "note": "[Fri 6 Nov · 18:30 CONFIRMED DINNER] Legendary 1902 Berlin jazz & soul tavern in Kreuzberg! Reservation confirmed for 2 people at 18:30 — ~20 mins from Mały Książę and the 17:00–18:15 buffer."},
-    {"id": 163, "name": "★ #63 Berlin Zoological Garden (MANDATORY MUST-DO!)", "lat": 52.50783, "lng": 13.339416, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "November: Daily 09:00–16:30, last admission 15:30 (VERIFIED)", "addr": "Hardenbergplatz 8, 10787 Berlin (Direct U2 from Karlito!)", "img": "assets/images/berlin_zoo.jpg", "note": "[Sat 7 Nov · 09:30–13:30 MUST-DO] Direct ~18-min U2 ride from Karlito! Four unhurried hours for Giant Pandas, glass-domed Hippo House & giraffes — November closes 16:30 with last admission 15:30, so you are well inside the window."},
-    {"id": 103, "name": "★ #03 Foto-Meyer Digital Imaging", "lat": 52.496226, "lng": 13.341651, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-camera", "color": "#067647", "hours": "Mon–Sat 10:00–19:00 (CORRECTED — the old note wrongly claimed a 15:00 Saturday close)", "addr": "Welserstraße 1, 10777 Berlin (U Viktoria-Luise-Platz)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Sat 7 Nov · 14:00–15:00] Just 2 U-Bahn stops south of Berlin Zoo — open Mon–Sat 10:00–19:00, so there is no 15:00 deadline to rush for."},
-    {"id": 176, "name": "C/O Berlin at Amerika Haus (Photography Exhibitions)", "lat": 52.5068, "lng": 13.3310, "region": "region-berlin", "days": ["day-07"], "cat": "cat-sight", "color": "#005f87", "hours": "Daily 11:00–20:00", "addr": "Hardenbergstraße 22, 10623 Berlin (Zoo S-Bahn)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Sat 7 Nov · 15:15–16:15] Berlin's leading photography exhibition house, 5 mins from Foto-Meyer. Optional: HIT Supermarkt next door, or swap in Bildband Berlin (Tue–Sat 11:00–18:00)."},
-    {"id": 175, "name": "★ Hamy Vietnamese Kitchen (Locals' Canteen — Replaces StäV)", "lat": 52.4872958, "lng": 13.4220776, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-food", "color": "#067647", "hours": "Daily 12:00–23:30 (reconfirm +49 30 61625959)", "addr": "Hasenheide 10, 10967 Berlin-Kreuzberg", "img": "assets/images/berlin_brlo.jpg", "note": "[Sat 7 Nov · ~19:00 Dinner] Vietnamese locals' canteen in Kreuzberg. Hours per OpenStreetMap (check_date 2024-08) daily 12:00–23:30; website is down, so reconfirm on +49 30 61625959. Backup: District Mot, Rosenthaler Str. 62."},
-    {"id": 172, "name": "Berlin Wall Memorial at Bernauer Straße", "lat": 52.5351, "lng": 13.3903, "region": "region-berlin", "days": ["day-08"], "cat": "cat-sight", "color": "#005f87", "hours": "Outdoor Memorial & Watchtower Open Daily 08:00–22:00 (Visitor Center Tue–Sun 10:00–18:00)", "addr": "Bernauer Str. 111, 13355 Berlin", "img": "assets/images/dachau.jpg", "note": "[Sun 8 Nov · 09:30–11:00] Walk 15 mins from Karlito to the preserved Berlin Wall death-strip & watchtower, then walk straight up Bernauer Straße into Mauerpark!"},
-    {"id": 144, "name": "★ #44 Mauerpark Flohmarkt ('Sunday flea market')", "lat": 52.541388, "lng": 13.402366, "region": "region-berlin", "days": ["day-08"], "saved": true, "cat": "cat-sight", "color": "#b42318", "hours": "Sundays 10:00–18:00 (VERIFIED via berlin.de)", "addr": "Bernauer Str. 64, 13355 Berlin (U2 Eberswalder Str.)", "img": "assets/images/berlin_mauerpark.webp", "note": "[Sun 8 Nov · 11:00–13:00] Berlin's famous Sunday flea market for vintage cameras, lenses, DDR antiques, street food & buskers. Never link mauerparkmarkt.de — that domain is hijacked by casino spam."},
-    {"id": 173, "name": "Berlin Hauptbahnhof (Track 3 — 20:52 Nightjet NJ 408 to Freiburg)", "lat": 52.5251, "lng": 13.3694, "region": "region-berlin", "days": ["day-08"], "cat": "cat-transit", "color": "#b42318", "hours": "Departs Sun 8 Nov at 20:52 (Bahnsteig 3)", "addr": "Europaplatz 1, 10557 Berlin", "img": "assets/images/tgv_train.jpg", "note": "[Sun 8 Nov · 20:25 Boarding / 20:52 Departure] Board ÖBB Nightjet NJ 408 on Bahnsteig 3 (Coach 309, Berths 52/56, Double Deluxe with shower/WC, breakfast included) → Freiburg (Brsg) Hbf Mon 06:17. Print the ticket on white A4 and carry photo ID."},
-    {"id": 115, "name": "◇ #15 Ständige Vertretung (OPTIONAL alternative — replaced by Hamy)", "lat": 52.521272, "lng": 13.385517, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-food", "color": "#9a3412", "hours": "Daily 11:00–24:00 (optional, off the day routes)", "addr": "Schiffbauerdamm 8, 10117 Berlin (S Friedrichstraße)", "img": "assets/images/berlin_hackesche.jpg", "note": "OPTIONAL ONLY: Hamy (Hasenheide 10) is the Sat 7 Nov dinner, so StäV is off every day route — keep it as a wet-weather or Hamy-backup pub serving Gaffel Kölsch & Rhenish Sauerbraten."},
-    {"id": 170, "name": "✖ Topography of Terror (OMITTED — Not in the Approved Thu 5 Nov Plan)", "lat": 52.5065, "lng": 13.3835, "region": "region-berlin", "days": [], "omitted": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted from daily routes (site itself open daily 10:00–20:00, free)", "addr": "Niederkirchnerstraße 8, 10963 Berlin", "img": "assets/images/dachau.jpg", "note": "OMITTED: The approved Thu 5 Nov plan runs Holocaust Memorial → Brandenburg Gate → Reichstag exterior (10:30–13:00) and does not include Topography of Terror. It sits 600m from the Memorial, so it is the obvious rainy-day swap if you want it."},
+    {"id": 159, "name": "★ #59 Karlito Apartmenthaus (Berlin Base)", "lat": 52.52891, "lng": 13.405415, "region": "region-berlin", "days": ["day-05", "day-06", "day-07", "day-08"], "saved": true, "cat": "cat-hotel", "color": "#067647", "hours": "Check-in Thu 5 Nov 14:00–23:00 · Checkout Sun 8 Nov 08:00–10:00", "addr": "Linienstraße 60, 10119 Berlin-Mitte (U2 Rosa-Luxemburg-Platz)", "img": "assets/images/hotel_karlito_berlin.jpg", "note": "[Thu 5 – Sun 8 Nov Home Base] BER 06:20 → FEX/RE20 to Potsdamer Platz, then U2 to Rosa-Luxemburg-Platz (ABC ticket, validate the paper ticket, live timetable check). Early bag drop ~07:45–08:00 is UNCONFIRMED — ask at reception; Berlin Hbf lockers are the backup, and check-in is only from 14:00. Because of that the Thursday route comes back here at ~15:30 for check-in and a real ~2h+ rest before dinner (an unnumbered return waypoint, not a second pin). Sun 8 Nov checkout is 08:00–10:00 and day storage is also unconfirmed, so the ~18:15–19:00 bag pickup only happens if the apartment stored them — with Hbf lockers you go straight to the station. 3 mins to Zeit für Brot, 5 mins to FOTOIMPEX."},
+    {"id": 145, "name": "★ #45 Zeit für Brot (MUST-HAVE cinnamon roll / Zimtschnecke)", "lat": 52.528015, "lng": 13.408607, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-bakery", "color": "#b8860b", "hours": "Mon–Fri 07:00–20:00, Sat 08:00–20:00, Sun 08:00–18:00 (verified)", "addr": "Alte Schönhauser Str. 4, 10119 Berlin-Mitte", "img": "assets/images/berlin_zeit_fuer_brot.jpg", "note": "[Thu 5 Nov · ~09:00 MUST-HAVE cinnamon roll] 3 mins from Karlito at Alte Schönhauser Str. 4 — a warm organic Zimtschnecke, a snack and not a meal. The memorial block follows at 10:15–11:45 and the one proper lunch is 12:15–13:15 in Mitte (Ständige Vertretung first, Sophien 11 second)."},
+    {"id": 171, "name": "Holocaust Memorial · Brandenburg Gate · Reichstag exteriors", "lat": 52.5163, "lng": 13.3777, "region": "region-berlin", "days": ["day-05"], "cat": "cat-sight", "color": "#005f87", "hours": "Memorial field open 24/7 · Reichstag dome needs advance booking, so exterior only", "addr": "Cora-Berliner-Str. 1 / Pariser Platz / Platz der Republik, 10117 Berlin", "img": "", "note": "[Thu 5 Nov · 10:15–11:45] Field of Stelae → Brandenburg Gate → Reichstag exterior. No dome entry and no booking. The one relaxed Mitte lunch follows at ~12:15–13:15 and is deliberately unpinned, so the route line runs Memorial → Hackesche Höfe without it.", "q": "Memorial to the Murdered Jews of Europe"},
+    {"id": 146, "name": "★ #46 Hackesche Höfe", "lat": 52.524022, "lng": 13.402413, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Courtyards open daily (EAT BERLIN Mon–Sat 11:00–19:00)", "addr": "Rosenthaler Str. 40, 10178 Berlin-Mitte", "img": "assets/images/berlin_hackesche.jpg", "note": "[Thu 5 Nov · ~13:15–14:15] Eight restored Jugendstil courtyards, 10 mins from Karlito — the first stop of the afternoon loop after the one flexible lunch."},
+    {"id": 147, "name": "★ #47 Dead Chicken Alley / Rosenthaler Str. 39 (Otto Weidt visit optional)", "lat": 52.524562, "lng": 13.401827, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Otto Weidt Museum Mon–Fri 09:00–18:00, Sat–Sun 10:00–18:00 (free entry, visit optional)", "addr": "Rosenthaler Str. 39, 10178 Berlin-Mitte", "img": "assets/images/berlin_hackesche.jpg", "note": "[Thu 5 Nov · ~14:15–14:30] Dead Chicken Alley / Haus Schwarzenberg next door to the Höfe. The free Otto Weidt Workshop for the Blind is open weekdays 09:00–18:00 and weekends 10:00–18:00 (museum-blindenwerkstatt.de/en) — go in if you still have the energy, otherwise walk through and keep moving."},
+    {"id": 104, "name": "★ #04 FOTOIMPEX GmbH (Analog Film Mecca)", "lat": 52.525347, "lng": 13.406865, "region": "region-berlin", "days": ["day-05"], "saved": true, "cat": "cat-camera", "color": "#067647", "hours": "Mon–Sat 11:00–19:00 (closed Sun) — verified", "addr": "Alte Schönhauser Str. 32B, 10119 Berlin-Mitte", "img": "assets/images/berlin_fotoimpex.jpg", "note": "[Thu 5 Nov · ~14:45–15:15] Europe's analog film, Adox & darkroom flagship, 5 mins from Karlito — you pass the door on the way home. Then walk back to the apartment, check in (from 14:00) and genuinely rest before dinner."},
+    {"id": 178, "name": "★ Markthalle Neun — Street Food Thursday (first-choice dinner)", "lat": 52.502135, "lng": 13.431599, "region": "region-berlin", "days": ["day-05"], "cat": "cat-food", "color": "#d97706", "hours": "Street Food Thursday 17:00–22:00 (Thursdays only)", "addr": "Eisenbahnstraße 42-43, 10997 Berlin-Kreuzberg", "img": "", "note": "[Thu 5 Nov · dinner ~18:30/19:00–22:00 FIRST-CHOICE DINNER] Walk-in only — no table reservation and nothing booked. Leave Karlito ~17:45 after the ~2h+ rest; this pin is the market at Eisenbahnstraße 42-43, roughly 30–35 min from the apartment. Backup only, never both: Anjoy, Rykestraße 11 (a separate optional pin that never joins this route line). No Mampe and no BRLO on Thursday.", "q": "Markthalle Neun"},
+    {"id": 179, "name": "◇ SammyS Bakery (Fri 6 Nov bakery choice A)", "lat": 52.5263276, "lng": 13.399265, "region": "region-berlin", "days": ["day-06"], "cat": "cat-bakery", "color": "#b8860b", "hours": "Listings say 09:00 — opening time subject to check on the day", "addr": "Sophienstraße 30-31, 10178 Berlin-Mitte", "img": "", "note": "[Fri 6 Nov · ~09:00] First of three no-extra-meal bakery options. Alternatives: a repeat at Zeit für Brot (07:00) or CANAL, Sophienstraße 5 (opens 10:00). Pick ONE, then walk to Museum Island for 10:00."},
+    {"id": 180, "name": "★ Museum Island — start at Neues Museum (Bodestraße 1)", "lat": 52.5201553, "lng": 13.3977381, "region": "region-berlin", "days": ["day-06"], "cat": "cat-sight", "color": "#005f87", "hours": "Daily from 10:00 · €24 per person one-day pass NOT booked · Pergamonmuseum main building CLOSED · Das Panorama is a separate exhibition venue, not a separate paid ticket · special exhibitions may need an extra free time slot", "addr": "Neues Museum, Bodestraße 1, 10178 Berlin-Mitte (Museumsinsel)", "img": "", "note": "[Fri 6 Nov · 10:00–15:45] One €24 per person one-day Museum Island pass covers the island museums; the Pergamonmuseum main building itself is closed, and the only Pergamon display the pass includes is the separately housed Das Panorama exhibition — a separate venue, not a separate paid ticket. Special exhibitions MAY require an additional (free) time slot booked together with the island pass. The pass is not booked: buy it online beforehand or at the desk on arrival, either is fine (smb.museum/en/plan-your-visit/prices-tickets). One flexible lunch near the island — The Steak Döner, Spandauer Str. 4, is a suggestion only. Leave at 15:45–16:00: Mampe is a 30–40 min ride away."},
+    {"id": 148, "name": "★ #48 Mampe Berlin (NON-NEGOTIABLE ON FRIDAY!)", "lat": 52.488876, "lng": 13.38728, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-wine", "color": "#7c3aed", "hours": "Mon–Fri 10:00–18:00, Sat 12:00–18:00 (Hofladen closes 18:00) — verified", "addr": "Am Tempelhofer Berg 6, 10965 Berlin-Kreuzberg", "img": "", "note": "[Fri 6 Nov · arrive ~16:15–16:40, stay up to ~17:30 NON-NEGOTIABLE] Berlin's oldest spirits house (since 1831) in the historic brewery courtyard — Halb & Halb bitter-orange herbal liqueur, Elefantenkümmel & Kreuzberg Gin. It is a 30–40 min ride from Museum Island, the Hofladen shuts at 18:00 and the confirmed 18:30 Yorckschlösschen table is a 15–20 min walk away. Shop visit; nothing reserved."},
+    {"id": 174, "name": "★ Yorckschlösschen (CONFIRMED 18:30 Dinner Reservation!)", "lat": 52.493563, "lng": 13.382109, "region": "region-berlin", "days": ["day-06"], "saved": true, "cat": "cat-food", "color": "#067647", "hours": "CONFIRMED table: Fri 6 Nov 2026 at 18:30 (2 people)", "addr": "Yorckstraße 15, 10965 Berlin-Kreuzberg (S/U Yorckstraße)", "img": "", "note": "[Fri 6 Nov · CONFIRMED 18:30–21:30] Legendary 1902 jazz & soul tavern and your only confirmed Berlin restaurant table — a 15–20 min walk from Mampe, so finishing there around 17:30 leaves a comfortable margin. Friday has no Domke stop and no East Side Gallery."},
+    {"id": 163, "name": "★ #63 Berlin Zoological Garden (MANDATORY — THE WHOLE DAY!)", "lat": 52.50783, "lng": 13.339416, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "November: daily 09:00–16:30, last admission 15:30 (verified) · houses & zoo restaurants close 16:00", "addr": "Hardenbergplatz 8, 10787 Berlin (direct U2 from Karlito)", "img": "assets/images/berlin_zoo.jpg", "note": "[Sat 7 Nov · leave Karlito 09:00 · zoo ~09:30–16:30 THE WHOLE DAY] Direct ~18-min U2 ride plus a short walk. Giant Pandas, glass-domed Hippo House, giraffes at an unhurried pace. A proper lunch inside the zoo (e.g. Waldschänke) is the meal, not an extra stop. Last admission 15:30, houses close 16:00."},
+    {"id": 157, "name": "★ #57 BRLO Brwhouse (ONLY PLANNED DINNER/BEER ON SATURDAY)", "lat": 52.500197, "lng": 13.3737, "region": "region-berlin", "days": ["day-07"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Sat 12:00–24:00 (kitchen to 22:00) · booking availability unverified — not reserved", "addr": "Schöneberger Str. 16, 10963 Berlin (Park am Gleisdreieck)", "img": "assets/images/berlin_brlo.jpg", "note": "[Sat 7 Nov · ~19:00 ONLY PLANNED DINNER/BEER] Craft beer with the BRWHouse kitchen's current seasonal, vegetable-focused shared plates (brlo.de/gastronomien/brlo-brwhouse); the old smokehouse-plates assumption is not the current default. Normal Saturday hours, but availability is unverified and nothing is reserved — walk in or call ahead on the day. Optional in between (at most ONE, not a route stop): KaDeWe A or C/O Berlin B."},
+    {"id": 172, "name": "Berlin Wall Memorial at Bernauer Straße", "lat": 52.5351, "lng": 13.3903, "region": "region-berlin", "days": ["day-08"], "cat": "cat-sight", "color": "#005f87", "hours": "Outdoor memorial & watchtower open daily (visitor centre Tue–Sun 10:00–18:00)", "addr": "Bernauer Str. 111, 13355 Berlin", "img": "", "note": "[Sun 8 Nov · 09:20–10:15] Preserved Cold War death-strip, watchtower & outdoor exhibition — then walk straight up Bernauer Straße into Mauerpark."},
+    {"id": 144, "name": "★ #44 Mauerpark Flohmarkt ('Sunday flea market')", "lat": 52.541388, "lng": 13.402366, "region": "region-berlin", "days": ["day-08"], "saved": true, "cat": "cat-sight", "color": "#b42318", "hours": "Sundays 10:00–18:00 (verified via berlin.de)", "addr": "Bernauer Str. 64, 13355 Berlin (U2 Eberswalder Str.)", "img": "assets/images/berlin_mauerpark.webp", "note": "[Sun 8 Nov · 10:30–12:15] Berlin's famous Sunday flea market for vintage cameras, lenses, DDR antiques, street food & buskers. Then allow 45–60 min across town to Domke. Never link mauerparkmarkt.de — that domain is hijacked by casino spam."},
+    {"id": 114, "name": "★ #14 Fleischerei Domke (SUNDAY LUNCH — availability to confirm)", "lat": 52.510477, "lng": 13.452073, "region": "region-berlin", "days": ["day-08"], "saved": true, "cat": "cat-food", "color": "#d97706", "hours": "Sun 09:00–21:00 (Mon–Fri 06:00–21:00, Sat 07:00–21:00) — verified", "addr": "Warschauer Str. 64, 10243 Berlin-Friedrichshain", "img": "", "note": "[Sun 8 Nov · 13:00–13:45 SUNDAY LUNCH] Mettbrötchen availability at Sunday lunchtime is UNCONFIRMED — call +49 30 291 76 35 beforehand and treat the counter as a request, not a guarantee. 45–60 min from Mauerpark. No Silo and no second restaurant after Domke."},
+    {"id": 121, "name": "★ #21 East Side Gallery (1.3km Painted Berlin Wall)", "lat": 52.505022, "lng": 13.439695, "region": "region-berlin", "days": ["day-08"], "saved": true, "cat": "cat-sight", "color": "#005f87", "hours": "Open 24/7 — visit in daylight", "addr": "Mühlenstraße, 10243 Berlin-Friedrichshain", "img": "", "note": "[Sun 8 Nov · 14:00–15:30] The longest surviving section of the Berlin Wall along the Spree, 10 mins from Domke — a daylight visit before the ~17:30 early dinner/train food and the bag run."},
+    {"id": 173, "name": "Berlin Hauptbahnhof (Track 3 — 20:52 Nightjet NJ 408 to Freiburg)", "lat": 52.5251, "lng": 13.3694, "region": "region-berlin", "days": ["day-08"], "cat": "cat-transit", "color": "#b42318", "hours": "Departs Sun 8 Nov 20:52 (Bahnsteig 3) — be there with bags by ~20:15", "addr": "Europaplatz 1, 10557 Berlin", "img": "", "note": "[Sun 8 Nov · 20:15 with bags / 20:52 Departure] Collect bags at Karlito (~18:15–19:00) ONLY if the apartment stored them; if you used Berlin Hbf lockers, come straight here instead — the baseline route link assumes the Karlito pickup. Board ÖBB Nightjet NJ 408 on Bahnsteig 3 (Coach 309, Berths 52/56, Double Deluxe with shower/WC, breakfast included) → Freiburg (Brsg) Hbf Mon 06:17. Print the ticket on white A4 and carry photo ID."},
+    {"id": 115, "name": "◇ #15 Ständige Vertretung (Thu lunch option 1 — not booked)", "lat": 52.521272, "lng": 13.385517, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-food", "color": "#9a3412", "hours": "Daily 11:00–01:00 (per staev.de) — lunch option, not reserved", "addr": "Schiffbauerdamm 8, 10117 Berlin (S Friedrichstraße)", "img": "assets/images/berlin_hackesche.jpg", "note": "OPTIONAL 1 · THU LUNCH: first choice for the one 12:15–13:15 lunch in Mitte, serving Gaffel Kölsch & Rhenish Sauerbraten. Sophien 11 is the second choice — one lunch only, never both, nothing reserved. Visible as an optional pin in the Thu filter and sidebar, and deliberately kept off the Thu route line.", "tag": "OPTIONAL 1 · Thu lunch", "altDays": ["day-05"], "optional": true},
+    {"id": 181, "name": "◇ Sophien 11 (Thu lunch option 2 — not booked)", "lat": 52.524991, "lng": 13.4027756, "region": "region-berlin", "days": [], "cat": "cat-food", "color": "#9a3412", "hours": "Mitte restaurant — check the day's hours on arrival", "addr": "Sophienstraße 11, 10178 Berlin-Mitte", "img": "", "note": "OPTIONAL 2 · THU LUNCH: the fallback for the one 12:15–13:15 lunch if Ständige Vertretung is full or shut. One lunch only, never both, and nothing is reserved. Visible in the Thu filter, kept off the Thu route line.", "tag": "OPTIONAL 2 · Thu lunch", "altDays": ["day-05"], "optional": true},
+    {"id": 182, "name": "◇ Anjoy (Thu 5 Nov dinner backup — only if you skip Street Food Thursday)", "lat": 52.5362432, "lng": 13.420601, "region": "region-berlin", "days": [], "cat": "cat-food", "color": "#9a3412", "hours": "Evening service — check on the day", "addr": "Rykestraße 11, 10405 Berlin-Prenzlauer Berg", "img": "", "note": "BACKUP · THU DINNER ONLY: Street Food Thursday at Markthalle Neun is the first choice, so this is the alternate dinner if you skip the market — do one, never both. It was a suggestion rather than one of your saved Google pins, it is visible in the Thu filter for discoverability, and it never joins the Thu route line.", "tag": "BACKUP · Thu dinner", "altDays": ["day-05"], "optional": true},
+    {"id": 183, "name": "◇ The Steak Döner (Fri 6 Nov lunch suggestion — not booked, not fixed)", "lat": 52.5207058, "lng": 13.4046972, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-food", "color": "#9a3412", "hours": "Lunch hours unverified", "addr": "Spandauer Straße 4, 10178 Berlin-Mitte", "img": "", "note": "SUGGESTION · FRI 6 NOV LUNCH: a saved place near Museum Island for the one flexible Friday lunch. Not booked and not fixed — eat wherever the museum day lands you. Visible in the Fri filter as an optional pin, never on the Fri route line.", "tag": "OPTIONAL · Fri lunch suggestion", "altDays": ["day-06"], "optional": true},
+    {"id": 184, "name": "◇ CANAL (Fri 6 Nov bakery choice C — opens 10:00)", "lat": 52.5252552, "lng": 13.4016845, "region": "region-berlin", "days": [], "cat": "cat-bakery", "color": "#b8860b", "hours": "Opens 10:00 (per listings)", "addr": "Sophienstraße 5, 10178 Berlin-Mitte", "img": "", "note": "OPTIONAL BAKERY C · FRI 6 NOV: opens at 10:00, so it is the late bakery option. SammyS (~09:00, subject to check) and a Zeit für Brot repeat (07:00) are the earlier choices — one bakery stop only, no second breakfast. Visible in the Fri filter, kept off the Fri route line.", "tag": "OPTIONAL · Fri bakery C", "altDays": ["day-06"], "optional": true},
+    {"id": 185, "name": "◇ KaDeWe gourmet floor (Sat 7 Nov OPTIONAL A — not required)", "lat": 52.5015753, "lng": 13.3410035, "region": "region-berlin", "days": [], "cat": "cat-sight", "color": "#9a3412", "hours": "Department store — check Saturday hours on the day (gourmet floor)", "addr": "Tauentzienstraße 21-24, 10789 Berlin-Schöneberg", "img": "", "note": "OPTIONAL A · SAT 7 NOV: the food-hall add-on between zoo and BRLO. Choose at most one add-on (A or B, never both), and neither is a required stop: this pin is shown in the Sat filter but never joins the zoo → BRLO route line. Use the separate 'Alternative A' directions link next to the map.", "tag": "OPTIONAL A · Sat add-on", "altDays": ["day-07"], "optional": true, "badge": "A"},
+    {"id": 176, "name": "◇ C/O Berlin at Amerika Haus (Sat 7 Nov OPTIONAL B — not required)", "lat": 52.5066337, "lng": 13.330547, "region": "region-berlin", "days": [], "cat": "cat-sight", "color": "#9a3412", "hours": "Daily 11:00–20:00", "addr": "Hardenbergstraße 22, 10623 Berlin", "img": "", "note": "OPTIONAL B · SAT 7 NOV: the photography-house alternative to KaDeWe. Choose at most one add-on (A or B, never both); shown as the B pin in the Sat filter and kept off the zoo → BRLO route line. Use the separate 'Alternative B' directions link next to the map.", "tag": "OPTIONAL B · Sat add-on", "altDays": ["day-07"], "optional": true, "badge": "B"},
+    {"id": 177, "name": "◇ #11 Mały Książę Polish Groceries — PENDING, no fixed time", "lat": 52.488025, "lng": 13.407631, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-food", "color": "#7c3aed", "hours": "Fri 11:00–20:00 (per your list) — Friday window, not yet scheduled", "addr": "Lilienthalstraße 6, 10965 Berlin-Kreuzberg (U Südstern)", "img": "", "note": "PENDING — unresolved trip priority, and no day is assigned to it: Polish groceries (kiełbasa, pierogi, chocolate). Evidenced saved coordinates 52.488025, 13.407631; roughly 1.9 km / 25-min walk from Yorckschlösschen — the old pin near Mampe and the '550 m' claim were both wrong. Shown as a pending pin in the Berlin filter and planned separately.", "tag": "PENDING · Polish groceries", "optional": true},
+    {"id": 112, "name": "◇ #12 Silo Coffee (optional coffee — NOT scheduled on any day)", "lat": 52.510075, "lng": 13.458378, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-bakery", "color": "#b8860b", "hours": "Daily 08:30–16:00 / 16:30 (not scheduled)", "addr": "Gabriel-Max-Straße 4, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_zeit_fuer_brot.jpg", "note": "NOT SCHEDULED: optional coffee only, no meal. Friday runs bakery → Museum Island → Mampe → Yorckschlösschen, and Sunday has no second restaurant after Domke.", "tag": "NOT SCHEDULED", "optional": true},
+    {"id": 175, "name": "◇ Hamy Vietnamese Kitchen (saved place — NOT scheduled)", "lat": 52.4872958, "lng": 13.4220776, "region": "region-berlin", "days": [], "cat": "cat-food", "color": "#9a3412", "hours": "Daily 12:00–23:30 (unverified — restaurant site is down)", "addr": "Hasenheide 10, 10967 Berlin-Kreuzberg", "img": "", "note": "NOT SCHEDULED — a restaurant suggestion rather than one of your saved Google list pins. Hamy is not scheduled on any day of this trip: if it ever happens it would only be an unscheduled Saturday dinner, and Saturday is already the zoo all day plus BRLO. Kept on the map so it is never a mystery why it is missing.", "tag": "NOT SCHEDULED · suggestion only", "optional": true},
+    {"id": 119, "name": "◇ #19 RAW-Gelände & Michelberger Bar (saved place — not scheduled)", "lat": 52.507686, "lng": 13.451869, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-sight", "color": "#9a3412", "hours": "Open 24/7 (not scheduled)", "addr": "Revaler Str. 99 / Warschauer Str. 39, 10245 Berlin", "img": "assets/images/berlin_mauerpark.webp", "note": "NOT SCHEDULED: Friday is bakery → Museum Island → Mampe → Yorckschlösschen, so there is no Friedrichshain loop. Kept for discoverability; MXPSM schnaps is poured at the Michelberger Hotel bar across the street.", "tag": "NOT SCHEDULED", "optional": true},
+    {"id": 120, "name": "◇ #20 Boxhagener Platz (saved place — not scheduled)", "lat": 52.510876, "lng": 13.459713, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-sight", "color": "#9a3412", "hours": "Open 24/7 (not scheduled)", "addr": "Boxhagener Platz, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_mauerpark.webp", "note": "NOT SCHEDULED: this trip comes to Friedrichshain only for the Domke Sunday lunch and the East Side Gallery. The leafy Kiez square stays an optional wander.", "tag": "NOT SCHEDULED", "optional": true},
+    {"id": 105, "name": "◇ #05 Safelight Berlin (saved place — not scheduled)", "lat": 52.551031, "lng": 13.411217, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-camera", "color": "#9a3412", "hours": "Tue–Sat 11:00–19:00 (not scheduled)", "addr": "Schivelbeiner Str. 9, 10439 Berlin (S/U Schönhauser Allee)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "NOT SCHEDULED: the only camera shop on this plan is FOTOIMPEX on Thu 5 Nov. Keep Safelight as an option if a film-lab visit becomes a priority.", "tag": "NOT SCHEDULED", "optional": true},
+    {"id": 103, "name": "◇ #03 Foto-Meyer Digital Imaging (saved place — not scheduled)", "lat": 52.496226, "lng": 13.341651, "region": "region-berlin", "days": [], "saved": true, "cat": "cat-camera", "color": "#9a3412", "hours": "Mon–Sat 10:00–19:00 (not scheduled)", "addr": "Welserstraße 1, 10777 Berlin (U Viktoria-Luise-Platz)", "img": "assets/images/berlin_fotoimpex.jpg", "note": "NOT SCHEDULED: Saturday belongs to the zoo and BRLO, so there is no camera-shop stop. Hours are Mon–Sat 10:00–19:00 if you ever make a separate trip.", "tag": "NOT SCHEDULED", "optional": true},
+    {"id": 170, "name": "✖ Topography of Terror (OMITTED — Not in the Approved Thu 5 Nov Plan)", "lat": 52.5065, "lng": 13.3835, "region": "region-berlin", "days": [], "omitted": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted from daily routes (site itself open daily 10:00–20:00, free)", "addr": "Niederkirchnerstraße 8, 10963 Berlin", "img": "assets/images/dachau.jpg", "note": "OMITTED: The Thu 5 Nov morning is fixed as Memorial → Brandenburg Gate → Reichstag exteriors, then the flexible lunch and the Mitte courtyards. It sits 600m from the Memorial, so it remains the obvious rainy-day swap."},
     {"id": 122, "name": "✖ #22 DDR Museum (OMITTED — Tourist Trap)", "lat": 52.519337, "lng": 13.402307, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted from Itinerary", "addr": "Karl-Liebknecht-Str. 1, 10178 Berlin", "img": "assets/images/berlin_hackesche.jpg", "note": "OMITTED: Cramped, school-group-heavy basement attraction. Replaced by the authentic Berlin Wall Memorial at Bernauer Straße on Sun 8 Nov!"},
-    {"id": 150, "name": "✖ #50 MXPSM Wedding Distillery Storefront (OMITTED — Drink at Michelberger Bar Instead)", "lat": 52.545376, "lng": 13.343464, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-wine", "color": "#9ca3af", "hours": "Omitted Storefront Detour", "addr": "Seestraße 13, 13353 Berlin-Wedding", "img": "assets/images/berlin_brlo.jpg", "note": "OMITTED DETOUR: Industrial Wedding site with restricted hours. Drink their exact MXPSM schnaps at Michelberger Hotel bar opposite #19 RAW-Gelände on Fri 6 Nov!"},
-    {"id": 149, "name": "✖ #49 Dr. Kochan Liquor Culture (OMITTED — Sunday Hours Closed/Unconfirmed)", "lat": 52.532875, "lng": 13.422737, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-wine", "color": "#9ca3af", "hours": "Omitted from daily routes — closed or unconfirmed on Sundays", "addr": "Immanuelkirchstraße 4, 10405 Berlin (Prenzlauer Berg)", "img": "assets/images/berlin_brlo.jpg", "note": "OMITTED: Sunday hours are closed or unconfirmed, so the Sun 8 Nov 14:00–17:00 Prenzlauer Berg window is a flexible wander (Bildband and L'Épicerie are also closed/unconfirmed on Sundays)."},
-    {"id": 113, "name": "✖ #13 Avci Bistro (OMITTED — Old Fri 18:00 Tea Stop, Off the New Plan)", "lat": 52.510585, "lng": 13.452151, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-food", "color": "#9ca3af", "hours": "Omitted from daily routes (still a handy lunch fallback next door to Domke)", "addr": "Kopernikusstraße 30, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_brlo.jpg", "note": "OMITTED: Friday now runs Domke breakfast (~09:30) → Mitte camera shops → Mały Książę → confirmed 18:30 Yorckschlösschen, so the old 18:00 tea stop is gone. Still 20m around the corner from Domke if the butcher counter is shut."},
-    {"id": 160, "name": "✖ #60 The Berlin Art Market by the Zeughaus (OMITTED — Not in the Approved Sat 7 Nov Plan)", "lat": 52.518129, "lng": 13.397811, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted from daily routes (market itself Sat & Sun 11:00–17:00)", "addr": "Am Zeughaus 1-2, 10117 Berlin (Museum Island)", "img": "assets/images/berlin_hackesche.jpg", "note": "OMITTED: The approved Sat 7 Nov plan gives the 15:15–16:15 slot to C/O Berlin at Amerika Haus, so the Zeughaus art market is no longer on the route."},
+    {"id": 150, "name": "✖ #50 MXPSM Wedding Distillery Storefront (OMITTED — Drink at Michelberger Bar Instead)", "lat": 52.545376, "lng": 13.343464, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-wine", "color": "#9ca3af", "hours": "Omitted Storefront Detour", "addr": "Seestraße 13, 13353 Berlin-Wedding", "img": "assets/images/berlin_brlo.jpg", "note": "OMITTED DETOUR: Industrial Wedding site with restricted hours. Drink their exact MXPSM schnaps at the Michelberger Hotel bar opposite RAW-Gelände instead of detouring west."},
+    {"id": 149, "name": "✖ #49 Dr. Kochan Liquor Culture (OMITTED — Sunday Hours Closed/Unconfirmed)", "lat": 52.532875, "lng": 13.422737, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-wine", "color": "#9ca3af", "hours": "Omitted from daily routes — closed or unconfirmed on Sundays", "addr": "Immanuelkirchstraße 4, 10405 Berlin (Prenzlauer Berg)", "img": "assets/images/berlin_brlo.jpg", "note": "OMITTED: Sunday hours are closed or unconfirmed, and Sunday no longer includes a Prenzlauer Berg shop crawl — it runs Wall Memorial → Mauerpark → Domke → East Side Gallery → Nightjet."},
+    {"id": 113, "name": "✖ #13 Avci Bistro (OMITTED — Old Fri Tea Stop, Off the New Plan)", "lat": 52.510585, "lng": 13.452151, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-food", "color": "#9ca3af", "hours": "Omitted from daily routes (still handy around the corner from Domke)", "addr": "Kopernikusstraße 30, 10245 Berlin-Friedrichshain", "img": "assets/images/berlin_brlo.jpg", "note": "OMITTED: Friday runs bakery → Museum Island → Mampe → Yorckschlösschen, so the old tea stop is gone. Still 20m around the corner from Domke if the Sunday butcher counter is shut."},
+    {"id": 160, "name": "✖ #60 The Berlin Art Market by the Zeughaus (OMITTED — Saturday Is Zoo + BRLO)", "lat": 52.518129, "lng": 13.397811, "region": "region-berlin", "days": [], "omitted": true, "saved": true, "cat": "cat-sight", "color": "#9ca3af", "hours": "Omitted from daily routes (market itself Sat & Sun 11:00–17:00)", "addr": "Am Zeughaus 1-2, 10117 Berlin (Museum Island)", "img": "assets/images/berlin_hackesche.jpg", "note": "OMITTED: Saturday is given entirely to the zoo and BRLO. The market is a swap option only if you drop both optional add-ons (KaDeWe / C/O Berlin)."},
     {"id": 300, "name": "★ Freiburg Airbnb Base (Mathildenstraße 14 — 06:35 AM Early Bag Drop!)", "lat": 48.0004, "lng": 7.8371, "region": "region-blackforest", "days": ["day-09", "day-10", "day-11", "day-12"], "cat": "cat-hotel", "color": "#067647", "hours": "Mon 9 Nov (06:35 AM Bag Drop / 15:00 Check-In) – Thu 12 Nov (12:00 PM Checkout)", "addr": "Mathildenstraße 14, 79106 Freiburg im Breisgau (6 mins walk from Freiburg Hbf)", "img": "assets/images/sourdough_bakery.jpg", "note": "[Mon 9 – Thu 12 Nov Base] Walk 6 mins from Nightjet Platform 3 at Freiburg Hbf to drop your luggage early with the host!"},
     {"id": 227, "name": "★ #27 Günter Coffee Store | Specialty Coffee", "lat": 47.997118, "lng": 7.849407, "region": "region-blackforest", "days": ["day-09"], "saved": true, "cat": "cat-bakery", "color": "#b8860b", "hours": "Mon–Fri 10:00–17:00, Sat 09:00–18:00", "addr": "Grünwälderstraße / Belfortstraße, Freiburg", "img": "assets/images/sourdough_bakery.jpg", "note": "[Mon 9 Nov · Browse, NOT breakfast] Roastery store, Mon–Fri 10:00–17:00 / Sat 09:00–18:00 — buy beans here after the Kolben Kaffee breakfast; do not rely on it for an early breakfast."},
     {"id": 238, "name": "★ #38 Kolben Kaffee", "lat": 47.993722, "lng": 7.849127, "region": "region-blackforest", "days": ["day-09"], "saved": true, "cat": "cat-bakery", "color": "#b8860b", "hours": "Mon–Sat 07:30–18:00", "addr": "Kaiser-Joseph-Straße 233, 79098 Freiburg", "img": "assets/images/sourdough_bakery.jpg", "note": "[Mon 9 Nov · Breakfast] Mon–Sat 07:30–18:00 — the day-09 breakfast stop, tucked inside an arcade courtyard on Freiburg's main avenue."},
@@ -180,10 +188,10 @@
 
   var DAY_GMAPS = {
     "all": "https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Julius+Brantner+Brothandwerk,+Adalbertstra%C3%9Fe+25,+M%C3%BCnchen/Schneider+Br%C3%A4uhaus,+Tal+7,+M%C3%BCnchen/Marienplatz,+M%C3%BCnchen/Viktualienmarkt,+M%C3%BCnchen/Caf%C3%A9+Frischhut,+Pr%C3%A4lat-Zistl-Stra%C3%9Fe+8,+M%C3%BCnchen/Leica+Store+M%C3%BCnchen,+Maffeistra%C3%9Fe+4/Kunst-Oase,+Ottostra%C3%9Fe+6,+M%C3%BCnchen/Sauter+Calumet+M%C3%BCnchen,+Sonnenstra%C3%9Fe+21/Haxnbauer,+Tal+38,+M%C3%BCnchen",
-    "day-05": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zeit+f%C3%BCr+Brot,+Alte+Sch%C3%B6nhauser+Str.+4,+Berlin/Memorial+to+the+Murdered+Jews+of+Europe,+Berlin/Brandenburger+Tor,+Berlin/Reichstag,+Berlin/Mampe+Berlin,+Am+Tempelhofer+Berg+6,+Berlin/BRLO+Brwhouse,+Sch%C3%B6neberger+Str.+16,+Berlin",
-    "day-06": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Fleischerei+Domke,+Warschauer+Str.+64,+Berlin/RAW-Gel%C3%A4nde,+Berlin/Boxhagener+Platz,+Berlin/East+Side+Gallery,+Berlin/Safelight+Berlin,+Schivelbeiner+Str.+9,+Berlin/Hackesche+H%C3%B6fe,+Berlin/Haus+Schwarzenberg,+Rosenthaler+Str.+39,+Berlin/FOTOIMPEX,+Alte+Sch%C3%B6nhauser+Str.+32B,+Berlin/Ma%C5%82y+Ks%C4%85%C5%BC%C4%99,+Lilienthalstra%C3%9Fe+6,+Berlin/Yorckschl%C3%B6sschen,+Yorckstra%C3%9Fe+15,+10965+Berlin",
-    "day-07": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zoologischer+Garten+Berlin/Foto-Meyer,+Welserstra%C3%9Fe+1,+Berlin/C%2FO+Berlin+at+Amerika+Haus,+Hardenbergstra%C3%9Fe+22,+Berlin/Hamy,+Hasenheide+10,+Berlin",
-    "day-08": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Gedenkst%C3%A4tte+Berliner+Mauer,+Bernauer+Str./Mauerpark+Flohmarkt,+Berlin/Linienstra%C3%9Fe+60,+10119+Berlin/Berlin+Hbf",
+    "day-05": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zeit+f%C3%BCr+Brot,+Alte+Sch%C3%B6nhauser+Str.+4,+Berlin/Memorial+to+the+Murdered+Jews+of+Europe,+Berlin/Brandenburger+Tor,+Berlin/Reichstag,+Berlin/Hackesche+H%C3%B6fe,+Rosenthaler+Str.+40,+Berlin/Haus+Schwarzenberg,+Rosenthaler+Str.+39,+Berlin/FOTOIMPEX,+Alte+Sch%C3%B6nhauser+Str.+32B,+Berlin/Linienstra%C3%9Fe+60,+10119+Berlin/Markthalle+Neun,+Eisenbahnstra%C3%9Fe+42,+Berlin",
+    "day-06": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/SammyS,+Sophienstra%C3%9Fe+30,+Berlin/Museumsinsel,+Berlin/Mampe+Berlin,+Am+Tempelhofer+Berg+6,+Berlin/Yorckschl%C3%B6sschen,+Yorckstra%C3%9Fe+15,+10965+Berlin",
+    "day-07": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Zoologischer+Garten+Berlin/BRLO+Brwhouse,+Sch%C3%B6neberger+Str.+16,+Berlin",
+    "day-08": "https://www.google.com/maps/dir/Linienstra%C3%9Fe+60,+10119+Berlin/Gedenkst%C3%A4tte+Berliner+Mauer,+Bernauer+Str./Mauerpark+Flohmarkt,+Berlin/Fleischerei+Domke,+Warschauer+Str.+64,+Berlin/East+Side+Gallery,+Berlin/Linienstra%C3%9Fe+60,+10119+Berlin/Berlin+Hbf",
     "day-09": "https://www.google.com/maps/dir/Freiburg+Hbf/Mathildenstra%C3%9Fe+14,+79106+Freiburg/G%C3%BCnter+Coffee+Store,+Freiburg/Kolben+Kaffee,+Kaiser-Joseph-Stra%C3%9Fe+233,+Freiburg/Markthalle,+Freiburg/Confiserie+Gmeiner,+Freiburg/caf%C3%A9+hinterzimmer,+Freiburg/Alte+Wache,+Freiburg/Hausbrauerei+Feierling,+Freiburg",
     "day-10": "https://www.google.com/maps/dir/Mathildenstra%C3%9Fe+14,+79106+Freiburg/Freiburg+Hbf/Friedrichsbad,+R%C3%B6merplatz+1,+Baden-Baden/Caf%C3%A9+K%C3%B6nig,+Lichtentaler+Str.+12,+Baden-Baden",
     "day-11": "https://www.google.com/maps/dir/Mathildenstra%C3%9Fe+14,+79106+Freiburg/Freiburg+Hbf/Titisee,+Titisee-Neustadt/Schloss-Caf%C3%A9+Freiburg/Johanneskirche,+Freiburg/B%C3%A4ckerei+B%C3%BChler,+Zasiusstra%C3%9Fe+9,+Freiburg",
@@ -197,6 +205,71 @@
     "day-18": "https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Boulangerie+Dompierre,+T%C3%BCrkenstra%C3%9Fe+21,+M%C3%BCnchen/Feinkost+Ol%C3%A9,+Georgenstra%C3%9Fe+43,+M%C3%BCnchen/Deutsches+Museum,+Museumsinsel+1,+M%C3%BCnchen/Wiener+Platz,+M%C3%BCnchen/Bar+Mural,+Hotterstra%C3%9Fe+12,+M%C3%BCnchen/Alte+Utting,+Lagerhausstra%C3%9Fe+15,+M%C3%BCnchen/Hofbr%C3%A4uhaus+M%C3%BCnchen",
     "day-19": "https://www.google.com/maps/dir/Timehouse+Munich,+Leopoldstra%C3%9Fe+204a,+80804+M%C3%BCnchen/Nordfriedhof,+M%C3%BCnchen/Munich+Airport+(MUC)"
   };
+
+  // Optional alternative routes: alternative-only places must never be part of a
+  // default day polyline or baseline Google directions, but they stay discoverable
+  // as separately labelled links next to the map.
+  var DAY_GMAPS_ALT = {
+    "day-07": [
+      {"label": "Alternative A — Zoo → KaDeWe gourmet floor → BRLO (optional, pick at most one)", "url": "https://www.google.com/maps/dir/Zoologischer+Garten+Berlin/KaDeWe,+Tauentzienstra%C3%9Fe+21,+Berlin/BRLO+Brwhouse,+Sch%C3%B6neberger+Str.+16,+Berlin"},
+      {"label": "Alternative B — Zoo → C/O Berlin → BRLO (optional, pick at most one)", "url": "https://www.google.com/maps/dir/Zoologischer+Garten+Berlin/C%2FO+Berlin+at+Amerika+Haus,+Hardenbergstra%C3%9Fe+22,+Berlin/BRLO+Brwhouse,+Sch%C3%B6neberger+Str.+16,+Berlin"}
+    ]
+  };
+  // Chronological route per day. `days` only decides which day filter a pin
+  // belongs to; DAY_ROUTES decides what the polyline draws and how the stops are
+  // numbered. A repeated location (Karlito, returned to on Thu and Sun) is an
+  // explicit "return" waypoint instead of a duplicate pin, so the return leg is
+  // visible without pretending there is a second venue there.
+  var DAY_ROUTES = {
+    "day-05": [
+      { "id": 159, "label": "Arrival ~07:45–08:00 — bag drop (unconfirmed; Hbf lockers backup), check-in only from 14:00" },
+      { "id": 145, "label": "One bakery ~09:00 — cinnamon roll / Zimtschnecke" },
+      { "id": 171, "label": "10:15–11:45 Memorial / Brandenburg Gate / Reichstag exteriors" },
+      { "id": 146, "label": "~13:15–14:15 Hackesche Höfe (the one flexible lunch 12:15–13:15 is unpinned, so the line skips it)" },
+      { "id": 147, "label": "~14:15–14:30 Dead Chicken Alley, Otto Weidt optional" },
+      { "id": 104, "label": "~14:45–15:15 FOTOIMPEX film & darkroom shop" },
+      { "id": 159, "kind": "return", "label": "↩ Return to Karlito ~15:30 — check-in + real rest until ~17:45 (same place as Pin 1, so it is an unnumbered return waypoint, not a second pin)" },
+      { "id": 178, "label": "Dinner from ~18:30/19:00 — Street Food Thursday, 17:00–22:00" }
+    ],
+    "day-06": [
+      { "id": 159, "label": "Leave ~08:45 — walk to Sophienstraße" },
+      { "id": 179, "label": "~09:00 one bakery (SammyS; opening subject to check)" },
+      { "id": 180, "label": "10:00–15:45 Museum Island, one flexible lunch inside this block" },
+      { "id": 148, "label": "~16:15–16:40 arrive Mampe, stay up to ~17:30 (30–40 min from the island)" },
+      { "id": 174, "label": "CONFIRMED 18:30 table" }
+    ],
+    "day-07": [
+      { "id": 159, "label": "Leave ~09:00 — direct U2 to Zoologischer Garten" },
+      { "id": 163, "label": "~09:30–16:30 the whole day, lunch inside the zoo" },
+      { "id": 157, "label": "~19:00 dinner (at most one optional A/B add-on in between, never on this line)" }
+    ],
+    "day-08": [
+      { "id": 159, "label": "Pack & check out 08:00–09:00 — day storage unconfirmed" },
+      { "id": 172, "label": "09:20–10:15 Berlin Wall Memorial" },
+      { "id": 144, "label": "10:30–12:15 Mauerpark flea market" },
+      { "id": 114, "label": "13:00–13:45 Sunday lunch (allow 45–60 min from the market)" },
+      { "id": 121, "label": "14:00–15:30 East Side Gallery" },
+      { "id": 159, "kind": "return", "label": "↩ Return to Karlito ~18:15–19:00 — bag pickup ONLY if the apartment stored them; with Berlin Hbf lockers skip this and go straight to Hbf (same place as Pin 1, so it is an unnumbered return waypoint)" },
+      { "id": 173, "label": "20:15 at the station with bags for the 20:52 NJ 408" }
+    ]
+  };
+
+  // Pin names carry list ranks and status notes ("★ #04 …", "(CONFIRMED …)"), which
+  // would be searched literally. The Google Maps link is built from the venue name
+  // plus the street address instead, so every popup opens the saved address.
+  function pinSearchUrl(p) {
+    var label = p.q || p.name;
+    var cleaned = label
+      .replace(/[★✖◇↩]/g, ' ')
+      .replace(/#\d+/g, ' ')
+      .replace(/\([^)]*\)/g, ' ')
+      .replace(/[·—–]/g, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+    var query = (cleaned + (p.addr ? ', ' + p.addr : '')).replace(/\s{2,}/g, ' ').trim();
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+  }
+  // end pinSearchUrl
 
   if (typeof L !== 'undefined' && document.getElementById('munich-map')) {
     var map = L.map('munich-map').setView([48.145, 11.575], 13);
@@ -231,13 +304,178 @@
     var sidebar = document.getElementById('map-poi-list');
     var gmapsBtn = document.getElementById('gmaps-day-route-link');
 
+    function pinIconHtml(badge, color, optional) {
+      var style = optional
+        ? 'background:#fff;color:' + color + ';border:2px dashed ' + color + ';'
+        : 'background:' + color + ';color:#fff;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);';
+      return '<div style="' + style + 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;">' + badge + '</div>';
+    }
+
+    function pinIcon(badge, color, optional) {
+      return L.divIcon({ html: pinIconHtml(badge, color, optional), className: '', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
+    }
+
+    function popupHtml(p, badge, optional, stepLabel) {
+      return '<div style="width:min(248px, 74vw);font-family:sans-serif;">' +
+        (p.img ? '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;max-width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:6px;">' : '') +
+        (optional && p.tag ? '<span style="font-size:10px;font-weight:700;color:#9a3412;">' + p.tag + ' — optional, not on the route line</span><br>' : '') +
+        '<strong style="font-size:14px;color:#003d59;">' + badge + '. ' + p.name + '</strong><br>' +
+        (stepLabel ? '<span style="font-size:11px;color:#005f87;font-weight:600;">' + stepLabel + '</span><br>' : '') +
+        '<span style="font-size:11px;color:#b42318;font-weight:600;">Hours: ' + p.hours + '</span><br>' +
+        '<span style="font-size:11px;color:#5a6577;">' + p.addr + '</span>' +
+        '<p style="font-size:12px;margin:6px 0;">' + p.note + '</p>' +
+        '<a href="' + pinSearchUrl(p) + '" target="_blank" rel="noopener" style="display:inline-block;background:#1a73e8;color:#fff;text-decoration:none;padding:4px 8px;border-radius:5px;font-size:11px;font-weight:600;">Find this address in Google Maps ↗</a>' +
+        '</div>';
+    }
+
+    // Opening a popup from the sidebar entry point immediately follows a `setView` that
+    // re-centres the map, and a tall popup then renders partly above the map container—
+    // its heading and close button end up out of reach. Three Leaflet behaviours make a
+    // naive correction unreliable:
+    //   1. the popup's own `autoPan` runs again on every `moveend`/`viewreset`, re-panning
+    //      with a stale offset right after our correction and clipping the popup again;
+    //   2. `map.panBy` with an offset larger than the map view (always the case for a tall
+    //      popup) falls back to `_resetView`, which re-renders the view from scratch;
+    //   3. the zoom animation started by `setView` is still running while the popup opens,
+    //      and a pan applied during it is discarded when the transition ends.
+    // So: suppress the popup's autoPan for this open, correct with an explicit pan that is
+    // re-measured whenever the map settles (zoomend/moveend/resize) plus a few bounded
+    // retries for the tail of the zoom animation, then restore the popup's own behaviour
+    // so direct marker clicks keep working exactly as before.
+    var SIDEBAR_POPUP_MARGIN_PX = 8;
+    function popupPanDelta(mapRect, popupRect) {
+      if (popupRect.top < mapRect.top + SIDEBAR_POPUP_MARGIN_PX) {
+        return popupRect.top - (mapRect.top + SIDEBAR_POPUP_MARGIN_PX);
+      }
+      if (popupRect.bottom > mapRect.bottom - SIDEBAR_POPUP_MARGIN_PX) {
+        return popupRect.bottom - (mapRect.bottom - SIDEBAR_POPUP_MARGIN_PX);
+      }
+      return 0;
+    }
+    function openSidebarPopup(marker) {
+      var popup = marker.getPopup && marker.getPopup();
+      if (!popup) { marker.openPopup(); return; }
+      var previousAutoPan = popup.options.autoPan;
+      popup.options.autoPan = false;
+      marker.openPopup();
+      var finished = false;
+      function panIntoView() {
+        if (finished) return;
+        var el = popup.getElement && popup.getElement();
+        if (!el || !el.parentNode) return;
+        var dy = Math.round(popupPanDelta(
+          map.getContainer().getBoundingClientRect(),
+          el.getBoundingClientRect()
+        ));
+        // A sub-pixel residual is measurement noise, and panning on it would make the
+        // moveend listener below chase its own tail.
+        if (Math.abs(dy) < 1) return;
+        map.panBy([0, dy], { animate: false });
+      }
+      function finish() {
+        if (finished) return;
+        finished = true;
+        map.off('zoomend moveend resize', panIntoView);
+        popup.options.autoPan = previousAutoPan;
+      }
+      map.on('zoomend moveend resize', panIntoView);
+      // Bounded retries cover the tail of the setView zoom animation and a popup image
+      // that is still decoding; the listeners above keep the popup visible afterwards.
+      [0, 150, 400, 700, 1100].forEach(function(delay) { setTimeout(panIntoView, delay); });
+      setTimeout(finish, 1600);
+      var el = popup.getElement && popup.getElement();
+      var img = el && el.querySelector('img');
+      if (img && !img.complete) img.addEventListener('load', panIntoView, { once: true });
+    }
+
+    function addSidebarEntry(marker, p, badge, optional, stepLabel) {
+      if (!sidebar) return;
+      var item = document.createElement('div');
+      item.className = 'poi-item';
+      item.innerHTML = '<h5><span class="pin-dot" style="background:' + p.color + ';"></span>' + badge + ' ' + p.name + '</h5>' +
+        (optional
+          ? '<p><strong>' + (p.tag || 'OPTIONAL') + '</strong> — not on the route line; open it directly from here.</p>'
+          : (stepLabel ? '<p><strong>Route order:</strong> ' + stepLabel + '</p>' : '')) +
+        '<p><strong>' + p.hours + '</strong> · ' + p.addr + '</p>' +
+        '<p style="margin-top:2px;">' + p.note + '</p>';
+      item.addEventListener('click', function() {
+        map.setView([p.lat, p.lng], 15);
+        openSidebarPopup(marker);
+      });
+      sidebar.appendChild(item);
+    }
+
+    function addSidebarNote(text) {
+      if (!sidebar) return;
+      var note = document.createElement('div');
+      note.className = 'poi-item';
+      note.style.cssText = 'background:#f1f5f9;border-left:3px solid #005f87;';
+      note.innerHTML = '<p style="margin:0;">' + text + '</p>';
+      sidebar.appendChild(note);
+    }
+
+    function drawPin(p, badge, optional, stepLabel) {
+      var marker = L.marker([p.lat, p.lng], { icon: pinIcon(badge, p.color, optional) })
+        .bindPopup(popupHtml(p, badge, optional, stepLabel));
+      markerGroup.addLayer(marker);
+      addSidebarEntry(marker, p, badge, optional, stepLabel);
+      return marker;
+    }
+
+    function drawReturn(step, p) {
+      var marker = L.marker([p.lat, p.lng], { icon: pinIcon('↩', '#5a6577', true), zIndexOffset: -200 })
+        .bindPopup('<div style="width:min(248px, 74vw);font-family:sans-serif;"><strong style="font-size:13px;color:#003d59;">↩ ' + p.name + ' (return leg)</strong>' +
+          '<p style="font-size:12px;margin:6px 0;">' + step.label + '</p></div>');
+      markerGroup.addLayer(marker);
+      if (sidebar) {
+        var item = document.createElement('div');
+        item.className = 'poi-item';
+        item.style.cssText = 'background:#eef4f8;';
+        item.innerHTML = '<h5><span class="pin-dot" style="background:#5a6577;"></span>↩ Return — ' + p.name + '</h5>' +
+          '<p>' + step.label + '</p>';
+        item.addEventListener('click', function() {
+          map.setView([p.lat, p.lng], 15);
+          openSidebarPopup(marker);
+        });
+        sidebar.appendChild(item);
+      }
+    }
+
     function renderMap(filterKey) {
       markerGroup.clearLayers();
       if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
       if (sidebar) sidebar.innerHTML = '';
 
+      var isDay = filterKey.indexOf('day-') === 0;
+      var declaredRoute = isDay ? (DAY_ROUTES[filterKey] || []) : [];
+
       if (gmapsBtn && DAY_GMAPS[filterKey]) {
         gmapsBtn.href = DAY_GMAPS[filterKey];
+      }
+
+      // Optional alternative routes (e.g. Sat 7 Nov KaDeWe / C/O Berlin) are offered
+      // as separately labelled links so an alternative-only place never becomes a
+      // mandatory stop in the baseline directions or the default polyline.
+      var altBox = document.getElementById('gmaps-alt-routes');
+      if (altBox) {
+        altBox.innerHTML = '';
+        var alternatives = DAY_GMAPS_ALT[filterKey] || [];
+        altBox.style.display = alternatives.length ? 'flex' : 'none';
+        if (alternatives.length) {
+          var altLabel = document.createElement('span');
+          altLabel.style.cssText = 'font-size:0.78rem;color:var(--muted);';
+          altLabel.textContent = 'Optional add-ons (choose at most one, not on the main route):';
+          altBox.appendChild(altLabel);
+          alternatives.forEach(function(alt) {
+            var altLink = document.createElement('a');
+            altLink.href = alt.url;
+            altLink.target = '_blank';
+            altLink.rel = 'noopener';
+            altLink.textContent = alt.label + ' ↗';
+            altLink.style.cssText = 'display:inline-block;background:#fff;border:1px solid #cfd8e3;color:#003d59;text-decoration:none;padding:0.32rem 0.55rem;border-radius:6px;font-size:0.78rem;font-weight:600;';
+            altBox.appendChild(altLink);
+          });
+        }
       }
 
       var filtered = POIS.filter(function(p) {
@@ -245,8 +483,11 @@
         if (p.omitted) return false; // Omitted pins never clutter active itinerary maps!
         if (filterKey === 'region-berlin') return p.region === 'region-berlin';
         if (filterKey === 'region-blackforest') return p.region === 'region-blackforest';
-        if (filterKey.indexOf('day-') === 0) {
-          return p.days.indexOf(filterKey) !== -1;
+        if (isDay) {
+          // A day shows its scheduled stops AND the optional/backup places that
+          // belong to that day, so alternatives are discoverable where they matter.
+          return (p.days || []).indexOf(filterKey) !== -1 ||
+                 (p.altDays || []).indexOf(filterKey) !== -1;
         }
         if (p.region) return false; // default Munich filters show Munich stops
         if (filterKey === 'all') return true;
@@ -255,46 +496,69 @@
         return true;
       });
 
-      var coords = [];
-      var bounds = [];
-
-      filtered.forEach(function(p, idx) {
-        var stepNum = idx + 1;
-        var iconHtml = '<div style="background:' + p.color + ';color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);">' + stepNum + '</div>';
-        var icon = L.divIcon({ html: iconHtml, className: '', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
-
-        var gmapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' ' + p.addr);
-        var popupHtml = '<div style="width:min(248px, 74vw);font-family:sans-serif;">' +
-          '<img src="' + p.img + '" alt="' + p.name + '" style="width:100%;max-width:100%;height:110px;object-fit:cover;border-radius:6px;margin-bottom:6px;">' +
-          '<strong style="font-size:14px;color:#003d59;">' + stepNum + '. ' + p.name + '</strong><br>' +
-          '<span style="font-size:11px;color:#b42318;font-weight:600;">Hours: ' + p.hours + '</span><br>' +
-          '<span style="font-size:11px;color:#5a6577;">' + p.addr + '</span>' +
-          '<p style="font-size:12px;margin:6px 0;">' + p.note + '</p>' +
-          '<a href="' + gmapUrl + '" target="_blank" rel="noopener" style="display:inline-block;background:#1a73e8;color:#fff;text-decoration:none;padding:4px 8px;border-radius:5px;font-size:11px;font-weight:600;">Open in Google Maps ↗</a>' +
-          '</div>';
-
-        var marker = L.marker([p.lat, p.lng], { icon: icon }).bindPopup(popupHtml);
-        markerGroup.addLayer(marker);
-
-        coords.push([p.lat, p.lng]);
-        bounds.push([p.lat, p.lng]);
-
-        if (sidebar) {
-          var item = document.createElement('div');
-          item.className = 'poi-item';
-          item.innerHTML = '<h5><span class="pin-dot" style="background:' + p.color + ';"></span>' + stepNum + '. ' + p.name + '</h5>' +
-            '<p><strong>' + p.hours + '</strong> · ' + p.addr + '</p>' +
-            '<p style="margin-top:2px;">' + p.note + '</p>';
-          item.addEventListener('click', function() {
-            map.setView([p.lat, p.lng], 15);
-            marker.openPopup();
-          });
-          sidebar.appendChild(item);
-        }
+      // Days without hand-written route data (the Munich / Black Forest day filters)
+      // keep the previous behaviour: the planned pins in order form the route.
+      var dayRoute = declaredRoute.length
+        ? declaredRoute
+        : filtered.map(function(p) { return { "id": p.id }; });
+      var stopNumber = {};
+      dayRoute.forEach(function(step, idx) {
+        if (step.kind === 'return') return;
+        if (stopNumber[step.id] === undefined) stopNumber[step.id] = idx + 1;
       });
 
-      if (filterKey.indexOf('day-') === 0 && coords.length > 1) {
-        routeLine = L.polyline(coords, { color: '#005f87', weight: 3, dashArray: '6, 8', opacity: 0.85 }).addTo(map);
+      var byId = {};
+      POIS.forEach(function(p) { byId[p.id] = p; });
+
+      var bounds = [];
+      var routeCoords = [];
+
+      if (isDay) {
+        dayRoute.forEach(function(step) {
+          var p = byId[step.id];
+          if (!p) return;
+          if (step.kind === 'return') {
+            drawReturn(step, p);
+          } else {
+            drawPin(p, String(stopNumber[step.id] || '•'), false, step.label);
+          }
+          routeCoords.push([p.lat, p.lng]);
+          bounds.push([p.lat, p.lng]);
+        });
+
+        // Anything scheduled for this day but missing from the route data still
+        // gets a marker, so a data slip can never hide a planned stop.
+        filtered.forEach(function(p) {
+          var scheduled = (p.days || []).indexOf(filterKey) !== -1;
+          if (!scheduled || stopNumber[p.id] !== undefined) return;
+          drawPin(p, '•', false, '');
+          bounds.push([p.lat, p.lng]);
+        });
+
+        var optionalPins = filtered.filter(function(p) {
+          return (p.altDays || []).indexOf(filterKey) !== -1;
+        });
+        if (optionalPins.length) {
+          addSidebarNote('<strong>Optional / backup places for this day</strong> — shown for discoverability and individually navigable, but never part of the route line or the baseline Google directions.');
+          optionalPins.forEach(function(p) {
+            var badge = p.badge || '○';
+            var marker = L.marker([p.lat, p.lng], { icon: pinIcon(badge, p.color, true) })
+              .bindPopup(popupHtml(p, badge, true, ''));
+            markerGroup.addLayer(marker);
+            addSidebarEntry(marker, p, badge, true, '');
+            bounds.push([p.lat, p.lng]);
+          });
+        }
+      } else {
+        filtered.forEach(function(p, idx) {
+          var badge = String(idx + 1);
+          drawPin(p, badge, !!p.optional, '');
+          bounds.push([p.lat, p.lng]);
+        });
+      }
+
+      if (isDay && routeCoords.length > 1) {
+        routeLine = L.polyline(routeCoords, { color: '#005f87', weight: 3, dashArray: '6, 8', opacity: 0.85 }).addTo(map);
       }
 
       if (bounds.length > 0) {

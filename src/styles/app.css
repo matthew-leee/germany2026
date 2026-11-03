@@ -578,3 +578,54 @@
       .alert-banner, .audit-banner { padding: 0.85rem 0.95rem; font-size: 0.87rem; }
       .badge { font-size: 0.68rem; }
     }
+    /* Touch ergonomics, scoped to coarse pointers so the desktop layout above is
+       unchanged. Primary actions get a real 44x44 target, compact toolbar pills
+       36px height, and every form field a 16px font to stop iOS focus zoom. */
+    @media (pointer: coarse) {
+      button, a[href], input, select, textarea, .pack-item,
+      .leaflet-control-zoom a, .leaflet-popup-close-button {
+        touch-action: manipulation;
+      }
+      .tab-btn, .quick-pill, .gmaps-btn, .pack-btn, .copy-code-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+      }
+      .sub-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 36px;
+      }
+      #gmaps-alt-routes a {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+      }
+      .pack-item {
+        min-width: 44px;
+        min-height: 44px;
+      }
+      .pack-item input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        font-size: 16px;
+      }
+      input, select, textarea { font-size: 16px; }
+      .leaflet-touch .leaflet-bar a {
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+      }
+      .leaflet-container a.leaflet-popup-close-button {
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        font-size: 24px;
+      }
+    }
